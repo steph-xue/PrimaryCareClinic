@@ -3,7 +3,7 @@
 ## An Electronic Health Record (EHR) designed to optimize patient management for clinicians working in primary care clinics
 
 ### What will the application do and who will use it? ###
-The application serves as an EHR system designed for primary care clinics, enabling efficient management of patients who are currently registered within the clinic. The application will allow for the tracking of patient information, including first and last name, date of birth (DOB), age, personal health number (PHN), allergies, current medications (generic names), and medication conditions. Patient data will be presented in a list view, where the user is able to organize patient records, sorting by information such as first name, last name, or DOB. The application will also support the addition of new patients, removal of existing patients, and updates to patient details as required. Additionally, the application will enable users to record and review detailed notes for patient visits, capturing information including the date, reason for the visit, healthcare provider seen, and visit details. Users can then view a complete history of all patient visits, organized chronologically for easy reference.  
+The application serves as an EHR system designed for primary care clinics, enabling efficient management of patients who are currently registered within the clinic. The application will allow for the tracking of patient information, including first and last name, date of birth (DOB), age, personal health number (PHN), allergies, current medications (generic names), and medication conditions. Patient data will be presented in a list view sorted alphabetically by last name. The application will also support the addition of new patients, removal of existing patients, and updates to patient details as required. Additionally, the application will enable users to record and review detailed notes for patient visits, capturing information including the date, reason for the visit, healthcare provider seen, and visit details. Users can then view a complete history of all patient visits, organized chronologically for easy reference.  
 
 The primary care clinic application is designed to be used by medical professionals and administrative staff, including physicians, clinical pharmacists, nurses, and medical office assistants, to streamline patient management and ensure accurate record-keeping for the improved delivery of patient care.
 
@@ -12,10 +12,10 @@ This project is of interest to me, as I have a background in the healthcare indu
 
 
 ## User Stories
-- As a user, I want to be able to add a patient to my primary care clinic and specify their first and last name, DOB, age, PHN, allergies, current medications (generic names), and medication conditions
-- As a user, I want to be able to view the list of patients in my primary care clinic
-- As a user, I want to be able to remove an existing patient from my primary care clinic
-- As a user, I want to be able to update a patient's record
+- As a user, I want to be able to add a patient record and specify their first and last name, DOB, age, PHN, allergies, current medications (generic names), and medication conditions
+- As a user, I want to be able to view the list of patient records sorted alphabetically by last name
+- As a user, I want to be able to remove an existing patient record 
+- As a user, I want to be able to update information in a patient's record 
 - As a user, I want to be able to record each patient's visits with details such as the date, reason for the visit, healthcare provider seen, and visit details
 - As a user, I want to be able to view the history of visits for a specific patient organized chronologically for easy reference
 - As a user, I want to be able to delete a patient's visit record
