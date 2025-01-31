@@ -1,8 +1,11 @@
-# Primary Care Clinic Electronic Health Record Application
+# Primary Care Clinic Application 
 
 ## A subtitle
 
-A *bulleted* list:
+What will the application do and who will use it?
+
+
+Why is this project of interest to you?
 - item 1
 - item 2
 - item 3
