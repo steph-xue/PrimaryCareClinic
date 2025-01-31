@@ -8,13 +8,15 @@ The application serves as an EHR system designed for primary care clinics, enabl
 The primary care clinic application is designed to be used by medical professionals and administrative staff, including physicians, clinical pharmacists, nurses, and medical office assistants, to streamline patient management and ensure accurate record-keeping for the improved delivery of patient care.
 
 ### Why is this project of interest to you? ###
-This project is of interest to me, as I have a background in the healthcare industry as a pharmacist and have worked at a variety of healthcare settings, including community pharmacies, hospitals, and ambulatory care clinics. As a result, I have different experiences working with EHR systems, and have firsthand experience with the challenges faced by healthcare professionals in managing patient records. By creating an EHR application, I can apply my technical skills in computer science with my background domain knowledge in healthcare to develop a practical, user-friendly application for clinicians. Moreover, working on this application aligns with my goal to leverage technology to automate processes, enhance operational efficiency, and contribute towards innovative solutions in healthcare.
+This project is of interest to me, as I have a background in the healthcare industry as a pharmacist and have worked at a variety of healthcare settings, including community pharmacies, hospitals, and ambulatory care clinics. As a result, I have a multitude of experiences working with different EHR systems, and have firsthand experience with the challenges faced by healthcare professionals in managing patient records. By creating an EHR application, I can apply my technical skills in computer science with my background domain knowledge in healthcare to develop a practical, user-friendly application for clinicians. Moreover, working on this application aligns with my goal to leverage technology to automate processes, enhance operational efficiency, and contribute towards innovative solutions in healthcare.
 
 
 ## User Stories
 - As a user, I want to be able to add a patient to my primary care clinic and specify their first and last name, DOB, age, PHN, allergies, current medications (generic names), and medication conditions
 - As a user, I want to be able to view the list of patients in my primary care clinic
 - As a user, I want to be able to remove an existing patient from my primary care clinic
-- As a user, I want to be able to update a patient
+- As a user, I want to be able to update a patient's record
 - As a user, I want to be able to record each patient's visits with details such as the date, reason for the visit, healthcare provider seen, and visit details
 - As a user, I want to be able to view the history of visits for a specific patient organized chronologically for easy reference
+- As a user, I want to be able to delete a patient's visit record
+- As a user, I want to be able to update a patient's visit record
