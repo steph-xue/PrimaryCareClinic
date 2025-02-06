@@ -3,48 +3,29 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// A class representing a patient with a first name, last name, date of birth (DOB), personal health number (PHN), 
-// list of current allergies, medications (generic names), medical conditions, and clinical notes 
+// A class representing a patient with a first name, last name, date of birth (DOB), age, personal health number (PHN),
+// list of current allergies, medications (generic names), medical conditions, and clinical notes
 public class Patient {
 
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
+    private int age;
     private int personalHealthNumber;
     private List<String> allergies;
     private List<String> medications;
     private List<String> medicalConditions;
     private List<ClinicalNote> clinicalNotes;
 
-    // REQUIRES: personalHealthNumber > 0
-    // EFFECTS: constructs a new record for a patient with their first name, last name, DOB, PHN, and an empty
+    // REQUIRES: age > 0, personalHealthNumber > 0
+    // EFFECTS: constructs a new record for a patient with their first name, last name, DOB, age, PHN, and an empty
     // list of current allergies, medications, medical conditions, and clinical notes
-    public Patient(String firstName, String lastName, Date dateOfBirth, int personalHealthNumber) {
-        // stub
-    }
-
-    // EFFECTS: returns true if patient has at least one allergy
-    public boolean hasAllergy() {
-        // stub
-    }
-
-    // EFFECTS: returns true if patient is on at least one medication
-    public boolean onMedication() {
-        // stub
-    }
-
-    // EFFECTS: returns true if patient has at least one medical condition
-    public boolean hasMedicalCondition() {
-        // stub
-    }
-
-    // EFFECTS: returns true if patient has had at least one previous appointment at this clinic
-    public boolean previouslyVisitedClinic() {
+    public Patient(String firstName, String lastName, Date dateOfBirth, int age, int personalHealthNumber) {
         // stub
     }
 
     // MODIFIES: this
-    // EFFECTS: add allergy to patient's current list of allergies, returns true if successfully added (not already
+    // EFFECTS: adds allergy to patient's current list of allergies, returns true if successfully added (not already
     // in current list to prevent duplicates) and false if not successfully added (duplicate entry)
     public boolean addAllergy(String allergy) {
         // stub
@@ -65,7 +46,7 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: add medication (generic name) to patient's current list of medications, returns true if successfully
+    // EFFECTS: adds medication (generic name) to patient's current list of medications, returns true if successfully
     // added (not already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
     public boolean addMedication(String medication) {
         // stub
@@ -86,7 +67,7 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: add medical condition to patient's current list of medical conditions, returns true if successfully
+    // EFFECTS: adds medical condition to patient's current list of medical conditions, returns true if successfully
     // added (not already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
     public boolean addMedicalCondition(String medicalCondition) {
         // stub
@@ -107,7 +88,7 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: add clinical note to patient's list of clinical notes, returns true if successfully added (not 
+    // EFFECTS: adds clinical note to patient's list of clinical notes, returns true if successfully added (not 
     // already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
     public boolean addClinicalNote(ClinicalNote note) {
         // stub
@@ -130,7 +111,7 @@ public class Patient {
         // stub
     }
 
-    // EFFECTS: print patient's current list of medical conditions in string format
+    // EFFECTS: prints patient's current list of medical conditions in string format
     public String printMedicalConditions() {
         // stub
     }
@@ -153,9 +134,10 @@ public class Patient {
         // stub
     }
 
+    // REQUIRES: age > 0
     // MODIFIES: this
-    // EFFECTS: sets the patient's DOB to a new given DOB
-    public void setDateOfBirth(Date dateOfBirth) {
+    // EFFECTS: sets the patient's DOB and age to a new given DOB and age
+    public void setDateOfBirthAndAge(Date dateOfBirth, int age) {
         // stub
     }
 
@@ -184,6 +166,11 @@ public class Patient {
 
     // EFFECTS: gets patient's DOB
     public Date getDateOfBirth() {
+        // stub
+    }
+
+    // EFFECTS: gets patient's age
+    public Date getAge() {
         // stub
     }
 
