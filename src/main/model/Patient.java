@@ -23,6 +23,26 @@ public class Patient {
         // stub
     }
 
+    // EFFECTS: returns true if patient has at least one allergy
+    public boolean hasAllergy() {
+        // stub
+    }
+
+    // EFFECTS: returns true if patient is on at least one medication
+    public boolean onMedication() {
+        // stub
+    }
+
+    // EFFECTS: returns true if patient has at least one medical condition
+    public boolean hasMedicalCondition() {
+        // stub
+    }
+
+    // EFFECTS: returns true if patient has had at least one previous appointment at this clinic
+    public boolean previouslyVisitedClinic() {
+        // stub
+    }
+
     // MODIFIES: this
     // EFFECTS: add allergy to patient's current list of allergies, returns true if successfully added (not already
     // in current list to prevent duplicates) and false if not successfully added (duplicate entry)
@@ -97,6 +117,26 @@ public class Patient {
     // EFFECTS: removes clinical note from patient's list of clinical notes if present, returns true
     // if successfully removed and false if not succesfully removed (not found in list)
     public boolean removeClinicalNote(ClinicalNote note) {
+        // stub
+    }
+
+    // EFFECTS: prints patient's current list of allergies in string format
+    public String printAllergies() {
+        // stub
+    }
+
+    // EFFECTS: prints patient's current list of medications in string format
+    public String printMedications() {
+        // stub
+    }
+
+    // EFFECTS: print patient's current list of medical conditions in string format
+    public String printMedicalConditions() {
+        // stub
+    }
+
+    // EFFECTS: prints details of patient's list of clinical notes
+    public String printClinicalNotes() {
         // stub
     }
 
