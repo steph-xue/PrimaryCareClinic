@@ -11,7 +11,7 @@ public class Patient {
     private String lastName;
     private Date dateOfBirth;
     private int age;
-    private int personalHealthNumber;
+    private long personalHealthNumber;
     private List<String> allergies;
     private List<String> medications;
     private List<String> medicalConditions;
@@ -20,7 +20,7 @@ public class Patient {
     // REQUIRES: age > 0, personalHealthNumber > 0
     // EFFECTS: constructs a new record for a patient with their first name, last name, DOB, age, PHN, and an empty
     // list of current allergies, medications, medical conditions, and clinical notes
-    public Patient(String firstName, String lastName, Date dateOfBirth, int age, int personalHealthNumber) {
+    public Patient(String firstName, String lastName, Date dateOfBirth, int age, long personalHealthNumber) {
         // stub
     }
 
@@ -144,7 +144,7 @@ public class Patient {
     // REQUIRES: personalHealthNumber > 0
     // MODIFIES: this
     // EFFECTS: sets the patient's PHN to a new given PHN
-    public void setPersonalHealthNumber(int personalHealthNumber) {
+    public void setPersonalHealthNumber(long personalHealthNumber) {
         // stub
     }
 
@@ -175,7 +175,7 @@ public class Patient {
     }
 
     // EFFECTS: gets patient's PHN
-    public int getPersonalHealthNumber() {
+    public long getPersonalHealthNumber() {
         // stub
     }
 
