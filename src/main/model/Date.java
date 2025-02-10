@@ -10,54 +10,67 @@ public class Date {
     // REQUIRES: 0 < year, 0 < month < 13, 0 < day < 32
     // EFFECTS: constructs a date with given month, day, and year
     public Date(int month, int day, int year) {
-        // stub
+        this.month = month;
+        this.day = day;
+        this.year = year;
     }
 
     // EFFECTS: returns date in the String format "MM/DD/YYYY"
     public String printDate() {
-        // stub
+
+        StringBuilder result = new StringBuilder();
+        result.append(addPrefix(month));
+        result.append("/");
+        result.append(addPrefix(day));
+        result.append("/");
+        result.append(year);
+        return result.toString();
     }
 
     // EFFECTS: adds prefix zero to single digit numbers, returning it in a String format
     public String addPrefix(int number) {
-        // stub
+        if (number >= 0 && number <= 9) {
+            return "0" + String.valueOf(number);
+        } else {
+            return String.valueOf(number);
+        }
     }
 
     // REQUIRES: 0 < month < 13
     // MODIFIES: this
     // EFFECTS: sets the month to the given month
-    public int setMonth(int month) {
-        // stub
+    public void setMonth(int month) {
+        this.month = month;
     }
 
     // REQUIRES: 0 < day < 32
     // MODIFIES: this
     // EFFECTS: sets the day to the given day
-    public int setDay(int day) {
-        // stub
+    public void setDay(int day) {
+        this.day = day;
     }
 
     // Setters
     // REQUIRES: 0 < year
     // MODIFIES: this
     // EFFECTS: sets the year to the given year
-    public int setYear(int year) {
-        // stub
+    public void setYear(int year) {
+        this.year = year;
     }
 
     // Getters
     // EFFECTS: gets the month of the date
     public int getMonth() {
-        // stub
+        return month;
     }
 
     // EFFECTS: gets the day of the date
     public int getDay() {
-        // stub
+        return day;
     }
 
     // EFFECTS: gets the year of the date
     public int getYear() {
-        // stub
+        return year;
     }
 }
