@@ -21,7 +21,7 @@ public class TestPatient {
     private ClinicalNote clinicalNote3;
     
     @BeforeEach
-    void runBefore() {
+    public void runBefore() {
         dateOfBirth1 = new Date(7, 27, 1973);
         dateOfBirth2 = new Date(6, 15, 1961);
         patient1 = new Patient("Paul", "Jackson", dateOfBirth1, 52, 9876543210L);
@@ -34,7 +34,7 @@ public class TestPatient {
     }
 
     @Test
-    void constructorTest() {
+    public void constructorTest() {
         assertEquals("Paul", patient1.getFirstName());
         assertEquals("Jackson", patient1.getLastName());
         assertEquals("Paul Jackson", patient1.getFullName());
@@ -48,7 +48,7 @@ public class TestPatient {
     }
 
     @Test
-    void addAllergyTest() {
+    public void addAllergyTest() {
         assertEquals(0, patient1.getAllergies().size());
         assertTrue(patient1.addAllergy("penicillin"));
         assertEquals(1, patient1.getAllergies().size());
@@ -56,7 +56,7 @@ public class TestPatient {
     }
 
     @Test
-    void addAllergyMultipleTest() {
+    public void addAllergyMultipleTest() {
         assertEquals(0, patient1.getAllergies().size());
         assertTrue(patient1.addAllergy("codeine"));
         assertTrue(patient1.addAllergy("ciprofloxacin"));
@@ -66,7 +66,7 @@ public class TestPatient {
     }
 
     @Test
-    void addAllergyDuplicateTest() {
+    public void addAllergyDuplicateTest() {
         assertEquals(0, patient1.getAllergies().size());
         assertTrue(patient1.addAllergy("amoxicillin"));
         assertFalse(patient1.addAllergy("amoxicillin"));
@@ -75,7 +75,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeAllergyTest() {
+    public void removeAllergyTest() {
         assertTrue(patient1.addAllergy("ibuprofen"));
         assertEquals(1, patient1.getAllergies().size());
         assertEquals("ibuprofen", patient1.getAllergies().get(0));
@@ -84,7 +84,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeAllergyMultipleTest() {
+    public void removeAllergyMultipleTest() {
         assertTrue(patient1.addAllergy("naproxen"));
         assertTrue(patient1.addAllergy("nitrofurantoin"));
         assertEquals(2, patient1.getAllergies().size());
@@ -98,7 +98,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeAllergyNotPresentTest() {
+    public void removeAllergyNotPresentTest() {
         assertTrue(patient1.addAllergy("codeine"));
         assertTrue(patient1.addAllergy("penicillin"));
         assertFalse(patient1.removeAllergy("naproxen"));
@@ -108,7 +108,7 @@ public class TestPatient {
     }
 
     @Test
-    void editAllergyTest() {
+    public void editAllergyTest() {
         assertTrue(patient1.addAllergy("penicillin"));
         assertEquals(1, patient1.getAllergies().size());
         assertEquals("penicillin", patient1.getAllergies().get(0));
@@ -118,7 +118,7 @@ public class TestPatient {
     }
 
     @Test
-    void editAllergyMultipleTest() {
+    public void editAllergyMultipleTest() {
         assertTrue(patient1.addAllergy("amoxicillin"));
         assertTrue(patient1.addAllergy("ciprofloxacin"));
         assertEquals(2, patient1.getAllergies().size());
@@ -132,7 +132,7 @@ public class TestPatient {
     }
 
     @Test
-    void editAllergyNotPresentTest() {
+    public void editAllergyNotPresentTest() {
         assertTrue(patient1.addAllergy("azithromycin"));
         assertEquals(1, patient1.getAllergies().size());
         assertEquals("azithromycin", patient1.getAllergies().get(0));
@@ -142,7 +142,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicationTest() {
+    public void addMedicationTest() {
         assertEquals(0, patient1.getMedications().size());
         assertTrue(patient1.addMedication("metformin"));
         assertEquals(1, patient1.getMedications().size());
@@ -150,7 +150,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicationMultipleTest() {
+    public void addMedicationMultipleTest() {
         assertEquals(0, patient1.getMedications().size());
         assertTrue(patient1.addMedication("amlodipine"));
         assertTrue(patient1.addMedication("metformin"));
@@ -160,7 +160,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicatioDuplicateTest() {
+    public void addMedicatioDuplicateTest() {
         assertEquals(0, patient1.getMedications().size());
         assertTrue(patient1.addMedication("rosuvastatin"));
         assertFalse(patient1.addMedication("rosuvastatin"));
@@ -169,7 +169,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicationTest() {
+    public void removeMedicationTest() {
         assertTrue(patient1.addMedication("bisoprolol"));
         assertEquals(1, patient1.getMedications().size());
         assertEquals("bisoprolol", patient1.getMedications().get(0));
@@ -178,7 +178,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicationMultipleTest() {
+    public void removeMedicationMultipleTest() {
         assertTrue(patient1.addMedication("metformin"));
         assertTrue(patient1.addMedication("simvastatin"));
         assertEquals(2, patient1.getMedications().size());
@@ -192,7 +192,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicationNotPresentTest() {
+    public void removeMedicationNotPresentTest() {
         assertTrue(patient1.addMedication("dapagliflozin"));
         assertTrue(patient1.addMedication("metformin"));
         assertFalse(patient1.removeMedication("atorvastatin"));
@@ -202,7 +202,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicationTest() {
+    public void editMedicationTest() {
         assertTrue(patient1.addMedication("atorvastatin"));
         assertEquals(1, patient1.getMedications().size());
         assertEquals("atorvastatin", patient1.getMedications().get(0));
@@ -212,7 +212,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicationMultipleTest() {
+    public void editMedicationMultipleTest() {
         assertTrue(patient1.addMedication("metformin"));
         assertTrue(patient1.addMedication("amlodipine"));
         assertEquals(2, patient1.getMedications().size());
@@ -226,7 +226,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicationNotPresentTest() {
+    public void editMedicationNotPresentTest() {
         assertTrue(patient1.addMedication("bisoprolol"));
         assertEquals(1, patient1.getMedications().size());
         assertEquals("bisoprolol", patient1.getMedications().get(0));
@@ -236,7 +236,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicalConditionTest() {
+    public void addMedicalConditionTest() {
         assertEquals(0, patient1.getMedicalConditions().size());
         assertTrue(patient1.addMedicalCondition("dyslipidemia"));
         assertEquals(1, patient1.getMedicalConditions().size());
@@ -244,7 +244,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicalConditionMultipleTest() {
+    public void addMedicalConditionMultipleTest() {
         assertEquals(0, patient1.getMedicalConditions().size());
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
         assertTrue(patient1.addMedicalCondition("hypertension"));
@@ -254,7 +254,7 @@ public class TestPatient {
     }
 
     @Test
-    void addMedicalConditionDuplicateTest() {
+    public void addMedicalConditionDuplicateTest() {
         assertEquals(0, patient1.getMedicalConditions().size());
         assertTrue(patient1.addMedicalCondition("epilepsy"));
         assertFalse(patient1.addMedicalCondition("epilepsy"));
@@ -263,7 +263,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicalConditionTest() {
+    public void removeMedicalConditionTest() {
         assertTrue(patient1.addMedicalCondition("impetigo"));
         assertEquals(1, patient1.getMedicalConditions().size());
         assertEquals("impetigo", patient1.getMedicalConditions().get(0));
@@ -272,7 +272,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicalConditionMultipleTest() {
+    public void removeMedicalConditionMultipleTest() {
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
         assertTrue(patient1.addMedicalCondition("osteoarthritis"));
         assertEquals(2, patient1.getMedicalConditions().size());
@@ -286,7 +286,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeMedicalConditionNotPresentTest() {
+    public void removeMedicalConditionNotPresentTest() {
         assertTrue(patient1.addMedicalCondition("hypertension"));
         assertTrue(patient1.addMedicalCondition("rosacea"));
         assertFalse(patient1.removeMedicalCondition("osteoarthritis"));
@@ -296,7 +296,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicalConditionTest() {
+    public void editMedicalConditionTest() {
         assertTrue(patient1.addMedicalCondition("osteoarthritis"));
         assertEquals(1, patient1.getMedicalConditions().size());
         assertEquals("osteoarthritis", patient1.getMedicalConditions().get(0));
@@ -306,7 +306,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicalConditionMultipleTest() {
+    public void editMedicalConditionMultipleTest() {
         assertTrue(patient1.addMedicalCondition("hypertension"));
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
         assertEquals(2, patient1.getMedicalConditions().size());
@@ -320,7 +320,7 @@ public class TestPatient {
     }
 
     @Test
-    void editMedicalConditionNotPresentTest() {
+    public void editMedicalConditionNotPresentTest() {
         assertTrue(patient1.addMedicalCondition("epilepsy"));
         assertEquals(1, patient1.getMedicalConditions().size());
         assertEquals("epilepsy", patient1.getMedicalConditions().get(0));
@@ -330,7 +330,7 @@ public class TestPatient {
     }
 
     @Test
-    void addClinicalNoteTest() {
+    public void addClinicalNoteTest() {
         assertEquals(0, patient1.getClinicalNotes().size());
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertEquals(1, patient1.getClinicalNotes().size());
@@ -338,7 +338,7 @@ public class TestPatient {
     }
 
     @Test
-    void addClinicalNoteMultipleTest() {
+    public void addClinicalNoteMultipleTest() {
         assertEquals(0, patient1.getClinicalNotes().size());
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertTrue(patient1.addClinicalNote(clinicalNote3));
@@ -348,7 +348,7 @@ public class TestPatient {
     }
 
     @Test
-    void addClinicalNoteDuplicateTest() {
+    public void addClinicalNoteDuplicateTest() {
         assertEquals(0, patient1.getClinicalNotes().size());
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertFalse(patient1.addClinicalNote(clinicalNote1));
@@ -357,7 +357,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeClinicalNoteTest() {
+    public void removeClinicalNoteTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertEquals(1, patient1.getClinicalNotes().size());
         assertEquals(clinicalNote2, patient1.getClinicalNotes().get(0));
@@ -366,7 +366,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeClinicalNoteMultipleTest() {
+    public void removeClinicalNoteMultipleTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertEquals(2, patient1.getClinicalNotes().size());
@@ -380,7 +380,7 @@ public class TestPatient {
     }
 
     @Test
-    void removeClinicalNoteNotPresentTest() {
+    public void removeClinicalNoteNotPresentTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertFalse(patient1.removeClinicalNote(clinicalNote3));
@@ -390,7 +390,7 @@ public class TestPatient {
     }
 
     @Test
-    void printAllergiesTest() {
+    public void printAllergiesTest() {
         assertTrue(patient1.addAllergy("penicillin"));
         assertEquals("Penicillin", patient1.printAllergies());
         assertTrue(patient1.addAllergy("codeine"));
@@ -398,7 +398,7 @@ public class TestPatient {
     }
 
     @Test
-    void printMedicationsTest() {
+    public void printMedicationsTest() {
         assertTrue(patient1.addMedication("rosuvastatin"));
         assertEquals("Rosuvastatin", patient1.printMedications());
         assertTrue(patient1.addMedication("metformin"));
@@ -406,7 +406,7 @@ public class TestPatient {
     }
 
     @Test
-    void printMedicalConditionsTest() {
+    public void printMedicalConditionsTest() {
         assertTrue(patient1.addMedicalCondition("hypertension"));
         assertEquals("Hypertension", patient1.printMedicalConditions());
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
@@ -414,7 +414,7 @@ public class TestPatient {
     }
 
     @Test
-    void printClincalNotesTest() {
+    public void printClincalNotesTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertEquals(
             "-------------------------------------------------------------" + "\n" +
@@ -436,21 +436,21 @@ public class TestPatient {
     }
 
     @Test
-    void setFirstNameTest() {
+    public void setFirstNameTest() {
         assertEquals("Paul", patient1.getFirstName());
         patient1.setFirstName("Steven");
         assertEquals("Steven", patient1.getFirstName());
     }
 
     @Test
-    void setLastNameTest() {
+    public void setLastNameTest() {
         assertEquals("Jackson", patient1.getLastName());
         patient1.setLastName("Li");
         assertEquals("Li", patient1.getLastName());
     }
 
     @Test
-    void setDateOfBirthAndAgeTest() {
+    public void setDateOfBirthAndAgeTest() {
         assertEquals(dateOfBirth1, patient1.getDateOfBirth());
         assertEquals(52, patient1.getAge());
         patient1.setDateOfBirthAndAge(dateOfBirth2, 63);
@@ -459,7 +459,7 @@ public class TestPatient {
     }
 
     @Test
-    void setPersonalHealthNumberTest() {
+    public void setPersonalHealthNumberTest() {
         assertEquals(9876543210L, patient1.getPersonalHealthNumber());
         patient1.setPersonalHealthNumber(9875573512L);
         assertEquals(9875573512L, patient1.getPersonalHealthNumber());
