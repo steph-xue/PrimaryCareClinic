@@ -23,14 +23,6 @@ public class Date {
         // stub
     }
 
-    // Setters
-    // REQUIRES: 0 < year
-    // MODIFIES: this
-    // EFFECTS: sets the year to the given year
-    public int setYear(int year) {
-        // stub
-    }
-
     // REQUIRES: 0 < month < 13
     // MODIFIES: this
     // EFFECTS: sets the month to the given month
@@ -45,12 +37,15 @@ public class Date {
         // stub
     }
 
-    // Getters
-    // EFFECTS: gets the year of the date
-    public int getYear() {
+    // Setters
+    // REQUIRES: 0 < year
+    // MODIFIES: this
+    // EFFECTS: sets the year to the given year
+    public int setYear(int year) {
         // stub
     }
 
+    // Getters
     // EFFECTS: gets the month of the date
     public int getMonth() {
         // stub
@@ -58,6 +53,11 @@ public class Date {
 
     // EFFECTS: gets the day of the date
     public int getDay() {
+        // stub
+    }
+
+    // EFFECTS: gets the year of the date
+    public int getYear() {
         // stub
     }
 }
