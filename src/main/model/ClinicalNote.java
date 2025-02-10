@@ -11,58 +11,69 @@ public class ClinicalNote {
 
     // EFFECTS: constructs a clinical note with a given title, body, name of healthcare provider seen, and current date
     public ClinicalNote(String title, String body, String name, Date date) {
-        // stub
+        this.title = title;
+        this.body = body;
+        this.healthCareProvider = name;
+        this.visitDate = date;
     }
 
     // EFFECTS: prints summary of the clinical note in String format
     public String printClinicaNote() {
-        // stub
+        StringBuilder result = new StringBuilder();
+
+        result.append("-------------------------------------------------------------" + "\n");
+        result.append(getClinicalNoteTitle() + "\n");
+        result.append(getClinicalNoteBody() + "\n");
+        result.append(getClinicalNoteProvider() + " ");
+        result.append(getClinicalNoteDate().printDate() + "\n");
+
+        return result.toString();
     }
 
     // Setters
     // MODIFIES: this
     // EFFECTS: sets clinical note's title with given title
     public void setClinicalNoteTitle(String title) {
-        // stub
+        this.title = title;
     }
 
     // MODIFIES: this
     // EFFECTS: sets clinical note's body with given body
     public void setClinicalNoteBody(String body) {
-        // stub
+        this.body = body;
     }
 
     // MODIFIES: this
     // EFFECTS: sets clinical note's healthcare provider's name with given name
     public void setClinicalNoteProvider(String name) {
-        // stub
+        this.healthCareProvider = name;
     }
 
     // MODIFIES: this
     // EFFECTS: sets clinical note's date of visit with given date
     public void setClinicalNoteDate(Date date) {
-        // stub
+        this.visitDate = date;
     }
 
     // Getters
     // EFFECTS: gets clinical note's title
     public String getClinicalNoteTitle() {
-        // stub
+        return title;
     }
 
     // EFFECTS: gets clinical note's body
     public String getClinicalNoteBody() {
-        // stub
+        return body;
     }
 
     // EFFECTS: gets clinical note's healthcare provider's name
     public String getClinicalNoteProvider() {
-        // stub
+        return healthCareProvider;
     }
 
     // EFFECTS: gets clinical note's date of visit
     public Date getClinicalNoteDate() {
-        // stub
+        return visitDate;
     }
 
 }

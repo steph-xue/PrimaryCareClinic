@@ -258,7 +258,7 @@ public class Patient {
             result.append("-------------------------------------------------------------" + "\n");
             result.append(note.getClinicalNoteTitle() + "\n");
             result.append(note.getClinicalNoteBody() + "\n");
-            result.append(note.getClinicalNoteProvider());
+            result.append(note.getClinicalNoteProvider() + " ");
             result.append(note.getClinicalNoteDate().printDate() + "\n");
         }
         return result.toString();
