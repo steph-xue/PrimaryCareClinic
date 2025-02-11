@@ -256,6 +256,7 @@ public class Patient {
         for (int i = 0; i < clinicalNotes.size(); i++) {
             ClinicalNote note = clinicalNotes.get(i);
             result.append("-------------------------------------------------------------" + "\n");
+            result.append(String.valueOf(i + 1) + ". ");
             result.append(note.getClinicalNoteTitle() + "\n");
             result.append(note.getClinicalNoteBody() + "\n");
             result.append(note.getClinicalNoteProvider() + " ");

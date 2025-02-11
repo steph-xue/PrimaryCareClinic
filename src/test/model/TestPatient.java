@@ -414,22 +414,22 @@ public class TestPatient {
     }
 
     @Test
-    public void printClincalNotesTest() {
+    public void printClinicalNotesTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertEquals(
             "-------------------------------------------------------------" + "\n" +
-            "Fever and cough" + "\n" +
+            "1. Fever and cough" + "\n" +
             "Detailed notes 1." + "\n" +
             "Dr. K. Morris 01/30/2025" + "\n",
             patient1.printClinicalNotes());
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertEquals(
             "-------------------------------------------------------------" + "\n" +
-            "Fever and cough" + "\n" +
+            "1. Fever and cough" + "\n" +
             "Detailed notes 1." + "\n" +
             "Dr. K. Morris 01/30/2025" + "\n" +
             "-------------------------------------------------------------" + "\n" +
-            "Skin infection" + "\n" +
+            "2. Skin infection" + "\n" +
             "Detailed notes 2." + "\n" +
             "Dr. J. Lee 02/03/2025" + "\n",
             patient1.printClinicalNotes());

@@ -35,8 +35,9 @@ public class Clinic {
     }
 
     // Setters
+    // MODIFIES: this
     // EFFECTS: sets clinic's name
-    public String setClinicName() {
+    public String setClinicName(String name) {
         // stub
     }
 
