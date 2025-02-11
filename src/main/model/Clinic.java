@@ -11,45 +11,71 @@ public class Clinic {
 
     // EFFECTS: constructs a clinic with a given name and an empty list of patients
     public Clinic(String name) {
-        // stub
+        this.name = name;
+        patients = new ArrayList<>();
     }
 
     // MODIFIES: this
     // EFFECTS: adds new patient to the clinic's patient records list; returns true if succesfully added
     // (patient not already in list) or false if not successful (duplicate record found)
     public boolean addPatient(Patient patient) {
-        // stub
+        if (!this.patients.contains(patient)) {
+            this.patients.add(patient);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: removes patient from the clinic's patient records list; returns true if successfully
     // removed (patient is found in list) and false if not successful (patient not in list)
     public boolean removePatient(Patient patient) {
-        // stub
+        if (this.patients.contains(patient)) {
+            this.patients.remove(patient);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // EFFECTS: prints summary of patient records in the clinic in String format (sorted alphabetically
     // by last name)
     public String printPatientRecords() {
-        // stub
+        if (patients == null || patients.isEmpty()) {
+            return "No patient records";
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < patients.size(); i++) {
+            Patient patient = patients.get(i);
+            result.append("-------------------------------------------------------------" + "\n");
+            result.append(String.valueOf(i + 1) + ". ");
+            result.append(patient.getFullName() + "\n");System.out.println(".()");
+            result.append("Date of Birth: " + patient.getDateOfBirth() + "\n");
+            result.append("Age: " + patient.getAge() + "\n");
+            result.append("Personal Health Number: " + patient.getPersonalHealthNumber() + "\n");
+        }
+        return result.toString();
     }
 
     // Setters
     // MODIFIES: this
     // EFFECTS: sets clinic's name
-    public String setClinicName(String name) {
-        // stub
+    public void setClinicName(String name) {
+        this.name = name;
     }
 
     // Getters
     // EFFECTS: gets clinic's name
     public String getClinicName() {
-        // stub
+        return name;
     }
 
     // EFFECTS: gets clinic's list of patient records (sorted alphabetically by last name)
     public List<Patient> getPatients() {
-        // stub
+        return patients;
     }
 
 }

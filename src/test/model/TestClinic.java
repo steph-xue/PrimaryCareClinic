@@ -101,7 +101,7 @@ public class TestClinic {
         assertEquals(
             "-------------------------------------------------------------" + "\n" +
             "1. Ethan Patel" + "\n" +
-            "Date of birth: 04/17/1976" + "\n" +
+            "Date of Birth: 04/17/1976" + "\n" +
             "Age: 48" + "\n" +
             "Personal Health Number: 9871546730" + "\n",
             clinic.printPatientRecords());
@@ -109,12 +109,12 @@ public class TestClinic {
         assertEquals(
             "-------------------------------------------------------------" + "\n" +
             "1. Ethan Patel" + "\n" +
-            "Date of birth: 04/17/1976" + "\n" +
+            "Date of Birth: 04/17/1976" + "\n" +
             "Age: 48" + "\n" +
             "Personal Health Number: 9871546730" + "\n" +
             "-------------------------------------------------------------" + "\n" +
             "2. James Carter" + "\n" +
-            "Date of birth: 12/05/1961" + "\n" +
+            "Date of Birth: 12/05/1961" + "\n" +
             "Age: 63" + "\n" +
             "Personal Health Number: 9870588417" + "\n",
             clinic.printPatientRecords());
