@@ -12,11 +12,21 @@ This project is of interest to me, as I have a background in the healthcare indu
 
 
 ## User Stories
+- As a user, I want to be able to create and add a name for the clinic
+- As a user, I want to be able to update the name for the clinic
 - As a user, I want to be able to add a patient record and specify their first and last name, DOB, age, PHN, allergies, current medications (generic names), and medication conditions
 - As a user, I want to be able to view the list of patient records sorted alphabetically by last name
-- As a user, I want to be able to remove an existing patient record 
-- As a user, I want to be able to update information in a patient's record 
-- As a user, I want to be able to record a clinical note for a patient's medical appointment with details such as the date, time, reason for the visit, healthcare provider seen, and detailed notes
-- As a user, I want to be able to view the history of clinical notes for a specific patient organized chronologically for easy reference
-- As a user, I want to be able to delete a clinical note from a patient's record
+- As a user, I want to be able to remove an existing patient record
+- As a user, I want to be able to update information in a patient's record
+  - Edit the first and last name
+  - Edit the DOB
+  - Edit the PHN
+  - Add/remove/edit an allergy
+  - Add/remove/edit a medication
+  - Add/remove/edit a medical condition
+- As a user, I want to be able to record a clinical note for a patient's medical visit at the clinic with details such as the title (reason for visit), body (note details), name of the healthcare provider seen, and date
+- As a user, I want to be able to view the history of clinical notes for a specific patient
+- As a user, I want to be able to remove a clinical note from a patient's record
 - As a user, I want to be able to update a clinical note from a patient's record
+  - Edit the title, body, healthcare provider seen, and date
+
