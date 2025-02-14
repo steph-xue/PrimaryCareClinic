@@ -389,11 +389,21 @@ public class TestPatient {
     }
 
     @Test
+    public void printAllergiesNoneTest() {
+        assertEquals("No allergies", patient1.printAllergies());
+    }
+
+    @Test
     public void printAllergiesTest() {
         assertTrue(patient1.addAllergy("penicillin"));
         assertEquals("Penicillin", patient1.printAllergies());
         assertTrue(patient1.addAllergy("codeine"));
         assertEquals("Penicillin, codeine", patient1.printAllergies());
+    }
+
+    @Test
+    public void printMedicationsNoneTest() {
+        assertEquals("No medications", patient1.printMedications());
     }
 
     @Test
@@ -405,11 +415,21 @@ public class TestPatient {
     }
 
     @Test
+    public void printMedicalConditionsNoneTest() {
+        assertEquals("No medical conditions", patient1.printMedicalConditions());
+    }
+
+    @Test
     public void printMedicalConditionsTest() {
         assertTrue(patient1.addMedicalCondition("hypertension"));
         assertEquals("Hypertension", patient1.printMedicalConditions());
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
         assertEquals("Hypertension, diabetes mellitus", patient1.printMedicalConditions());
+    }
+
+    @Test
+    public void printClinicalNotesNoneTest() {
+        assertEquals("No clinical notes", patient1.printClinicalNotes());
     }
 
     @Test

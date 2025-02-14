@@ -170,7 +170,7 @@ public class Patient {
     // EFFECTS: prints patient's current list of allergies in string format
     // separated by commas, or prints no allergies if list is empty
     public String printAllergies() {
-        if (allergies == null || allergies.isEmpty()) {
+        if (allergies.isEmpty()) {
             return "No allergies";
         }
 
@@ -179,12 +179,10 @@ public class Patient {
         for (int i = 0; i < allergies.size(); i++) {
             String allergy = allergies.get(i);
 
-            // Add comma before each allergy except the first 
             if (i != 0) {
                 result.append(", ");
             }
 
-            // Captitalize first allergy
             if (i == 0) {
                 allergy = allergy.substring(0, 1).toUpperCase() + allergy.substring(1);
             }
@@ -196,7 +194,7 @@ public class Patient {
     // EFFECTS: prints patient's current list of medications in string format
     // separated by commas, or prints no medications if list is empty
     public String printMedications() {
-        if (medications == null || medications.isEmpty()) {
+        if (medications.isEmpty()) {
             return "No medications";
         }
 
@@ -205,12 +203,10 @@ public class Patient {
         for (int i = 0; i < medications.size(); i++) {
             String medication = medications.get(i);
 
-            // Add comma before each medication except the first 
             if (i != 0) {
                 result.append(", ");
             }
 
-            // Captitalize first medication
             if (i == 0) {
                 medication = medication.substring(0, 1).toUpperCase() + medication.substring(1);
             }
@@ -222,7 +218,7 @@ public class Patient {
     // EFFECTS: prints patient's current list of medical conditions in string format
     // separated by commas, or prints no medical conditions if list is empty
     public String printMedicalConditions() {
-        if (medicalConditions == null || medicalConditions.isEmpty()) {
+        if (medicalConditions.isEmpty()) {
             return "No medical conditions";
         }
 
@@ -231,12 +227,10 @@ public class Patient {
         for (int i = 0; i < medicalConditions.size(); i++) {
             String medicalCondition = medicalConditions.get(i);
 
-            // Add comma before each medical condition except the first 
             if (i != 0) {
                 result.append(", ");
             }
 
-            // Captitalize first medical condition
             if (i == 0) {
                 medicalCondition = medicalCondition.substring(0, 1).toUpperCase() + medicalCondition.substring(1);
             }
@@ -247,7 +241,7 @@ public class Patient {
 
     // EFFECTS: prints details of patient's list of clinical notes 
     public String printClinicalNotes() {
-        if (clinicalNotes == null || clinicalNotes.isEmpty()) {
+        if (clinicalNotes.isEmpty()) {
             return "No clinical notes";
         }
 
