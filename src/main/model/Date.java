@@ -17,7 +17,6 @@ public class Date {
 
     // EFFECTS: returns date in the String format "MM/DD/YYYY"
     public String printDate() {
-
         StringBuilder result = new StringBuilder();
         result.append(addPrefix(month));
         result.append("/");
@@ -36,6 +35,7 @@ public class Date {
         }
     }
 
+    // Setters
     // REQUIRES: 0 < month < 13
     // MODIFIES: this
     // EFFECTS: sets the month to the given month
@@ -50,7 +50,6 @@ public class Date {
         this.day = day;
     }
 
-    // Setters
     // REQUIRES: 0 < year
     // MODIFIES: this
     // EFFECTS: sets the year to the given year

@@ -1,9 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-// A class representing a clinic with a name and list of patient records
+// A class representing a clinic with a name and list of patient records (sorted alphabetically by 
+// last name then first name)
 public class Clinic {
 
     private String name;
@@ -16,11 +18,14 @@ public class Clinic {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds new patient to the clinic's patient records list; returns true if succesfully added
+    // EFFECTS: adds new patient to the clinic's patient records list and sorts patients list 
+    // alphabetically by last name then first name, returns true if succesfully added 
     // (patient not already in list) or false if not successful (duplicate record found)
     public boolean addPatient(Patient patient) {
         if (!this.patients.contains(patient)) {
             this.patients.add(patient);
+            patients.sort(Comparator.comparing((Patient p) -> p.getLastName().toLowerCase())
+            .thenComparing(p -> p.getFirstName().toLowerCase()));
             return true;
         } else {
             return false;
@@ -39,8 +44,8 @@ public class Clinic {
         }
     }
 
-    // EFFECTS: prints summary of patient records in the clinic in String format (sorted alphabetically
-    // by last name)
+    // EFFECTS: prints summary of patient records in the clinic in String format with name, DOB,
+    // age, and PHN (sorted alphabetically by last name then first name)
     public String printPatientRecords() {
         if (patients == null || patients.isEmpty()) {
             return "No patient records";
@@ -73,7 +78,7 @@ public class Clinic {
         return name;
     }
 
-    // EFFECTS: gets clinic's list of patient records (sorted alphabetically by last name)
+    // EFFECTS: gets clinic's list of patient records (sorted alphabetically by last name then first name)
     public List<Patient> getPatients() {
         return patients;
     }
