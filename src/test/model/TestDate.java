@@ -35,8 +35,10 @@ public class TestDate {
 
     @Test
     public void addPrefixTest() {
+        assertEquals("00", date1.addPrefix(0));
         assertEquals("01", date1.addPrefix(1));
         assertEquals("04", date1.addPrefix(4));
+        assertEquals("09", date1.addPrefix(9));
         assertEquals("10", date1.addPrefix(10));
         assertEquals("12", date1.addPrefix(12));
     }

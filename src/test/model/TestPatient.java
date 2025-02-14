@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestPatient {
 
@@ -41,10 +40,10 @@ public class TestPatient {
         assertEquals(dateOfBirth1, patient1.getDateOfBirth());
         assertEquals(52, patient1.getAge());
         assertEquals(9876543210L, patient1.getPersonalHealthNumber());
-        assertNull(patient1.getAllergies());
-        assertNull(patient1.getMedications());
-        assertNull(patient1.getMedicalConditions());
-        assertNull(patient1.getClinicalNotes());
+        assertTrue(patient1.getAllergies().isEmpty());
+        assertTrue(patient1.getMedications().isEmpty());
+        assertTrue(patient1.getMedicalConditions().isEmpty());
+        assertTrue(patient1.getClinicalNotes().isEmpty());
     }
 
     @Test
@@ -410,7 +409,7 @@ public class TestPatient {
         assertTrue(patient1.addMedicalCondition("hypertension"));
         assertEquals("Hypertension", patient1.printMedicalConditions());
         assertTrue(patient1.addMedicalCondition("diabetes mellitus"));
-        assertEquals("Penicillin, diabetes mellitus", patient1.printMedicalConditions());
+        assertEquals("Hypertension, diabetes mellitus", patient1.printMedicalConditions());
     }
 
     @Test

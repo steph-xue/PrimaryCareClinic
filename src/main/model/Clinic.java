@@ -58,7 +58,7 @@ public class Clinic {
             result.append("-------------------------------------------------------------" + "\n");
             result.append(String.valueOf(i + 1) + ". ");
             result.append(patient.getFullName() + "\n");System.out.println(".()");
-            result.append("Date of Birth: " + patient.getDateOfBirth() + "\n");
+            result.append("Date of Birth: " + String.valueOf(patient.getDateOfBirth()) + "\n");
             result.append("Age: " + patient.getAge() + "\n");
             result.append("Personal Health Number: " + patient.getPersonalHealthNumber() + "\n");
         }
