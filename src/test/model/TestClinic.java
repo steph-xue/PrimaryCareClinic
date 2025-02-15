@@ -115,7 +115,7 @@ public class TestClinic {
     public void printPatientRecordOneTest() {
         assertTrue(clinic.addPatient(patient2));
         assertEquals(
-            "-------------------------------------------------------------" + "\n" +
+            "-------------------------------------------------------------------------" + "\n" +
             "1. James Carter" + "\n" +
             "Date of Birth: 12/05/1961" + "\n" +
             "Age: 63" + "\n" +
@@ -129,12 +129,12 @@ public class TestClinic {
         assertTrue(clinic.addPatient(patient3));
         assertEquals(2, clinic.getPatients().size());
         assertEquals(
-            "-------------------------------------------------------------" + "\n" +
+            "-------------------------------------------------------------------------" + "\n" +
             "1. James Carter" + "\n" +
             "Date of Birth: 12/05/1961" + "\n" +
             "Age: 63" + "\n" +
             "Personal Health Number: 9870588417" + "\n" +
-            "-------------------------------------------------------------" + "\n" +
+            "-------------------------------------------------------------------------" + "\n" +
             "2. Mia Davis" + "\n" +
             "Date of Birth: 08/12/1968" + "\n" +
             "Age: 56" + "\n" +
@@ -148,12 +148,12 @@ public class TestClinic {
         assertTrue(clinic.addPatient(patient2));
         assertEquals(2, clinic.getPatients().size());
         assertEquals(
-            "-------------------------------------------------------------" + "\n" +
+            "-------------------------------------------------------------------------" + "\n" +
             "1. James Carter" + "\n" +
             "Date of Birth: 12/05/1961" + "\n" +
             "Age: 63" + "\n" +
             "Personal Health Number: 9870588417" + "\n" +
-            "-------------------------------------------------------------" + "\n" +
+            "-------------------------------------------------------------------------" + "\n" +
             "2. Ethan Patel" + "\n" +
             "Date of Birth: 04/17/1976" + "\n" +
             "Age: 48" + "\n" +
@@ -167,5 +167,6 @@ public class TestClinic {
         clinic.setClinicName("PlusCare Clinic");
         assertEquals("PlusCare Clinic", clinic.getClinicName());
     }
+
     
 }

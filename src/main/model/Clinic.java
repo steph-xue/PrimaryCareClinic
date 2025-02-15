@@ -25,7 +25,7 @@ public class Clinic {
         if (!this.patients.contains(patient)) {
             this.patients.add(patient);
             patients.sort(Comparator.comparing((Patient p) -> p.getLastName().toLowerCase())
-            .thenComparing(p -> p.getFirstName().toLowerCase()));
+                    .thenComparing(p -> p.getFirstName().toLowerCase()));
             return true;
         } else {
             return false;
@@ -55,9 +55,9 @@ public class Clinic {
 
         for (int i = 0; i < patients.size(); i++) {
             Patient patient = patients.get(i);
-            result.append("-------------------------------------------------------------" + "\n");
+            result.append("-------------------------------------------------------------------------" + "\n");
             result.append(String.valueOf(i + 1) + ". ");
-            result.append(patient.getFullName() + "\n");System.out.println(".()");
+            result.append(patient.getFullName() + "\n");
             result.append("Date of Birth: " + patient.getDateOfBirth().printDate() + "\n");
             result.append("Age: " + patient.getAge() + "\n");
             result.append("Personal Health Number: " + patient.getPersonalHealthNumber() + "\n");
