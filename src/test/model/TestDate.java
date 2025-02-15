@@ -37,10 +37,18 @@ public class TestDate {
     public void addPrefixTest() {
         assertEquals("00", date1.addPrefix(0));
         assertEquals("01", date1.addPrefix(1));
+        assertEquals("02", date1.addPrefix(2));
+        assertEquals("03", date1.addPrefix(3));
         assertEquals("04", date1.addPrefix(4));
+        assertEquals("05", date1.addPrefix(5));
+        assertEquals("06", date1.addPrefix(6));
+        assertEquals("07", date1.addPrefix(7));
+        assertEquals("08", date1.addPrefix(8));
         assertEquals("09", date1.addPrefix(9));
         assertEquals("10", date1.addPrefix(10));
+        assertEquals("11", date1.addPrefix(11));
         assertEquals("12", date1.addPrefix(12));
+        assertEquals("-1", date1.addPrefix(-1));
     }
 
     @Test

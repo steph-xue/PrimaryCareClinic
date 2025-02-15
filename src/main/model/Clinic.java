@@ -47,7 +47,7 @@ public class Clinic {
     // EFFECTS: prints summary of patient records in the clinic in String format with name, DOB,
     // age, and PHN (sorted alphabetically by last name then first name)
     public String printPatientRecords() {
-        if (patients == null || patients.isEmpty()) {
+        if (patients.isEmpty()) {
             return "No patient records";
         }
 
@@ -58,7 +58,7 @@ public class Clinic {
             result.append("-------------------------------------------------------------" + "\n");
             result.append(String.valueOf(i + 1) + ". ");
             result.append(patient.getFullName() + "\n");System.out.println(".()");
-            result.append("Date of Birth: " + String.valueOf(patient.getDateOfBirth()) + "\n");
+            result.append("Date of Birth: " + patient.getDateOfBirth().printDate() + "\n");
             result.append("Age: " + patient.getAge() + "\n");
             result.append("Personal Health Number: " + patient.getPersonalHealthNumber() + "\n");
         }
