@@ -308,7 +308,7 @@ public class PrimaryCareClinicApp {
     // patient specific information
     public void viewAllPatientRecords() {
         printDivider();
-        System.out.println("Viewing all patient records (sorted by last name)");
+        System.out.println("Viewing all patient records (sorted by last name then first name)");
 
         if (!clinic.getPatients().isEmpty()) {
             handleViewAllPatientsMenu();
@@ -1208,5 +1208,4 @@ public class PrimaryCareClinicApp {
     private void printDivider() {
         System.out.println("---------------------------------------------------------------------------------");
     }
-    
 }
