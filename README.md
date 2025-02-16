@@ -28,5 +28,7 @@ This project is of interest to me, as I have a background in the healthcare indu
 - As a user, I want to be able to view the history of all clinical notes for a specific patient
 - As a user, I want to be able to remove a clinical note from a patient's record
 - As a user, I want to be able to update a clinical note from a patient's record
-  - Edit the title, body, and healthcare provider seen
+  - Edit the title
+  - Edit the body
+  - Edit the healthcare provider seen
 
