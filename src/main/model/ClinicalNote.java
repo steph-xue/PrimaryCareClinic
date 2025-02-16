@@ -21,7 +21,7 @@ public class ClinicalNote {
     public String printClinicaNote() {
         StringBuilder result = new StringBuilder();
 
-        result.append("-------------------------------------------------------------------------" + "\n");
+        result.append("---------------------------------------------------------------------------------" + "\n");
         result.append(getClinicalNoteTitle() + "\n");
         result.append(getClinicalNoteBody() + "\n");
         result.append(getClinicalNoteProvider() + " ");

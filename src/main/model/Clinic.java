@@ -48,14 +48,17 @@ public class Clinic {
     // age, and PHN (sorted alphabetically by last name then first name)
     public String printPatientRecords() {
         if (patients.isEmpty()) {
-            return "No patient records";
+            StringBuilder result = new StringBuilder();
+            result.append("---------------------------------------------------------------------------------" + "\n");
+            result.append("No patient records");
+            return result.toString();
         }
 
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < patients.size(); i++) {
             Patient patient = patients.get(i);
-            result.append("-------------------------------------------------------------------------" + "\n");
+            result.append("---------------------------------------------------------------------------------" + "\n");
             result.append(String.valueOf(i + 1) + ". ");
             result.append(patient.getFullName() + "\n");
             result.append("Date of Birth: " + patient.getDateOfBirth().printDate() + "\n");
