@@ -48,7 +48,7 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: displays a list of commands that can be used in the start menu when no clinic has
-    // yet been created 
+    // been created yet
     public void displayStartMenu() {
         System.out.println("Please select an option:");
         System.out.println("c: Create a new clinic");
@@ -56,7 +56,7 @@ public class PrimaryCareClinicApp {
         printDivider();
     }
 
-    // EFFECTS: processes the user's input in the start menu when no clinic has yet been created
+    // EFFECTS: processes the user's input in the start menu when no clinic has been created yet
     public void processStartMenuCommands(String input) {
         switch (input) {
             case "c":
@@ -74,7 +74,7 @@ public class PrimaryCareClinicApp {
 
     // MODIFIES: this
     // EFFECTS: creates new clinic with name from the user and sets the clinic as running;
-    // prints out a success message
+    // prints out a confirmation and welcome message
     public void createNewClinic() {
         printDivider();
         System.out.println("Please enter a name for the clinic:");
@@ -132,9 +132,10 @@ public class PrimaryCareClinicApp {
         printDivider();
     }
 
-    // EFFECTS: add new patient to patient record list using input from the user for first name,
-    // last name, date of birth (DOB), age, personal health number (PHN) and additional information
-    // like allergies, medications, and medical conditions; prints confirmation message for adding patient
+    // MODIFIES: this
+    // EFFECTS: add new patient to patient record list using input from the user for first name, last name,
+    // date of birth (DOB), age, personal health number (PHN) and additional information like allergies,
+    // medications, and medical conditions; prints confirmation message for adding the patient
     public void addNewPatientRecord() {
         printDivider();
         System.out.println("Adding new patient");
@@ -304,8 +305,7 @@ public class PrimaryCareClinicApp {
         }
     }
 
-    // EFFECTS: view all current patient records and handles the patient specific menu to view/edit
-    // patient specific information
+    // EFFECTS: view all current patient records and handles the view all patients menu
     public void viewAllPatientRecords() {
         printDivider();
         System.out.println("Viewing all patient records (sorted by last name then first name)");
@@ -397,8 +397,8 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: displays a list of commands that can be used in the patient menu; the user can
-    // edit patient information, add a clinical note, view/edit previous clinical notes, and 
-    // go back to the view all patients menu
+    // remove the patient, edit patient information, add a clinical note, view/edit clinical
+    // notes, and go back to the view all patients menu
     public void displayPatientMenu() {
         printDivider();
         System.out.println("Please select an option:");
@@ -411,8 +411,8 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: processes the user's input in the patient menu; returns true if user is
-    // to continue viewing the patient specific menu and false if going back to the 
-    // view all patients menu
+    // to continue viewing the patient menu and false if going back to the view all 
+    // patients menu
     public Boolean processPatientMenuCommands(String input, Patient patient) {
         switch (input) {
             case "r":
@@ -472,7 +472,7 @@ public class PrimaryCareClinicApp {
 
     // EFFECTS: processes the user's input in the patient menu; returns true if user is
     // to continue viewing the patient editing menu and false if going back to the 
-    // view patient specific menu
+    // view patient menu
     public Boolean processEditPatientMenuCommands(String input, Patient patient) {
         switch (input) {
             case "p":
@@ -806,7 +806,7 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to remove an allergy if in list of medications
+    // EFFECTS: allows user to remove a medication if in list of medications
     // medication to remove should be in lowercase
     public void removeMedication(Patient patient) {
         printDivider();
@@ -996,7 +996,8 @@ public class PrimaryCareClinicApp {
         System.out.print(note.getClinicalNoteDate().printDate() + "\n");
     }
 
-    // EFFECTS: view all clinical notes for selected patient and handles the menu options
+    // EFFECTS: view all clinical notes for selected patient and handles the view all 
+    // clinical notes menu options
     public void viewClinicalNotes(Patient patient) {
         printDivider();
         System.out.print("Viewing all clinical notes for patient \"");
@@ -1098,8 +1099,8 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: processes the user's input in the clinical note menu; returns true if user is
-    // to continue viewing the clinical note menu and false if going back to the 
-    // view all clinical notes menu
+    // to continue viewing the clinical note menu and false if going back to the view all 
+    // clinical notes menu
     public Boolean processClinicalNoteMenuCommands(String input, ClinicalNote note, Patient patient) {
         switch (input) {
             case "r":
@@ -1124,7 +1125,7 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: removes clinical note from patient's list of clinical notes and ensures consistent divider spacing
+    // EFFECTS: removes clinical note from patient's list of clinical notes 
     public void removeClinicalNote(ClinicalNote note, Patient patient) {
         if (patient.removeClinicalNote(note)) {
             printDivider();
@@ -1136,7 +1137,7 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to edit/replace the title of the clinical note
+    // EFFECTS: allows user to edit (replace) the title of the clinical note
     public void editTitle(ClinicalNote note, Patient patient) {
         printDivider();
         System.out.println("Enter in a new title: ");
@@ -1150,7 +1151,7 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to edit/replace the body of the clinical note
+    // EFFECTS: allows user to edit (replace) the body of the clinical note
     public void editBody(ClinicalNote note, Patient patient) {
         printDivider();
         System.out.println("Enter in new body details: ");
@@ -1164,7 +1165,7 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to edit/replace the healthcare provider of the clinical note
+    // EFFECTS: allows user to edit (replace) the healthcare provider of the clinical note
     public void editHealthCareProvider(ClinicalNote note, Patient patient) {
         printDivider();
         System.out.println("Enter in a new healthcare provider: ");

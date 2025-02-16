@@ -8,13 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestClinicalNote {
 
     private Date date1;
-    private Date date2;
     private ClinicalNote clinicalNote1;
 
     @BeforeEach
     public void runBefore() {
         date1 = new Date(1, 22, 2025);
-        date2 = new Date(2, 6, 2025);
         clinicalNote1 = new ClinicalNote("Eye infection", "Detailed notes 1.", "Dr. O. Harrison", date1);
 
     }
