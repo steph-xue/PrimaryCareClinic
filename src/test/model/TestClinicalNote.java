@@ -58,10 +58,4 @@ public class TestClinicalNote {
         assertEquals("Dr. H. Zhang", clinicalNote1.getClinicalNoteProvider());
     }
 
-    @Test
-    public void setClinicalNoteDateTest() {
-        assertEquals(date1, clinicalNote1.getClinicalNoteDate());
-        clinicalNote1.setClinicalNoteDate(date2);
-        assertEquals(date2, clinicalNote1.getClinicalNoteDate());
-    }
 }

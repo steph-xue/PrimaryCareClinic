@@ -5,6 +5,7 @@ import model.ClinicalNote;
 import model.Date;
 import model.Patient;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class PrimaryCareClinicApp {
@@ -307,9 +308,12 @@ public class PrimaryCareClinicApp {
     // patient specific information
     public void viewAllPatientRecords() {
         printDivider();
-        System.out.println("Viewing all patient records");
+        System.out.println("Viewing all patient records (sorted by last name)");
+
         if (!clinic.getPatients().isEmpty()) {
             handleViewAllPatientsMenu();
+        } else {
+            System.out.println(clinic.printPatientRecords());
         }
     }
 
@@ -398,6 +402,7 @@ public class PrimaryCareClinicApp {
     public void displayPatientMenu() {
         printDivider();
         System.out.println("Please select an option:");
+        System.out.println("r: Remove patient");
         System.out.println("e: Edit patient information");
         System.out.println("a: Add new clinical note");
         System.out.println("v: View/edit clinical notes");
@@ -410,6 +415,9 @@ public class PrimaryCareClinicApp {
     // view all patients menu
     public Boolean processPatientMenuCommands(String input, Patient patient) {
         switch (input) {
+            case "r":
+                removePatient(patient);
+                return false;
             case "e":
                 editPatientInformation(patient);
                 return true;
@@ -417,54 +425,7 @@ public class PrimaryCareClinicApp {
                 addNewClinicalNote(patient);
                 return true;
             case "v":
-                viewEditClinicalNotes(patient);
-                return true;
-            case "b":
-                return false;
-            default:
-                printDivider();
-                System.out.println("Invalid option inputted. Please try again.");
-                return true;
-        }
-    }
-
-    // EFFECTS: displays and processes inputs for the editing patient information
-    public void editPatientInformation(Patient patient) {
-        boolean editPatientMenu = true;
-
-        while (editPatientMenu) {
-            displayEditPatientMenu();
-            String input = this.scanner.nextLine();
-            editPatientMenu = processEditPatientMenuCommands(input, patient);
-        }
-    }
-
-    // EFFECTS: displays a list of commands that can be used to edit the patient's record;
-    // user can remove the patient record, edit personal information, edit medical information,
-    // or go back to the patient menu
-    public void displayEditPatientMenu() {
-        printDivider();
-        System.out.println("Please select an option:");
-        System.out.println("r: Remove patient record");
-        System.out.println("p: Edit personal information");
-        System.out.println("o: Edit allergies/medications/medical conditions");
-        System.out.println("b: Go back to view patient menu");
-        printDivider();
-    }
-
-    // EFFECTS: processes the user's input in the patient menu; returns true if user is
-    // to continue viewing the patient editing menu and false if going back to the 
-    // view patient specific menu
-    public Boolean processEditPatientMenuCommands(String input, Patient patient) {
-        switch (input) {
-            case "r":
-                removePatient(patient);
-                return false;
-            case "p":
-                editPersonalInformation(patient);
-                return true;
-            case "o":
-                editMedicalInformation(patient);
+                viewClinicalNotes(patient);
                 return true;
             case "b":
                 return false;
@@ -479,9 +440,53 @@ public class PrimaryCareClinicApp {
     // EFFECTS: removes patient from clinic's list of patient records
     public void removePatient(Patient patient) {
         if (clinic.removePatient(patient)) {
+            printDivider();
             System.out.println("Patient successfully removed!");
         } else {
+            printDivider();
             System.out.println("Patient not found in records.");
+        }
+    }
+
+    // EFFECTS: displays and processes inputs for the editing patient information
+    public void editPatientInformation(Patient patient) {
+        boolean editPatientMenu = true;
+
+        while (editPatientMenu) {
+            displayEditPatientMenu();
+            String input = this.scanner.nextLine();
+            editPatientMenu = processEditPatientMenuCommands(input, patient);
+        }
+    }
+
+    // EFFECTS: displays a list of commands that can be used to edit the patient's record; user
+    // can edit personal information, edit medical information, or go back to the patient menu
+    public void displayEditPatientMenu() {
+        printDivider();
+        System.out.println("Please select an option:");
+        System.out.println("p: Edit personal information");
+        System.out.println("o: Edit allergies/medications/medical conditions");
+        System.out.println("b: Go back to view patient menu");
+        printDivider();
+    }
+
+    // EFFECTS: processes the user's input in the patient menu; returns true if user is
+    // to continue viewing the patient editing menu and false if going back to the 
+    // view patient specific menu
+    public Boolean processEditPatientMenuCommands(String input, Patient patient) {
+        switch (input) {
+            case "p":
+                editPersonalInformation(patient);
+                return true;
+            case "o":
+                editMedicalInformation(patient);
+                return true;
+            case "b":
+                return false;
+            default:
+                printDivider();
+                System.out.println("Invalid option inputted. Please try again.");
+                return true;
         }
     }
 
@@ -691,20 +696,22 @@ public class PrimaryCareClinicApp {
         patient.addAllergy(input);
 
         printDivider();
+        String allergy = patient.getAllergies().get(patient.getAllergies().size() - 1);
         System.out.print("New allergy \"");
-        System.out.print(input);
+        System.out.print(allergy);
         System.out.print("\" added! \n");
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to remove an allergy if in list of allergies
+    // EFFECTS: allows user to remove an allergy if in list of allergies;
+    // allergy to remove should be in lowercase
     public void removeAllergy(Patient patient) {
         printDivider();
         System.out.print("Current allergies: ");
         System.out.print(patient.printAllergies() + "\n");
 
         printDivider();
-        System.out.println("Remove an allergy: ");
+        System.out.println("Remove an allergy (lowercase): ");
         String input = this.scanner.nextLine();
         printDivider();
 
@@ -717,13 +724,14 @@ public class PrimaryCareClinicApp {
 
     // MODIFIES: this
     // EFFECTS: allows user to replace an allergy with a new allergy if in list of allergies
+    // allergy to replace should be in lowercase
     public void replaceAllergy(Patient patient) {
         printDivider();
         System.out.print("Current allergies: ");
         System.out.print(patient.printAllergies() + "\n");
 
         printDivider();
-        System.out.println("Replace this allergy: ");
+        System.out.println("Replace this allergy (lowercase): ");
         String oldAllergy = this.scanner.nextLine();
         System.out.println("New allergy: ");
         String newAllergy = this.scanner.nextLine();
@@ -791,20 +799,22 @@ public class PrimaryCareClinicApp {
         patient.addMedication(input);
 
         printDivider();
+        String medication = patient.getMedications().get(patient.getMedications().size() - 1);
         System.out.print("New medication \"");
-        System.out.print(input);
+        System.out.print(medication);
         System.out.print("\" added! \n");
     }
 
     // MODIFIES: this
     // EFFECTS: allows user to remove an allergy if in list of medications
+    // medication to remove should be in lowercase
     public void removeMedication(Patient patient) {
         printDivider();
         System.out.print("Current medications: ");
         System.out.print(patient.printMedications() + "\n");
 
         printDivider();
-        System.out.println("Remove a medication: ");
+        System.out.println("Remove a medication (lowercase): ");
         String input = this.scanner.nextLine();
         printDivider();
 
@@ -817,19 +827,20 @@ public class PrimaryCareClinicApp {
 
     // MODIFIES: this
     // EFFECTS: allows user to replace an medication with a new medication if in list of medications
+    // medication to replace should be in lowercase
     public void replaceMedication(Patient patient) {
         printDivider();
         System.out.print("Current medications: ");
         System.out.print(patient.printMedications() + "\n");
 
         printDivider();
-        System.out.println("Replace this medication: ");
+        System.out.println("Replace this medication (lowercase): ");
         String oldMedication = this.scanner.nextLine();
         System.out.println("New medication: ");
         String newMedication = this.scanner.nextLine();
         printDivider();
 
-        if (patient.editAllergy(oldMedication, newMedication)) {
+        if (patient.editMedication(oldMedication, newMedication)) {
             System.out.println("Medication replaced!");
         } else {
             System.out.println("Medication not found in list!");
@@ -891,20 +902,22 @@ public class PrimaryCareClinicApp {
         patient.addMedicalCondition(input);
 
         printDivider();
+        String medicalCondition = patient.getMedicalConditions().get(patient.getMedicalConditions().size() - 1);
         System.out.print("New medical condition \"");
-        System.out.print(input);
+        System.out.print(medicalCondition);
         System.out.print("\" added! \n");
     }
 
     // MODIFIES: this
     // EFFECTS: allows user to remove an medical condition if in list of medical conditions
+    // medical condition to remove should be in lowercase
     public void removeMedicalCondition(Patient patient) {
         printDivider();
         System.out.print("Current medical conditions: ");
         System.out.print(patient.printMedicalConditions() + "\n");
 
         printDivider();
-        System.out.println("Remove an medical condition: ");
+        System.out.println("Remove an medical condition (lowercase): ");
         String input = this.scanner.nextLine();
         printDivider();
 
@@ -917,34 +930,251 @@ public class PrimaryCareClinicApp {
 
     // MODIFIES: this
     // EFFECTS: allows user to replace an medical condition with a new medical condition if in 
-    // list of medical conditions
+    // list of medical conditions; medical condition to replace should be in lowercase
     public void replaceMedicalCondition(Patient patient) {
         printDivider();
         System.out.print("Current medical conditions: ");
         System.out.print(patient.printMedicalConditions() + "\n");
 
         printDivider();
-        System.out.println("Replace this medical condition: ");
+        System.out.println("Replace this medical condition (lowercase): ");
         String oldMedicalCondition = this.scanner.nextLine();
         System.out.println("New medical condition: ");
         String newMedicalCondition = this.scanner.nextLine();
         printDivider();
 
         if (patient.editMedicalCondition(oldMedicalCondition, newMedicalCondition)) {
-            System.out.println("Medical condition replaced! \"");
+            System.out.println("Medical condition replaced!");
         } else {
-            System.out.println("Medical condition not found in list! \"");
+            System.out.println("Medical condition not found in list!");
         }
     }
 
-    // EFFECTS: processes the user's input in the patient menu
+    // MODIFIES: this
+    // EFFECTS: adds new clinical note to patient's list of clinical notes based on the user's input
+    // including the title, body, healthcare provider's name, and current date details
     public void addNewClinicalNote(Patient patient) {
-        System.out.println("Add new clinical note");
+        printDivider();
+        System.out.print("Adding new clinical note for patient \"");
+        System.out.print(patient.getFullName());
+        System.out.print("\" \n");
+        printDivider();
+
+        System.out.println("Enter a title: ");
+        String title = this.scanner.nextLine();
+        System.out.println("Enter clinical note details: ");
+        String body = this.scanner.nextLine();
+        System.out.println("Enter healthcare provider's name: ");
+        String name = this.scanner.nextLine();
+
+        LocalDate today = LocalDate.now();
+        int year = today.getYear();  
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth(); 
+
+        Date date = new Date(month, day, year);
+        ClinicalNote note = new ClinicalNote(title, body, name, date);
+        patient.addClinicalNote(note);
+        newClinicalNoteConfirmationMessage(patient, note);
     }
 
-    // EFFECTS: processes the user's input in the patient menu
-    public void viewEditClinicalNotes(Patient patient) {
-        System.out.println("View/edit clinical notes");
+    // EFFECTS: prints out confirmation message for new clinical note added
+    public void newClinicalNoteConfirmationMessage(Patient patient, ClinicalNote note) {
+        printDivider();
+        System.out.println("Clinical note added succesfully with the following details");
+        System.out.print("for patient \"");
+        System.out.print(patient.getFullName());
+        System.out.print("\": \n");
+
+        System.out.print("Title: ");
+        System.out.print(note.getClinicalNoteTitle() + "\n");
+        System.out.print("Body: ");
+        System.out.print(note.getClinicalNoteBody() + "\n");
+        System.out.print("Healthcare provider: ");
+        System.out.print(note.getClinicalNoteProvider() + "\n");
+        System.out.print("Date: ");
+        System.out.print(note.getClinicalNoteDate().printDate() + "\n");
+    }
+
+    // EFFECTS: view all clinical notes for selected patient and handles the menu options
+    public void viewClinicalNotes(Patient patient) {
+        printDivider();
+        System.out.print("Viewing all clinical notes for patient \"");
+        System.out.print(patient.getFullName());
+        System.out.print("\": \n");
+
+        if (!patient.getClinicalNotes().isEmpty()) {
+            handleViewAllClinicalNotesMenu(patient);
+        } else {
+            System.out.println(patient.printClinicalNotes());
+        }
+    }
+
+    // EFFECTS: displays and processes inputs for the view all clinical notes menu
+    public void handleViewAllClinicalNotesMenu(Patient patient) {
+        boolean viewAllNotesMenu = true;
+
+        while (viewAllNotesMenu) {
+            System.out.println(patient.printClinicalNotes());
+            displayViewAllClinicalNotesMenu();
+            String input = this.scanner.nextLine();
+            viewAllNotesMenu = processViewClinicalNotesMenuCommands(input, patient);
+        }
+    }
+
+    // EFFECTS: displays a list of commands that can be used in the view all clinical notes menu; the user
+    // can type in a number to select to view/edit a specific clinical note or go back to the patient menu
+    public void displayViewAllClinicalNotesMenu() {
+        printDivider();
+        System.out.println("Please select an option:");
+        System.out.println("# (Index number): View/edit a clinical note at this index");
+        System.out.println("b: Go back to patient menu");
+        printDivider();
+    }
+
+    // EFFECTS: processes the user's input in the view all clinical notes menu; returns true if
+    // user is to continue viewing the view all clinical nnotes menu and false if going back to 
+    // the patient menu
+    public Boolean processViewClinicalNotesMenuCommands(String input, Patient patient) {
+        // Check if input is an index number that can be retrieved from the list of clinical notes
+        if (input.matches("\\d+") && (Integer.parseInt(input) <= patient.getClinicalNotes().size())) { 
+            int index = Integer.parseInt(input);
+            ClinicalNote note = patient.getClinicalNotes().get(index - 1);
+            handleClinicalNoteMenu(note, patient);
+            return true;
+        } else {
+            switch (input) {
+                case "b":
+                    return false;
+                default:
+                    printDivider();
+                    System.out.println("Invalid option inputted. Please try again.");
+                    return true;
+            }
+        }
+    }
+
+    // EFFECTS: displays and processes inputs for the clinical note menu
+    public void handleClinicalNoteMenu(ClinicalNote note, Patient patient) {
+        boolean viewClinicalNoteMenu = true;
+
+        while (viewClinicalNoteMenu) {
+            printRetrievedClinicalNote(note, patient);
+            displayClinicalNoteMenu();
+            String input = this.scanner.nextLine();
+            viewClinicalNoteMenu = processClinicalNoteMenuCommands(input, note, patient);
+        }
+    }
+
+    // EFFECTS: prints out details of the selected patient clinical note
+    public void printRetrievedClinicalNote(ClinicalNote note, Patient patient) {
+        printDivider();
+        System.out.print("Viewing selected clinical note for patient \"");
+        System.out.print(patient.getFullName());
+        System.out.print("\" \n");
+        printDivider();
+
+        System.out.print("Title: ");
+        System.out.print(note.getClinicalNoteTitle() + "\n");
+        System.out.print("Body: ");
+        System.out.print(note.getClinicalNoteBody() + "\n");
+        System.out.print("Healthcare provider: ");
+        System.out.print(note.getClinicalNoteProvider() + "\n");
+        System.out.print("Date: ");
+        System.out.print(note.getClinicalNoteDate().printDate() + "\n");
+    }
+
+    // EFFECTS: displays a list of commands that can be used in the clinical note menu; the user can
+    // remove the note, or edit the title, body, and healthcare provider of the clinical note
+    public void displayClinicalNoteMenu() {
+        printDivider();
+        System.out.println("Please select an option:");
+        System.out.println("r: Remove clinical note");
+        System.out.println("t: Edit title");
+        System.out.println("i: Edit body information");
+        System.out.println("h: Edit healthcare provider");
+        System.out.println("b: Go back to view all clinical notes menu");
+        printDivider();
+    }
+
+    // EFFECTS: processes the user's input in the clinical note menu; returns true if user is
+    // to continue viewing the clinical note menu and false if going back to the 
+    // view all clinical notes menu
+    public Boolean processClinicalNoteMenuCommands(String input, ClinicalNote note, Patient patient) {
+        switch (input) {
+            case "r":
+                removeClinicalNote(note, patient);
+                return false;
+            case "t":
+                editTitle(note, patient);
+                return true;
+            case "i":
+                editBody(note, patient);
+                return true;
+            case "h":
+                editHealthCareProvider(note, patient);
+                return true;
+            case "b":
+                return false;
+            default:
+                printDivider();
+                System.out.println("Invalid option inputted. Please try again.");
+                return true;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: removes clinical note from patient's list of clinical notes and ensures consistent divider spacing
+    public void removeClinicalNote(ClinicalNote note, Patient patient) {
+        if (patient.removeClinicalNote(note)) {
+            printDivider();
+            System.out.println("Clinical note successfully removed!");
+        } else {
+            printDivider();
+            System.out.println("Clinical note not found in patient record.");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: allows user to edit/replace the title of the clinical note
+    public void editTitle(ClinicalNote note, Patient patient) {
+        printDivider();
+        System.out.println("Enter in a new title: ");
+        String input = this.scanner.nextLine();
+        note.setClinicalNoteTitle(input);
+
+        printDivider();
+        System.out.print("Clinical note title successfully changed to \"");
+        System.out.print(note.getClinicalNoteTitle());
+        System.out.print("\"! \n");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: allows user to edit/replace the body of the clinical note
+    public void editBody(ClinicalNote note, Patient patient) {
+        printDivider();
+        System.out.println("Enter in new body details: ");
+        String input = this.scanner.nextLine();
+        note.setClinicalNoteBody(input);
+
+        printDivider();
+        System.out.print("Clinical note body successfully changed to \"");
+        System.out.print(note.getClinicalNoteBody());
+        System.out.print("\"! \n");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: allows user to edit/replace the healthcare provider of the clinical note
+    public void editHealthCareProvider(ClinicalNote note, Patient patient) {
+        printDivider();
+        System.out.println("Enter in a new healthcare provider: ");
+        String input = this.scanner.nextLine();
+        note.setClinicalNoteProvider(input);
+
+        printDivider();
+        System.out.print("Clinical note healthcare provider successfully changed to \"");
+        System.out.print(note.getClinicalNoteProvider());
+        System.out.print("\"! \n");
     }
 
     // MODIFIES: this

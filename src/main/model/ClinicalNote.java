@@ -59,12 +59,6 @@ public class ClinicalNote {
         this.healthCareProvider = nameCapitalized;
     }
 
-    // MODIFIES: this
-    // EFFECTS: sets clinical note's date of visit with given date
-    public void setClinicalNoteDate(Date date) {
-        this.visitDate = date;
-    }
-
     // Getters
     // EFFECTS: gets clinical note's title
     public String getClinicalNoteTitle() {

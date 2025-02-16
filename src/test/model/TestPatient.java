@@ -429,7 +429,10 @@ public class TestPatient {
 
     @Test
     public void printClinicalNotesNoneTest() {
-        assertEquals("No clinical notes", patient1.printClinicalNotes());
+        assertEquals(
+            "---------------------------------------------------------------------------------" + "\n" +
+            "No clinical notes", 
+            patient1.printClinicalNotes());
     }
 
     @Test

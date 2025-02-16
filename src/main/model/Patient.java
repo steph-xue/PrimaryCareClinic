@@ -276,7 +276,10 @@ public class Patient {
     // EFFECTS: prints details of patient's list of clinical notes 
     public String printClinicalNotes() {
         if (clinicalNotes.isEmpty()) {
-            return "No clinical notes";
+            StringBuilder result = new StringBuilder();
+            result.append("---------------------------------------------------------------------------------" + "\n");
+            result.append("No clinical notes");
+            return result.toString();
         }
 
         StringBuilder result = new StringBuilder();
