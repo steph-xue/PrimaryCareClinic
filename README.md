@@ -24,7 +24,7 @@ This project is of interest to me, as I have a background in the healthcare indu
   - Add/remove/edit an allergy
   - Add/remove/edit a medication
   - Add/remove/edit a medical condition
-- As a user, I want to be able to add new clinical notes to a patient's record with details such as the title (reason for visit), body (note details), and name of the healthcare provider seen with the current date
+- As a user, I want to be able to add new clinical notes to a patient's record with details such as the reason for visit (title), visit details (body), name of the healthcare provider seen, and the visit date
 - As a user, I want to be able to view the history of all clinical notes for a specific patient
 - As a user, I want to be able to remove a clinical note from a patient's record
 - As a user, I want to be able to update a clinical note from a patient's record
