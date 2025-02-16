@@ -11,9 +11,11 @@ public class Clinic {
     private String name;
     private List<Patient> patients;
 
-    // EFFECTS: constructs a clinic with a given name and an empty list of patients
+    // EFFECTS: constructs a clinic with a given name and an empty list of patients;
+    // clinic name is capitalized
     public Clinic(String name) {
-        this.name = name;
+        String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
+        this.name = nameCapitalized;
         patients = new ArrayList<>();
     }
 
@@ -72,7 +74,8 @@ public class Clinic {
     // MODIFIES: this
     // EFFECTS: sets clinic's name
     public void setClinicName(String name) {
-        this.name = name;
+        String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
+        this.name = nameCapitalized;
     }
 
     // Getters

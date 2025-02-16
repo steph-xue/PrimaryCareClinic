@@ -9,11 +9,18 @@ public class ClinicalNote {
     private String healthCareProvider;
     private Date visitDate;
 
-    // EFFECTS: constructs a clinical note with a given title, body, name of healthcare provider seen, and current date
+    // EFFECTS: constructs a clinical note with a given title, body, name of healthcare provider seen, and current date;
+    // title, body, and healthcare provider name are capitalized
     public ClinicalNote(String title, String body, String name, Date date) {
-        this.title = title;
-        this.body = body;
-        this.healthCareProvider = name;
+        String titleCapitalized = title.substring(0, 1).toUpperCase() + title.substring(1);
+        this.title = titleCapitalized;
+        
+        String bodyCapitalized = body.substring(0, 1).toUpperCase() + body.substring(1);
+        this.body = bodyCapitalized;
+
+        String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
+        this.healthCareProvider = nameCapitalized;
+
         this.visitDate = date;
     }
 
@@ -32,21 +39,24 @@ public class ClinicalNote {
 
     // Setters
     // MODIFIES: this
-    // EFFECTS: sets clinical note's title with given title
+    // EFFECTS: sets clinical note's title with given title (capitalized)
     public void setClinicalNoteTitle(String title) {
-        this.title = title;
+        String titleCapitalized = title.substring(0, 1).toUpperCase() + title.substring(1);
+        this.title = titleCapitalized;
     }
 
     // MODIFIES: this
-    // EFFECTS: sets clinical note's body with given body
+    // EFFECTS: sets clinical note's body with given body (capitalized)
     public void setClinicalNoteBody(String body) {
-        this.body = body;
+        String bodyCapitalized = body.substring(0, 1).toUpperCase() + body.substring(1);
+        this.body = bodyCapitalized;
     }
 
     // MODIFIES: this
-    // EFFECTS: sets clinical note's healthcare provider's name with given name
+    // EFFECTS: sets clinical note's healthcare provider's name with given name (capitalized)
     public void setClinicalNoteProvider(String name) {
-        this.healthCareProvider = name;
+        String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
+        this.healthCareProvider = nameCapitalized;
     }
 
     // MODIFIES: this

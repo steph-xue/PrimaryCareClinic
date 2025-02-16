@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 // A class representing a patient with a first name, last name, date of birth (DOB), age, personal health number (PHN),
-// list of current allergies, medications (generic names), medical conditions, and clinical notes
+// list of current allergies, medications, medical conditions, and clinical notes; first and last name are capitalized, 
+// list of Strings for allergies, medications, and medical conditions are lowercase
 public class Patient {
 
     private String firstName;
@@ -21,8 +22,12 @@ public class Patient {
     // EFFECTS: constructs a new record for a patient with their first name, last name, DOB, age, PHN, and an empty
     // list of current allergies, medications, medical conditions, and clinical notes
     public Patient(String firstName, String lastName, Date dateOfBirth, int age, long personalHealthNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+        this.firstName = firstNameCapitalized;
+
+        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+        this.lastName = lastNameCapitalized;
+
         this.dateOfBirth = dateOfBirth;
         this.age = age;
         this.personalHealthNumber = personalHealthNumber;
@@ -33,11 +38,14 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds allergy to patient's current list of allergies, returns true if successfully added (not already
-    // in current list to prevent duplicates) and false if not successfully added (duplicate entry)
+    // EFFECTS: adds allergy to patient's current list of allergies, returns true if successfully added (not 
+    // already in current list to prevent duplicates) and false if not successfully added (duplicate entry);
+    // add and compare allergy in lowercase
     public boolean addAllergy(String allergy) {
-        if (!this.allergies.contains(allergy)) {
-            this.allergies.add(allergy);
+        String allergyLowerCase = allergy.toLowerCase();
+
+        if (!this.allergies.contains(allergyLowerCase)) {
+            this.allergies.add(allergyLowerCase);
             return true;
         } else {
             return false;
@@ -46,10 +54,12 @@ public class Patient {
 
     // MODIFIES: this
     // EFFECTS: removes allergy from patient's current list of allergies if present, returns true if successfully 
-    // removed and false if not succesfully removed (not found in list)
+    // removed and false if not succesfully removed (not found in list); compare and remove allergy in lowercase
     public boolean removeAllergy(String allergy) {
-        if (this.allergies.contains(allergy)) {
-            this.allergies.remove(allergy);
+        String allergyLowerCase = allergy.toLowerCase();
+
+        if (this.allergies.contains(allergyLowerCase)) {
+            this.allergies.remove(allergyLowerCase);
             return true;
         } else {
             return false;
@@ -58,11 +68,15 @@ public class Patient {
 
     // MODIFIES: this
     // EFFECTS: if present in current list of allergies, replaces old allergy with new edited allergy, returns true
-    // if edit is successful and false if not successful (allergy to edit not found in list) 
+    // if edit is successful and false if not successful (allergy to edit not found in list); compare and edit allergy
+    // in lowercase
     public boolean editAllergy(String oldAllergy, String newAllergy) {
-        if (this.allergies.contains(oldAllergy)) {
-            int index = this.allergies.indexOf(oldAllergy);
-            this.allergies.set(index, newAllergy);
+        String oldAllergyLowerCase = oldAllergy.toLowerCase();
+        String newAllergyLowerCase = newAllergy.toLowerCase();
+
+        if (this.allergies.contains(oldAllergyLowerCase)) {
+            int index = this.allergies.indexOf(oldAllergyLowerCase);
+            this.allergies.set(index, newAllergyLowerCase);
             return true;
         } else {
             return false;
@@ -70,11 +84,14 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds medication (generic name) to patient's current list of medications, returns true if successfully
-    // added (not already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
+    // EFFECTS: adds medication to patient's current list of medications, returns true if successfully added 
+    // (not already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
+    // add and compare medication in lowercase
     public boolean addMedication(String medication) {
-        if (!this.medications.contains(medication)) {
-            this.medications.add(medication);
+        String medicationLowerCase = medication.toLowerCase();
+
+        if (!this.medications.contains(medicationLowerCase)) {
+            this.medications.add(medicationLowerCase);
             return true;
         } else {
             return false;
@@ -82,11 +99,14 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: removes medication (generic name) from patient's current list of medications if present, returns true
-    // if successfully removed and false if not succesfully removed (not found in list)
+    // EFFECTS: removes medication from patient's current list of medications if present, returns true
+    // if successfully removed and false if not succesfully removed (not found in list); compare and 
+    // remove medication in lowercase
     public boolean removeMedication(String medication) {
-        if (this.medications.contains(medication)) {
-            this.medications.remove(medication);
+        String medicationLowerCase = medication.toLowerCase();
+
+        if (this.medications.contains(medicationLowerCase)) {
+            this.medications.remove(medicationLowerCase);
             return true;
         } else {
             return false;
@@ -94,12 +114,16 @@ public class Patient {
     }
 
     // MODIFIES: this
-    // EFFECTS: if present in current list of medications, replaces old with new edited medication (generic name), 
+    // EFFECTS: if present in current list of medications, replaces old with new edited medication, 
     // returns true if edit is successful and false if not successful (medication to edit not found in list) 
+    // compare and edit medication in lowercase
     public boolean editMedication(String oldMedication, String newMedication) {
-        if (this.medications.contains(oldMedication)) {
-            int index = this.medications.indexOf(oldMedication);
-            this.medications.set(index, newMedication);
+        String oldMedicationLowerCase = oldMedication.toLowerCase();
+        String newMedicationLowerCase = newMedication.toLowerCase();
+
+        if (this.medications.contains(oldMedicationLowerCase)) {
+            int index = this.medications.indexOf(oldMedicationLowerCase);
+            this.medications.set(index, newMedicationLowerCase);
             return true;
         } else {
             return false;
@@ -109,9 +133,12 @@ public class Patient {
     // MODIFIES: this
     // EFFECTS: adds medical condition to patient's current list of medical conditions, returns true if successfully
     // added (not already in current list to prevent duplicates) and false if not successfully added (duplicate entry)
+    // add and compare medication in lowercase
     public boolean addMedicalCondition(String medicalCondition) {
-        if (!this.medicalConditions.contains(medicalCondition)) {
-            this.medicalConditions.add(medicalCondition);
+        String medicalConditionLowerCase = medicalCondition.toLowerCase();
+
+        if (!this.medicalConditions.contains(medicalConditionLowerCase)) {
+            this.medicalConditions.add(medicalConditionLowerCase);
             return true;
         } else {
             return false;
@@ -120,10 +147,13 @@ public class Patient {
 
     // MODIFIES: this
     // EFFECTS: removes medical condition from patient's current list of medical conditions if present, returns true
-    // if successfully removed and false if not succesfully removed (not found in list)
+    // if successfully removed and false if not succesfully removed (not found in list); compare and remove medication 
+    // in lowercase
     public boolean removeMedicalCondition(String medicalCondition) {
-        if (this.medicalConditions.contains(medicalCondition)) {
-            this.medicalConditions.remove(medicalCondition);
+        String medicalConditionLowerCase = medicalCondition.toLowerCase();
+
+        if (this.medicalConditions.contains(medicalConditionLowerCase)) {
+            this.medicalConditions.remove(medicalConditionLowerCase);
             return true;
         } else {
             return false;
@@ -133,10 +163,14 @@ public class Patient {
     // MODIFIES: this
     // EFFECTS: if present in current list of medical conditions, replaces old with new edited medical condition,
     // returns true if edit is successful and false if not successful (medical condition to edit not found in list)
+    // compare and edit medication in lowercase
     public boolean editMedicalCondition(String oldMedicalCondition, String newMedicalCondition) {
-        if (this.medicalConditions.contains(oldMedicalCondition)) {
-            int index = this.medicalConditions.indexOf(oldMedicalCondition);
-            this.medicalConditions.set(index, newMedicalCondition);
+        String oldMedicalConditionLowerCase = oldMedicalCondition.toLowerCase();
+        String newMedicalConditionLowerCase = newMedicalCondition.toLowerCase();
+
+        if (this.medicalConditions.contains(oldMedicalConditionLowerCase)) {
+            int index = this.medicalConditions.indexOf(oldMedicalConditionLowerCase);
+            this.medicalConditions.set(index, newMedicalConditionLowerCase);
             return true;
         } else {
             return false;
@@ -263,13 +297,15 @@ public class Patient {
     // MODIFIES: this
     // EFFECTS: sets the patient's first name to a new given first name
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+        this.firstName = firstNameCapitalized;
     }
 
     // MODIFIES: this
     // EFFECTS: sets the patient's last name to a new given last name
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+        this.lastName = lastNameCapitalized;
     }
 
     // REQUIRES: age > 0

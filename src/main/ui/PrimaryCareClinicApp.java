@@ -308,7 +308,6 @@ public class PrimaryCareClinicApp {
     public void viewAllPatientRecords() {
         printDivider();
         System.out.println("Viewing all patient records");
-        System.out.println(clinic.printPatientRecords());
         if (!clinic.getPatients().isEmpty()) {
             handleViewAllPatientsMenu();
         }
@@ -319,6 +318,7 @@ public class PrimaryCareClinicApp {
         boolean viewAllPatientsMenu = true;
 
         while (viewAllPatientsMenu) {
+            System.out.println(clinic.printPatientRecords());
             displayViewAllPatientsMenu();
             String input = this.scanner.nextLine();
             viewAllPatientsMenu = processViewPatientMenuCommands(input);
@@ -343,7 +343,6 @@ public class PrimaryCareClinicApp {
         if (input.matches("\\d+") && (Integer.parseInt(input) <= clinic.getPatients().size())) { 
             int index = Integer.parseInt(input);
             Patient patient = clinic.getPatients().get(index - 1);
-            printRetrievedPatientRecord(patient);
             handlePatientMenu(patient);
             return true;
         } else {
@@ -355,6 +354,18 @@ public class PrimaryCareClinicApp {
                     System.out.println("Invalid option inputted. Please try again.");
                     return true;
             }
+        }
+    }
+
+    // EFFECTS: displays and processes inputs for the patient menu
+    public void handlePatientMenu(Patient patient) {
+        boolean viewPatientMenu = true;
+
+        while (viewPatientMenu) {
+            printRetrievedPatientRecord(patient);
+            displayPatientMenu();
+            String input = this.scanner.nextLine();
+            viewPatientMenu = processPatientMenuCommands(input, patient);
         }
     }
 
@@ -379,24 +390,13 @@ public class PrimaryCareClinicApp {
         System.out.print(patient.printMedicalConditions() + "\n");
         System.out.print("Number of clinical notes: ");
         System.out.print(patient.getClinicalNotes().size() + "\n");
-        printDivider();
-    }
-
-    // EFFECTS: displays and processes inputs for the patient menu
-    public void handlePatientMenu(Patient patient) {
-        boolean viewPatientMenu = true;
-
-        while (viewPatientMenu) {
-            displayPatientMenu();
-            String input = this.scanner.nextLine();
-            viewPatientMenu = processPatientMenuCommands(input, patient);
-        }
     }
 
     // EFFECTS: displays a list of commands that can be used in the patient menu; the user can
     // edit patient information, add a clinical note, view/edit previous clinical notes, and 
     // go back to the view all patients menu
     public void displayPatientMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("e: Edit patient information");
         System.out.println("a: Add new clinical note");
@@ -443,6 +443,7 @@ public class PrimaryCareClinicApp {
     // user can remove the patient record, edit personal information, edit medical information,
     // or go back to the patient menu
     public void displayEditPatientMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("r: Remove patient record");
         System.out.println("p: Edit personal information");
@@ -496,12 +497,12 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: displays a list of commands that can be used to edit the patient's personal information;
-    // user can edit the patient's first name, last name, date of birth (DOB) and age, personal health
-    // number (PHN), or go back to the patient editing menu
+    // user can edit the patient's name, date of birth (DOB) and age, personal health number (PHN), or 
+    // go back to the patient editing menu
     public void displayEditPersonalMenu() {
+        printDivider();
         System.out.println("Please select an option:");
-        System.out.println("f: Edit first name");
-        System.out.println("l: Edit last name");
+        System.out.println("n: Edit name");
         System.out.println("d: Edit date of birth (DOB) and age");
         System.out.println("p: Edit personal health number (PHN)");
         System.out.println("b: Go back to view patient editing menu");
@@ -513,11 +514,8 @@ public class PrimaryCareClinicApp {
     // patient editing menu
     public Boolean processEditPersonalMenuCommands(String input, Patient patient) {
         switch (input) {
-            case "f":
-                editFirstName(patient);
-                return true;
-            case "l":
-                editLastName(patient);
+            case "n":
+                editName(patient);
                 return true;
             case "d":
                 editDateOfBirthAge(patient);
@@ -535,30 +533,19 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: allows user to edit the patient's first name
-    public void editFirstName(Patient patient) {
+    // EFFECTS: allows user to edit the patient's name
+    public void editName(Patient patient) {
         printDivider();
         System.out.println("Enter in a new first name: ");
-        String input = this.scanner.nextLine();
-        patient.setFirstName(input);
-
-        printDivider();
-        System.out.print("Patient's first name successfully changed to \"");
-        System.out.print(patient.getFirstName());
-        System.out.print("! \n");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: allows user to edit the patient's last name
-    public void editLastName(Patient patient) {
-        printDivider();
+        String firstName = this.scanner.nextLine();
         System.out.println("Enter in a new last name: ");
-        String input = this.scanner.nextLine();
-        patient.setLastName(input);
+        String lastName = this.scanner.nextLine();
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
 
         printDivider();
-        System.out.print("Patient's last name successfully changed to \"");
-        System.out.print(patient.getLastName());
+        System.out.print("Patient's name successfully changed to \"");
+        System.out.print(patient.getFullName());
         System.out.print("\"! \n");
     }
 
@@ -574,6 +561,7 @@ public class PrimaryCareClinicApp {
         int yearofBirth = this.scanner.nextInt();
         System.out.println("Enter in a new age: ");
         int age = this.scanner.nextInt();
+        scanner.nextLine(); 
         Date dateOfBirth = new Date(monthofBirth, dayofBirth, yearofBirth);
         patient.setDateOfBirthAndAge(dateOfBirth, age);
         
@@ -591,6 +579,7 @@ public class PrimaryCareClinicApp {
         printDivider();
         System.out.println("Enter in a new 9-digit personal health number (PHN): ");
         long input = this.scanner.nextLong();
+        scanner.nextLine(); 
         printDivider();
 
         patient.setPersonalHealthNumber(input);
@@ -615,6 +604,7 @@ public class PrimaryCareClinicApp {
     // user can edit the patient's allergies, medications, and medical conditions or go back to the 
     // patient editing menu
     public void displayEditMedicalMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("a: Edit allergies");
         System.out.println("m: Edit medications");
@@ -660,6 +650,7 @@ public class PrimaryCareClinicApp {
     // EFFECTS: displays a list of commands that can be used to edit the patient's allergy information;
     // user can add, remove, or edit (replace) an existing allergy
     public void displayEditAllergyMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("a: Add allergy");
         System.out.println("r: Remove allergy");
@@ -718,9 +709,9 @@ public class PrimaryCareClinicApp {
         printDivider();
 
         if (patient.removeAllergy(input)) {
-            System.out.println("Allergy removed! \"");
+            System.out.println("Allergy removed!");
         } else {
-            System.out.println("Allergy not found in list! \"");
+            System.out.println("Allergy not found in list!");
         }
     }
 
@@ -739,9 +730,9 @@ public class PrimaryCareClinicApp {
         printDivider();
 
         if (patient.editAllergy(oldAllergy, newAllergy)) {
-            System.out.println("Allergy replaced! \"");
+            System.out.println("Allergy replaced!");
         } else {
-            System.out.println("Allergy not found in list! \"");
+            System.out.println("Allergy not found in list!");
         }
     }
 
@@ -759,6 +750,7 @@ public class PrimaryCareClinicApp {
     // EFFECTS: displays a list of commands that can be used to edit the patient's medication information;
     // user can add, remove, or edit (replace) an existing medication
     public void displayEditMedicationMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("a: Add medication");
         System.out.println("r: Remove medication");
@@ -817,9 +809,9 @@ public class PrimaryCareClinicApp {
         printDivider();
 
         if (patient.removeMedication(input)) {
-            System.out.println("Medication removed! \"");
+            System.out.println("Medication removed!");
         } else {
-            System.out.println("Medication not found in list! \"");
+            System.out.println("Medication not found in list!");
         }
     }
 
@@ -833,14 +825,14 @@ public class PrimaryCareClinicApp {
         printDivider();
         System.out.println("Replace this medication: ");
         String oldMedication = this.scanner.nextLine();
-        System.out.println("New medication : ");
+        System.out.println("New medication: ");
         String newMedication = this.scanner.nextLine();
         printDivider();
 
         if (patient.editAllergy(oldMedication, newMedication)) {
-            System.out.println("Medication replaced! \"");
+            System.out.println("Medication replaced!");
         } else {
-            System.out.println("Medication not found in list! \"");
+            System.out.println("Medication not found in list!");
         }
     }
 
@@ -858,6 +850,7 @@ public class PrimaryCareClinicApp {
     // EFFECTS: displays a list of commands that can be used to edit the patient's medical condition information;
     // user can add, remove, or edit (replace) an existing medical condition
     public void displayEditMedicalConditionMenu() {
+        printDivider();
         System.out.println("Please select an option:");
         System.out.println("a: Add medical condition");
         System.out.println("r: Remove medical condition");
@@ -916,9 +909,9 @@ public class PrimaryCareClinicApp {
         printDivider();
 
         if (patient.removeMedicalCondition(input)) {
-            System.out.println("Medical condition removed! \"");
+            System.out.println("Medical condition removed!");
         } else {
-            System.out.println("Medical condition not found in list! \"");
+            System.out.println("Medical condition not found in list!");
         }
     }
 
