@@ -19,7 +19,7 @@ This project is of interest to me, as I have a background in the healthcare indu
 - As a user, I want to be able to remove an existing patient record
 - As a user, I want to be able to update information in a patient's record
   - Edit the name
-  - Edit the DOB
+  - Edit the DOB and age
   - Edit the PHN
   - Add/remove/edit an allergy
   - Add/remove/edit a medication
