@@ -1,12 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 // A class representing a clinic with a name and list of patient records (sorted alphabetically by 
 // last name then first name)
-public class Clinic {
+public class Clinic implements Writable {
 
     private String name;
     private List<Patient> patients;

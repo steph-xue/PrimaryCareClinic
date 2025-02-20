@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 // A class representing a clinical note for a patient's visit at the clinic with a title, body, name of 
 // healthcare provider seen, and date of visit
-public class ClinicalNote {
+public class ClinicalNote implements Writable {
 
     private String title;
     private String body;

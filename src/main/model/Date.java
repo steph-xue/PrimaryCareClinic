@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 // A class representing a date with a month, day, and year
-public class Date {
+public class Date implements Writable {
 
     private int month;
     private int day;

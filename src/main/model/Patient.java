@@ -1,12 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // A class representing a patient with a first name, last name, date of birth (DOB), age, personal health number (PHN),
 // list of current allergies, medications, medical conditions, and clinical notes; first and last name are capitalized, 
 // list of Strings for allergies, medications, and medical conditions are lowercase
-public class Patient {
+public class Patient implements Writable {
 
     private String firstName;
     private String lastName;
