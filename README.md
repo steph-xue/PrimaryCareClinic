@@ -31,6 +31,6 @@ This project is of interest to me, as I have a background in the healthcare indu
   - Edit the title
   - Edit the body
   - Edit the healthcare provider seen
-- As a user, when I select the quit option from the application menu, I want to be reminded to save my to-do list to file and have the option to do so or not
-- As a user, when I start the application, I want to be given the option to load my to-do list from file.
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my clinic data to file and have the option to do so or not
+- As a user, when I start the application, I want to be given the option to load my clinic data from file.
 
