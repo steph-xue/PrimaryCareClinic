@@ -5,22 +5,36 @@ import model.ClinicalNote;
 import model.Date;
 import model.Patient;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class PrimaryCareClinicApp {
-    private Clinic clinic;
+    private static final String JSON_STORE = "./data/clinic.json";
+
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private Clinic clinic;
     private boolean isProgramRunning;
     private boolean isClinicRunning;
 
-    // EFFECTS: creates an instance of the PrimaryCareClinic console ui application
+
+    // EFFECTS: starts the PrimaryCareClinic console ui application; initializes the application, welcomes 
+    // the user, handles the loading from save file, and displays either the start menu or main menu depending
+    // on if a new clinic has already been created/named
     public PrimaryCareClinicApp() {
         init();
 
         printDivider();
         System.out.println("Welcome to the Primary Care Clinic app!");
         printDivider();
+
+        handleLoadingDataAtStart();
 
         while (this.isProgramRunning) {
             if (!isClinicRunning) {
@@ -32,23 +46,24 @@ public class PrimaryCareClinicApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the application with the starting values where the program is running 
-    // but the clinic is not yet running
+    // EFFECTS: initializes the clinic application with starting values where the program is running 
+    // but the clinic is not yet running (new clinic not created/named yet)
     public void init() {
         this.scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         this.isProgramRunning = true;
         this.isClinicRunning = false;
     }
 
-    // EFFECTS: displays and processes inputs for the start menu
+    // EFFECTS: displays and processes inputs for the start menu (no clinic created yet)
     public void handleStartMenu() {
         displayStartMenu();
         String input = this.scanner.nextLine();
         processStartMenuCommands(input);
     }
 
-    // EFFECTS: displays a list of commands that can be used in the start menu when no clinic has
-    // been created yet
+    // EFFECTS: displays a list of commands that can be used in the start menu (no clinic created yet)
     public void displayStartMenu() {
         System.out.println("Please select an option:");
         System.out.println("c: Create a new clinic");
@@ -56,7 +71,7 @@ public class PrimaryCareClinicApp {
         printDivider();
     }
 
-    // EFFECTS: processes the user's input in the start menu when no clinic has been created yet
+    // EFFECTS: processes the user's input in the start menu (no clinic created yet)
     public void processStartMenuCommands(String input) {
         switch (input) {
             case "c":
@@ -1196,13 +1211,101 @@ public class PrimaryCareClinicApp {
         System.out.print("! *** \n");
     }
 
-    // MODIFIES: this
-    // EFFECTS: prints a closing message and marks the program and clinic as not running
-    public void quitApplication() {
+    // EFFECTS: handles loading of saved data upon opening clinic application; allows the user to choose if 
+    // they want to load existing saved clinic data or start a new application file
+    public void handleLoadingDataAtStart() {
+        displayLoadingMenu();
+        String input = this.scanner.nextLine();
+        processLoadingMenu(input);
+    }
+
+    // EFFECTS: displays a list of commands that can be used in the loading menu so the user can choose if 
+    // they want to load existing saved clinic data or start a new application file
+    public void displayLoadingMenu() {
+        System.out.println("Please select an option:");
+        System.out.println("l: Load previous existing saved clinic data");
+        System.out.println("n: Start a new clinic application");
         printDivider();
+    }
+
+    // EFFECTS: processes the user's input for if they want to load existing saved clinic data or start
+    // a new application file
+    public void processLoadingMenu(String input) {
+        switch (input) {
+            case "l":
+                loadClinic();
+                isClinicRunning = true;
+                break;
+            case "n":
+                break;
+            default:
+                printDivider();
+                System.out.println("Invalid option inputted. Please try again.");
+        }
+        printDivider();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads clinic from file
+    private void loadClinic() {
+        try {
+            clinic = jsonReader.read();
+            printDivider();
+            System.out.println("Loaded \"" + clinic.getClinicName() + "\" from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: handles quitting of the clinic application; allows the user to choose if they want to save the existing
+    // clinic data, prints a quitting application message, and marks the program and clinic as not running
+    public void quitApplication() {
+        displayQuitSaveMenu();
+        String input = this.scanner.nextLine();
+        processQuitSaveMenu(input);
+
         System.out.println("Thanks for using the Primary Care Clinic app!");
         this.isProgramRunning = false;
         this.isClinicRunning = false;
+    }
+
+    // EFFECTS: displays a list of commands that can be used in the quitting menu so the user can choose if 
+    // they want to save the existing clinic data before quitting the application
+    public void displayQuitSaveMenu() {
+        printDivider();
+        System.out.println("Please select an option:");
+        System.out.println("s: Save existing clinic data");
+        System.out.println("n: Exit the application without saving");
+        printDivider();
+    }
+
+    // EFFECTS: processes the user's input for if they want to save clinic data before quitting the application
+    public void processQuitSaveMenu(String input) {
+        switch (input) {
+            case "s":
+                saveClinic();
+                break;
+            case "n":
+                break;
+            default:
+                printDivider();
+                System.out.println("Invalid option inputted. Please try again.");
+        }
+        printDivider();
+    }
+
+    // EFFECTS: saves the clinic data to file
+    private void saveClinic() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(clinic);
+            jsonWriter.close();
+            printDivider();
+            System.out.println("Saved " + clinic.getClinicName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // EFFECTS: prints out a line of dashes to act as a divider
