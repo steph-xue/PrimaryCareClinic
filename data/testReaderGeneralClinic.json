@@ -4,13 +4,11 @@
         {
             "firstname": "Mya",
             "lastname": "Cornell",
-            "dateofbirth": [
-                {
+            "dateofbirth": {
                     "month": 8,
                     "day": 16,
                     "year": 1965
-                }
-            ],
+                },
             "age": 59,
             "personalhealthnumber": 925245285,
             "allergies": [
@@ -31,38 +29,32 @@
                     "title": "Coughing",
                     "body": "Patient presenting with severe cough",
                     "provider": "Dr. Campbell",
-                    "visitdate": [
-                        {
+                    "visitdate": {
                             "month": 1,
                             "day": 16,
                             "year": 2025
                         }
-                    ]
                 },
                 {
                     "title": "Ear infection",
                     "body": "Patient presenting with infected ear",
                     "provider": "Dr. Singh",
-                    "visitdate": [
-                        {
+                    "visitdate": {
                             "month": 2,
                             "day": 20,
                             "year": 2025
                         }
-                    ]
                 }
             ]
         },
         {
             "firstname": "Amira",
             "lastname": "Garcia",
-            "dateofbirth": [
-                {
+            "dateofbirth": {
                     "month": 11,
                     "day": 8,
                     "year": 1971
-                }
-            ],
+                },
             "age": 53,
             "personalhealthnumber": 925645120,
             "allergies": [
@@ -82,25 +74,21 @@
                     "title": "Eye infection",
                     "body": "Patient presenting with eye infection",
                     "provider": "Dr. Williams",
-                    "visitdate": [
-                        {
+                    "visitdate": {
                             "month": 1,
                             "day": 18,
                             "year": 2025
                         }
-                    ]
                 },
                 {
                     "title": "Skin rash",
                     "body": "Patient presenting with skin rash",
                     "provider": "Dr. Jones",
-                    "visitdate": [
-                        {
+                    "visitdate": {
                             "month": 2,
                             "day": 12,
                             "year": 2025
                         }
-                    ]
                 }
             ]
         }

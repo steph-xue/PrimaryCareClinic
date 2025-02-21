@@ -380,4 +380,73 @@ public class Patient implements Writable {
     public List<ClinicalNote> getClinicalNotes() {
         return clinicalNotes;
     }
+
+    // EFFECTS: returns patient as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("firstname", firstName);
+        json.put("lastname", lastName);
+        json.put("dateofbirth", dateOfBirthToJson());
+        json.put("age", age);
+        json.put("personalhealthnumber", personalHealthNumber);
+        json.put("allergies", allergiesToJson());
+        json.put("medications", medicationsToJson());
+        json.put("medicalconditions", medicalConditionsToJson());
+        json.put("clinicalnotes", clinicalNotesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns date of birth (DOB) for this patient as a JSON object
+    private JSONObject dateOfBirthToJson() {
+        JSONObject json = new JSONObject();
+        json.put("month", dateOfBirth.getMonth());
+        json.put("day", dateOfBirth.getDay());
+        json.put("year", dateOfBirth.getYear());
+        return json;
+    }
+
+    // EFFECTS: returns allergies for this patient as a JSON array
+    private JSONArray allergiesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String allergy: allergies) {
+            jsonArray.put(allergy);
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns medications for this patient as a JSON array
+    private JSONArray medicationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String medication: medications) {
+            jsonArray.put(medication);
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns medical conditions for this patient as a JSON array
+    private JSONArray medicalConditionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String medicalCondition: medicalConditions) {
+            jsonArray.put(medicalCondition);
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns clinical notes for this patient as a JSON array
+    private JSONArray clinicalNotesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (ClinicalNote note : clinicalNotes) {
+            jsonArray.put(note.toJson());
+        }
+
+        return jsonArray;
+    }
 }

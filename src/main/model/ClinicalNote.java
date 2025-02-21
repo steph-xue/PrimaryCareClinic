@@ -1,6 +1,5 @@
 package model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -82,6 +81,26 @@ public class ClinicalNote implements Writable {
     // EFFECTS: gets clinical note's date of visit
     public Date getClinicalNoteDate() {
         return visitDate;
+    }
+
+    // EFFECTS: returns clinical note as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("body", body);
+        json.put("provider", healthCareProvider);
+        json.put("visitdate", visitDateToJson());
+        return json;
+    }
+
+    // EFFECTS: returns visit date for this clinical note as a JSON object
+    private JSONObject visitDateToJson() {
+        JSONObject json = new JSONObject();
+        json.put("month", visitDate.getMonth());
+        json.put("day", visitDate.getDay());
+        json.put("year", visitDate.getYear());
+        return json;
     }
 
 }

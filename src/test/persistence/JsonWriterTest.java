@@ -12,7 +12,7 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class JsonWriterTest extends JsonTest {
+public class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterFileDoesNotExist() {
@@ -50,7 +50,7 @@ class JsonWriterTest extends JsonTest {
             Clinic clinic = new Clinic("My Clinic");
 
             Date dateOfBirth1 = new Date(9, 11, 1968);
-            Patient patient1 = new Patient("Ashley", "Smith", dateOfBirth1, 56, 920215344);
+            Patient patient1 = new Patient("Ashley", "Davis", dateOfBirth1, 56, 920215344);
             patient1.addAllergy("amoxicillin");
             patient1.addAllergy("ibuprofen");
             patient1.addMedication("ramipril");
@@ -73,7 +73,7 @@ class JsonWriterTest extends JsonTest {
             clinic.addPatient(patient1);
 
             Date dateOfBirth2 = new Date(1, 6, 1971);
-            Patient patient2 = new Patient("Thomas", "Davis", dateOfBirth2, 54, 905845652);
+            Patient patient2 = new Patient("Thomas", "Smith", dateOfBirth2, 54, 905845652);
             patient2.addAllergy("tetracycline");
             patient2.addAllergy("aspirin");
             patient2.addMedication("metformin");
@@ -119,7 +119,7 @@ class JsonWriterTest extends JsonTest {
             notesList1.add(note1);
             notesList1.add(note2);
 
-            checkPatientGeneral("Ashley", "Smith", dateOfBirth1, 56, 920215344, patients.get(0));
+            checkPatientGeneral("Ashley", "Davis", dateOfBirth1, 56, 920215344, patients.get(0));
             checkPatientAllergies(allergies1, patients.get(0));
             checkPatientMedications(medications1, patients.get(0));
             checkPatientMedicalConditions(medicalConditions1, patients.get(0));
@@ -138,7 +138,7 @@ class JsonWriterTest extends JsonTest {
             notesList2.add(note3);
             notesList2.add(note4);
 
-            checkPatientGeneral("Thomas", "Davis", dateOfBirth2, 54, 905845652, patients.get(1));
+            checkPatientGeneral("Thomas", "Smith", dateOfBirth2, 54, 905845652, patients.get(1));
             checkPatientAllergies(allergies2, patients.get(1));
             checkPatientMedications(medications2, patients.get(1));
             checkPatientMedicalConditions(medicalConditions2, patients.get(1));

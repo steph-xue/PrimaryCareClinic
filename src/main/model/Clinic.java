@@ -93,4 +93,24 @@ public class Clinic implements Writable {
         return patients;
     }
 
+    // EFFECTS: returns clinic as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("patients", patientsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns patients in this clinic as a JSON array
+    private JSONArray patientsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Patient patient : patients) {
+            jsonArray.put(patient.toJson());
+        }
+
+        return jsonArray;
+    }
+
 }
