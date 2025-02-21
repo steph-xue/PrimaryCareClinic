@@ -1,0 +1,108 @@
+{
+    "name": "My Clinic",
+    "patients": [
+        {
+            "firstname": "Ashley",
+            "lastname": "Smith",
+            "dateofbirth": [
+                {
+                    "month": 9,
+                    "day": 11,
+                    "year": 1968
+                }
+            ],
+            "age": 56,
+            "personalhealthnumber": 920215344,
+            "allergies": [
+                "amoxicillin",
+                "ibuprofen"
+            ],
+            "medications": [
+                "ramipril",
+                "amlodipine",
+                "escitalopram"
+            ],
+            "medicalconditions": [
+                "hypertension",
+                "anxiety"
+            ],
+            "clinicalnotes": [
+                {
+                    "title": "Constipation",
+                    "body": "Patient presenting with severe constipation",
+                    "provider": "Dr. Johnson",
+                    "visitdate": [
+                        {
+                            "month": 1,
+                            "day": 10,
+                            "year": 2025
+                        }
+                    ]
+                },
+                {
+                    "title": "Urinary tract infection",
+                    "body": "Patient presenting with signs of a urinary tract infection",
+                    "provider": "Dr. Kaur",
+                    "visitdate": [
+                        {
+                            "month": 2,
+                            "day": 15,
+                            "year": 2025
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "firstname": "Thomas",
+            "lastname": "Davis",
+            "dateofbirth": [
+                {
+                    "month": 1,
+                    "day": 6,
+                    "year": 1971
+                }
+            ],
+            "age": 54,
+            "personalhealthnumber": 905845652,
+            "allergies": [
+                "tetracycline",
+                "aspirin"
+            ],
+            "medications": [
+                "metformin",
+                "valproic acid"
+            ],
+            "medicalconditions": [
+                "diabetes",
+                "epilepsy"
+            ],
+            "clinicalnotes": [
+                {
+                    "title": "Allergic rhinitis",
+                    "body": "Patient presenting with sneezing and nasal congestion",
+                    "provider": "Dr. Rodriguez",
+                    "visitdate": [
+                        {
+                            "month": 1,
+                            "day": 18,
+                            "year": 2025
+                        }
+                    ]
+                },
+                {
+                    "title": "Cold sore",
+                    "body": "Patient presenting with new cold sore",
+                    "provider": "Dr. Young",
+                    "visitdate": [
+                        {
+                            "month": 2,
+                            "day": 12,
+                            "year": 2025
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
