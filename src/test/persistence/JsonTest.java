@@ -6,7 +6,7 @@ import model.Patient;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonTest {
     protected void checkPatientGeneral(String firstName, String lastName, Date dob, int age, long phn, Patient pt) {
@@ -29,7 +29,7 @@ public class JsonTest {
         assertEquals(medicalConditions, pt.getMedicalConditions());
     }
 
-    protected void checkPatientClinicalNote(List<ClinicalNote> notes, Patient pt) {
+    protected void checkPatientClinicalNotes(List<ClinicalNote> notes, Patient pt) {
         assertEquals(notes, pt.getClinicalNotes());
     }
 
