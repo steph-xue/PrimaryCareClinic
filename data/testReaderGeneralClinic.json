@@ -72,7 +72,7 @@
             "clinicalnotes": [
                 {
                     "title": "Eye infection",
-                    "body": "Patient presenting with eye infection",
+                    "body": "Patient has eye infection",
                     "provider": "Dr. Williams",
                     "visitdate": {
                             "month": 1,

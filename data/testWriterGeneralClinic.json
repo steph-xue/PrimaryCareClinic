@@ -40,7 +40,7 @@
                         "day": 15
                     },
                     "title": "Urinary tract infection",
-                    "body": "Patient presenting with signs of a urinary tract infection"
+                    "body": "Patient presenting with bladder infection"
                 }
             ],
             "age": 56,
@@ -75,7 +75,7 @@
                         "day": 18
                     },
                     "title": "Allergic rhinitis",
-                    "body": "Patient presenting with sneezing and nasal congestion"
+                    "body": "Patient presenting with nasal congestion"
                 },
                 {
                     "provider": "Dr. Young",
