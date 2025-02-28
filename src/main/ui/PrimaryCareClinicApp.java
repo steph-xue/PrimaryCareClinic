@@ -1234,6 +1234,7 @@ public class PrimaryCareClinicApp {
         switch (input) {
             case "l":
                 loadClinic();
+                printWelcomeMessage();
                 isClinicRunning = true;
                 break;
             case "n":
@@ -1257,14 +1258,27 @@ public class PrimaryCareClinicApp {
         }
     }
 
+    public void printWelcomeMessage() {
+        printDivider();
+        System.out.print("*** Welcome to ");
+        System.out.print(clinic.getClinicName());
+        System.out.print("! *** \n");
+    }
+
     // MODIFIES: this
     // EFFECTS: handles quitting of the clinic application; allows the user to choose if they want to save the existing
     // clinic data, prints a quitting application message, and marks the program and clinic as not running
     public void quitApplication() {
-        displayQuitSaveMenu();
-        String input = this.scanner.nextLine();
-        processQuitSaveMenu(input);
 
+        boolean showQuitSaveMenu = true;
+
+        while (showQuitSaveMenu) {
+            displayQuitSaveMenu();
+            String input = this.scanner.nextLine();
+            showQuitSaveMenu = processQuitSaveMenu(input);
+        }
+
+        printDivider();
         System.out.println("Thanks for using the Primary Care Clinic app!");
         this.isProgramRunning = false;
         this.isClinicRunning = false;
@@ -1281,18 +1295,18 @@ public class PrimaryCareClinicApp {
     }
 
     // EFFECTS: processes the user's input for if they want to save clinic data before quitting the application
-    public void processQuitSaveMenu(String input) {
+    public Boolean processQuitSaveMenu(String input) {
         switch (input) {
             case "s":
                 saveClinic();
-                break;
+                return false;
             case "n":
-                break;
+                return false;
             default:
                 printDivider();
                 System.out.println("Invalid option inputted. Please try again.");
+                return true;
         }
-        printDivider();
     }
 
     // EFFECTS: saves the clinic data to file
