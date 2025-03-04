@@ -1,0 +1,67 @@
+package ui.gui;
+
+import javax.swing.*;
+import java.awt.*;
+
+// References
+// EHR image images/ehr.jpg retrieved from https://www.vecteezy.com/
+// Loading gif image images/loading.gif retrieved from https://icons8.com/icons/set/dots-loading--animated
+
+// Loading Screen UI displays an image and welcome message to the user with a loading gif for 10 seconds
+public class LoadingScreenUI extends JPanel {
+    private JPanel contentPanel;
+    private JLabel welcomeLabel;
+    private JPanel loadingPanel;
+
+    // EFFECTS: Constructs a loading screen UI JPanel
+    public LoadingScreenUI() {
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
+
+        createWelcomeLabel();
+        createLoadingPanel();
+
+        contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.add(welcomeLabel);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        contentPanel.add(loadingPanel);
+
+        add(contentPanel, BorderLayout.CENTER);
+    }
+
+    // EFFECTS: Adds a welcome label with an image and welcome message
+    public void createWelcomeLabel() {
+        ImageIcon ehrImage = new ImageIcon("images/ehr.jpg");
+        ehrImage = new ImageIcon(ehrImage.getImage().getScaledInstance(500, 400, Image.SCALE_SMOOTH));  
+
+        welcomeLabel = new JLabel();
+        welcomeLabel.setIcon(ehrImage);
+        welcomeLabel.setText("Welcome to the Primary Care Clinic Application!");
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        welcomeLabel.setHorizontalTextPosition(JLabel.CENTER);
+        welcomeLabel.setVerticalTextPosition(JLabel.BOTTOM);
+        welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+
+    // EFFECTS: Adds a loading panel with a loading gif and message
+    public void createLoadingPanel() {
+        JLabel imageLabel = new JLabel();
+        ImageIcon loadingImage = new ImageIcon("images/loading.gif");
+        imageLabel.setIcon(loadingImage);
+        imageLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+
+        JLabel textLabel = new JLabel("Loading...");
+        textLabel.setFont(new Font("Arial", Font.ITALIC, 18));
+        textLabel.setForeground(Color.GRAY);
+
+        loadingPanel = new JPanel();
+        loadingPanel.setLayout(new BoxLayout(loadingPanel, BoxLayout.Y_AXIS));
+        loadingPanel.setBackground(getBackground());
+        loadingPanel.add(imageLabel);
+        loadingPanel.add(textLabel);
+        loadingPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+}
