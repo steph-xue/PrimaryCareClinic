@@ -430,31 +430,31 @@ public class TestPatient {
     @Test
     public void printClinicalNotesNoneTest() {
         assertEquals(
-            "---------------------------------------------------------------------------------" + "\n" +
-            "No clinical notes", 
-            patient1.printClinicalNotes());
+                "---------------------------------------------------------------------------------" + "\n" 
+                + "No clinical notes", 
+                patient1.printClinicalNotes());
     }
 
     @Test
     public void printClinicalNotesTest() {
         assertTrue(patient1.addClinicalNote(clinicalNote1));
         assertEquals(
-            "---------------------------------------------------------------------------------" + "\n" +
-            "1. Fever and cough" + "\n" +
-            "Detailed notes 1." + "\n" +
-            "Dr. K. Morris 01/30/2025" + "\n",
-            patient1.printClinicalNotes());
+                "---------------------------------------------------------------------------------" + "\n" 
+                + "1. Fever and cough" + "\n" 
+                + "Detailed notes 1." + "\n" 
+                + "Dr. K. Morris 01/30/2025" + "\n",
+                patient1.printClinicalNotes());
         assertTrue(patient1.addClinicalNote(clinicalNote2));
         assertEquals(
-            "---------------------------------------------------------------------------------" + "\n" +
-            "1. Fever and cough" + "\n" +
-            "Detailed notes 1." + "\n" +
-            "Dr. K. Morris 01/30/2025" + "\n" +
-            "---------------------------------------------------------------------------------" + "\n" +
-            "2. Skin infection" + "\n" +
-            "Detailed notes 2." + "\n" +
-            "Dr. J. Lee 02/03/2025" + "\n",
-            patient1.printClinicalNotes());
+                "---------------------------------------------------------------------------------" + "\n" 
+                + "1. Fever and cough" + "\n" 
+                + "Detailed notes 1." + "\n" 
+                + "Dr. K. Morris 01/30/2025" + "\n" 
+                + "---------------------------------------------------------------------------------" + "\n" 
+                + "2. Skin infection" + "\n" 
+                + "Detailed notes 2." + "\n" 
+                + "Dr. J. Lee 02/03/2025" + "\n",
+                patient1.printClinicalNotes());
     }
 
     @Test

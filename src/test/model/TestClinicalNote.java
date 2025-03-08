@@ -28,11 +28,11 @@ public class TestClinicalNote {
     @Test
     public void printClinicalNoteTest() {
         assertEquals(
-            "---------------------------------------------------------------------------------" + "\n" +
-            "Eye infection" + "\n" +
-            "Detailed notes 1." + "\n" +
-            "Dr. O. Harrison 01/22/2025" + "\n",
-            clinicalNote1.printClinicaNote());
+                "---------------------------------------------------------------------------------" + "\n"
+                + "Eye infection" + "\n" 
+                + "Detailed notes 1." + "\n"
+                + "Dr. O. Harrison 01/22/2025" + "\n",
+                clinicalNote1.printClinicaNote());
     }
 
     @Test

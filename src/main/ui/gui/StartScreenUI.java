@@ -1,0 +1,91 @@
+package ui.gui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+// Start Screen UI displays the start screen with an option load a save from file or start a new clinic
+public class StartScreenUI extends JPanel {
+    private MainUI parent;
+    private JPanel contentPanel;
+    private JLabel messageLabel;
+    private JButton loadButton;
+    private JButton newClinicButton;
+
+    // EFFECTS: Constructs a start screen UI JPanel
+    public StartScreenUI(MainUI parent) {
+        this.parent = parent;
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
+
+        createMessageLabel();
+        createLoadButton();
+        createNewClinicButton();
+
+        contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setBackground(Color.WHITE);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 175)));
+        contentPanel.add(messageLabel);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+        contentPanel.add(loadButton);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        contentPanel.add(newClinicButton);
+
+        add(contentPanel, BorderLayout.CENTER);
+    }
+
+    // EFFECTS: Creates a message label to load from file or create a new clinic
+    public void createMessageLabel() {
+        messageLabel = new JLabel();
+        messageLabel.setText("Load from file or create a new clinic: ");
+        messageLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        messageLabel.setHorizontalTextPosition(JLabel.CENTER);
+        messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+
+    // EFFECTS: Creates a load from file button
+    public void createLoadButton() {
+        loadButton = new JButton("Load clinic data from file");
+        styleButton(loadButton);
+        loadButton.addActionListener(e -> parent.loadClinicData());
+    }
+
+    // EFFECTS: Creates a create new clinic button
+    public void createNewClinicButton() {
+        newClinicButton = new JButton("Create a new clinic");
+        styleButton(newClinicButton);
+        newClinicButton.addActionListener(e -> parent.createNewClinic());
+    }
+
+    // EFFECTS: Add styling to the buttons
+    public void styleButton(JButton button) {
+        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setPreferredSize(new Dimension(500, 50));
+        button.setMaximumSize(new Dimension(500, 50));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBackground(new Color(160, 100, 180));
+        button.setForeground(Color.WHITE);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.setFocusable(false);
+
+        addButtonEffects(button);
+    }
+
+    // EFFECTS: Add hover effects to button
+    public void addButtonEffects(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(200, 160, 215));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(160, 100, 180));
+            }
+        });
+    }
+}

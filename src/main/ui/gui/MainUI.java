@@ -8,6 +8,7 @@ public class MainUI extends JFrame {
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private LoadingScreenUI loadingScreen;
+    private StartScreenUI startScreen;
     private JPanel mainContent;
 
     // EFFECTS: Constructs the main application UI JFrame
@@ -25,13 +26,15 @@ public class MainUI extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    // EFFECTS: Sets up the main panel, card layout, loading screen, main content panel
+    // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, main content panel
     public void setupLayout() {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         loadingScreen = new LoadingScreenUI();
+        startScreen = new StartScreenUI();
         mainContent = createMainContent(); 
         mainPanel.add(loadingScreen, "loading");
+        mainPanel.add(startScreen, "start");
         mainPanel.add(mainContent, "main");
 
         add(mainPanel);
@@ -43,13 +46,18 @@ public class MainUI extends JFrame {
         showLoadingScreen();
     }
 
-    // EFFECTS: Displays LoadingScreenUI for 10 seconds then switches to display main content
+    // EFFECTS: Displays LoadingScreenUI for 10 seconds then switches to display start screen
     public void showLoadingScreen() {
         cardLayout.show(mainPanel, "loading");
 
-        Timer timer = new Timer(10000, e -> showMainContent());
+        Timer timer = new Timer(1000, e -> showStartScreen());
         timer.setRepeats(false);
         timer.start();
+    }
+
+    // EFFECTS: Displays StartScreenUI so user can load from file or create a new clinic
+    public void showStartScreen() {
+        cardLayout.show(mainPanel, "start");
     }
 
     // EFFECTS: Creates the main content panel after the loading screen

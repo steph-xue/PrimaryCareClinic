@@ -23,8 +23,8 @@ public class LoadingScreenUI extends JPanel {
 
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         contentPanel.setBackground(Color.WHITE);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         contentPanel.add(welcomeLabel);
         contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         contentPanel.add(loadingPanel);
@@ -32,7 +32,7 @@ public class LoadingScreenUI extends JPanel {
         add(contentPanel, BorderLayout.CENTER);
     }
 
-    // EFFECTS: Adds a welcome label with an image and welcome message
+    // EFFECTS: Creates a welcome label with an image and welcome message
     public void createWelcomeLabel() {
         ImageIcon ehrImage = new ImageIcon("images/ehr.jpg");
         ehrImage = new ImageIcon(ehrImage.getImage().getScaledInstance(500, 400, Image.SCALE_SMOOTH));  
@@ -46,7 +46,7 @@ public class LoadingScreenUI extends JPanel {
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
-    // EFFECTS: Adds a loading panel with a loading gif and message
+    // EFFECTS: Creates a loading panel with a loading gif and message
     public void createLoadingPanel() {
         JLabel imageLabel = new JLabel();
         ImageIcon loadingImage = new ImageIcon("images/loading.gif");
