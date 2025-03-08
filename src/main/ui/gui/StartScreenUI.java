@@ -26,7 +26,7 @@ public class StartScreenUI extends JPanel {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 175)));
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 250)));
         contentPanel.add(messageLabel);
         contentPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         contentPanel.add(loadButton);

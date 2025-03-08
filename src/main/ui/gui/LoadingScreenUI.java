@@ -3,7 +3,7 @@ package ui.gui;
 import javax.swing.*;
 import java.awt.*;
 
-// References
+// Image References
 // EHR image images/ehr.jpg retrieved from https://www.vecteezy.com/
 // Loading gif image images/loading.gif retrieved from https://icons8.com/icons/set/dots-loading--animated
 
@@ -24,7 +24,7 @@ public class LoadingScreenUI extends JPanel {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         contentPanel.add(welcomeLabel);
         contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         contentPanel.add(loadingPanel);
