@@ -30,8 +30,10 @@ public class MainUI extends JFrame {
     private JPanel mainPanel;
     private LoadingScreenUI loadingScreen;
     private StartScreenUI startScreen;
-    private ViewPatientsUI viewPatientsPage;
-    private ViewPatientProfileUI viewPatientProfilePage;
+    private ViewPatientsUI viewPatientsScreen;
+    private AddPatientUI addPatientScreen;
+    private SaveQuitUI saveQuitScreen;
+    private ViewPatientProfileUI viewPatientProfileScreen;
 
     // EFFECTS: Constructs the main application UI JFrame
     public MainUI() {
@@ -53,16 +55,21 @@ public class MainUI extends JFrame {
         clinic = new Clinic("My Clinic");
     }
 
-    // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, main content panel
+    // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, view patients screen,
+    // view add patient screen, and the view save/quit screen
     public void setupLayout() {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         loadingScreen = new LoadingScreenUI();
         startScreen = new StartScreenUI(this);
-        viewPatientsPage = new ViewPatientsUI(this, clinic);
+        viewPatientsScreen = new ViewPatientsUI(this, clinic);
+        addPatientScreen = new AddPatientUI(this, clinic);
+        saveQuitScreen = new SaveQuitUI(this, clinic);
         mainPanel.add(loadingScreen, "loading");
         mainPanel.add(startScreen, "start");
-        mainPanel.add(viewPatientsPage, "patients");
+        mainPanel.add(viewPatientsScreen, "patients");
+        mainPanel.add(addPatientScreen, "add patient");
+        mainPanel.add(saveQuitScreen, "save and quit");
 
         add(mainPanel);
         setVisible(true);
@@ -102,8 +109,8 @@ public class MainUI extends JFrame {
                     "Success", 
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("images/health.jpg"));
-                    
-            viewPatientsPage.loadPatients();
+
+            viewPatientsScreen.loadPatients();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     this,
@@ -112,7 +119,7 @@ public class MainUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE,
                     new ImageIcon("images/health.jpg"));
         }
-        showViewPatients();
+        showViewPatientsScreen();
     }
 
     // MODIFIES: this
@@ -142,22 +149,37 @@ public class MainUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE,
                     new ImageIcon("images/health.jpg"));
         }
-        showViewPatients();
+        showViewPatientsScreen();
     }
 
-    // EFFECTS: Displays ViewPatientsUI 
-    public void showViewPatients() {
+    // EFFECTS: Displays ViewPatientsUI which allows the user to view the table of all patients
+    public void showViewPatientsScreen() {
         cardLayout.show(mainPanel, "patients");
     }
 
-    // EFFECTS: Displays ViewPatientsUI 
-    public void viewPatientProfile(Patient p) {
-        viewPatientProfilePage = new ViewPatientProfileUI(this, clinic, p);
-        mainPanel.add(viewPatientProfilePage, "patient");
+    // EFFECTS: Displays AddPatientUI which allows the user to add a new patient
+    public void showAddPatientScreen() {
+        cardLayout.show(mainPanel, "add patient");
+    }
+
+    // EFFECTS: Allows the user to rename the clinic
+    public void renameClinic() {
+        System.out.println("hi");
+    }
+
+    // EFFECTS: Displays SaveQuitUI which allows the user to save and quit, or quit the application without saving
+    public void showSaveQuitScreen() {
+        cardLayout.show(mainPanel, "save and quit");
+    }
+
+    // EFFECTS: Displays ViewPatientProfileUI which allows the user to view a specific patient profile
+    public void viewPatientProfileScreen(Patient p) {
+        viewPatientProfileScreen = new ViewPatientProfileUI(this, clinic, p);
+        mainPanel.add(viewPatientProfileScreen, "patient");
         cardLayout.show(mainPanel, "patient");
     }
     
-    // EFFECTS: Runs the main application application 
+    // EFFECTS: Runs the main application 
     public static void main(String[] args) {
         new MainUI();
     }

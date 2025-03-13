@@ -18,16 +18,19 @@ public class ViewPatientsUI extends JPanel {
     private JPanel contentPanel;
     private JTable patientTable;
     private DefaultTableModel tableModel;
+    private NavigationBarUI navBar;
 
-    // EFFECTS: Constructs a ViewPatientsUI screen displaying all patients in a table format
+    // EFFECTS: Constructs a ViewPatientsUI screen displaying all patients in a table with a navigation bar
     public ViewPatientsUI(MainUI parent, Clinic clinic) {
         this.parent = parent;
         this.clinic = clinic;
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
-        contentPanel = new JPanel();
+        contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(Color.WHITE);
+        navBar = new NavigationBarUI(parent, clinic);
+        contentPanel.add(navBar, BorderLayout.NORTH);
         createTable();
         add(contentPanel, BorderLayout.CENTER);
 
@@ -83,7 +86,7 @@ public class ViewPatientsUI extends JPanel {
                     int row = patientTable.getSelectedRow();
                     if (row >= 0) {
                         Patient selectedPatient = clinic.getPatients().get(row);
-                        parent.viewPatientProfile(selectedPatient);
+                        parent.viewPatientProfileScreen(selectedPatient);
                     }
                 }
             }
