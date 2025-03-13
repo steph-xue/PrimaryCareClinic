@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// NavigationBarUI is a navigation bar used to navigate the application and display the clinic name
+// NavigationBarUI displays the navigation bar used to navigate the application and display the clinic name
 public class NavigationBarUI extends JPanel {
     private MainUI parent;
     private Clinic clinic;
@@ -19,7 +19,7 @@ public class NavigationBarUI extends JPanel {
     private JButton saveQuitButton;
     private JLabel clinicTitleLabel;
 
-    // EFFECTS: Constructs a navigation bar with a panel containing buttons for different actions, 
+    // EFFECTS: Constructs a navigation bar UI JPanel with a panel containing buttons for different actions, 
     // as well as a label for displaying the clinic name
     public NavigationBarUI(MainUI parent, Clinic clinic) {
         this.parent = parent;

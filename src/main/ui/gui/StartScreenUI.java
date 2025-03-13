@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// Start Screen UI displays the start screen with an option load a save from file or start a new clinic
+// StartScreenUI displays the start screen with an option to load a save from file or start a new clinic
 public class StartScreenUI extends JPanel {
     private MainUI parent;
     private JPanel contentPanel;
@@ -16,7 +16,7 @@ public class StartScreenUI extends JPanel {
     // EFFECTS: Constructs a start screen UI JPanel
     public StartScreenUI(MainUI parent) {
         this.parent = parent;
-        
+
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 

@@ -19,7 +19,7 @@ import java.time.LocalDate;
 // Health image images/health.jpg retrieved from https://www.freepik.com/premium-vector/basic-healthcare-icon-vector
 //-image-can-be-used-home-services_157661598.htm
 
-// Main application UI displays contents of the primary care clinic application
+// MainUI displays the main contents of the primary care clinic application
 public class MainUI extends JFrame {
     private static final String JSON_STORE = "./data/clinic.json";
 
@@ -110,6 +110,7 @@ public class MainUI extends JFrame {
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("images/health.jpg"));
 
+            viewPatientsScreen.getNavBar().updateClinicTitle();
             viewPatientsScreen.loadPatients();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
@@ -195,6 +196,35 @@ public class MainUI extends JFrame {
     // EFFECTS: Displays SaveQuitUI which allows the user to save and quit, or quit the application without saving
     public void showSaveQuitScreen() {
         cardLayout.show(mainPanel, "save and quit");
+    }
+
+    // EFFECTS: Saves the clinic data to file and quits the application
+    public void saveQuit() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(clinic);
+            jsonWriter.close();
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Saved \"" + clinic.getClinicName() + "\" to " + JSON_STORE,
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("images/health.jpg"));
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Unable to write to file: " + JSON_STORE,
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE,
+                    new ImageIcon("images/health.jpg"));
+        }
+        System.exit(0);
+
+    }
+
+    // EFFECTS: Quits the application wihtout saving
+    public void quit() {
+        System.exit(0);
     }
 
     // EFFECTS: Displays ViewPatientProfileUI which allows the user to view a specific patient profile

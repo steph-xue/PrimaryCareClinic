@@ -1,97 +1,51 @@
 {
-    "name": "My Clinic",
     "patients": [
         {
-            "firstname": "Mya",
-            "lastname": "Cornell",
-            "dateofbirth": {
-                    "month": 8,
-                    "day": 16,
-                    "year": 1965
-                },
-            "age": 59,
-            "personalhealthnumber": 925245285,
             "allergies": [
                 "penicillin",
                 "codeine"
             ],
+            "dateofbirth": {
+                "month": 8,
+                "year": 1965,
+                "day": 16
+            },
+            "personalhealthnumber": 925245285,
+            "medicalconditions": [
+                "diabetes",
+                "hypertension"
+            ],
+            "firstname": "Mya",
             "medications": [
                 "metformin",
                 "ramipril",
                 "amlodipine"
             ],
-            "medicalconditions": [
-                "diabetes",
-                "hypertension"
-            ],
             "clinicalnotes": [
                 {
-                    "title": "Coughing",
-                    "body": "Patient presenting with severe cough",
                     "provider": "Dr. Campbell",
                     "visitdate": {
-                            "month": 1,
-                            "day": 16,
-                            "year": 2025
-                        }
+                        "month": 1,
+                        "year": 2025,
+                        "day": 16
+                    },
+                    "title": "Coughing",
+                    "body": "Patient presenting with severe cough"
                 },
                 {
-                    "title": "Ear infection",
-                    "body": "Patient presenting with infected ear",
                     "provider": "Dr. Singh",
                     "visitdate": {
-                            "month": 2,
-                            "day": 20,
-                            "year": 2025
-                        }
+                        "month": 2,
+                        "year": 2025,
+                        "day": 20
+                    },
+                    "title": "Ear infection",
+                    "body": "Patient presenting with infected ear"
                 }
-            ]
+            ],
+            "age": 59,
+            "lastname": "Cornell"
         },
-        {
-            "firstname": "Amira",
-            "lastname": "Garcia",
-            "dateofbirth": {
-                    "month": 11,
-                    "day": 8,
-                    "year": 1971
-                },
-            "age": 53,
-            "personalhealthnumber": 925645120,
-            "allergies": [
-                "ciprofloxacin",
-                "azithromycin"
-            ],
-            "medications": [
-                "rosuvastatin",
-                "bisoprolol"
-            ],
-            "medicalconditions": [
-                "hyperlipidemia",
-                "hypertension"
-            ],
-            "clinicalnotes": [
-                {
-                    "title": "Eye infection",
-                    "body": "Patient has eye infection",
-                    "provider": "Dr. Williams",
-                    "visitdate": {
-                            "month": 1,
-                            "day": 18,
-                            "year": 2025
-                        }
-                },
-                {
-                    "title": "Skin rash",
-                    "body": "Patient presenting with skin rash",
-                    "provider": "Dr. Jones",
-                    "visitdate": {
-                            "month": 2,
-                            "day": 12,
-                            "year": 2025
-                        }
-                }
-            ]
-        }, 
         {
             "allergies": [
                 "amoxicillin",
@@ -140,6 +94,51 @@
         },
         {
             "allergies": [
+                "ciprofloxacin",
+                "azithromycin"
+            ],
+            "dateofbirth": {
+                "month": 11,
+                "year": 1971,
+                "day": 8
+            },
+            "personalhealthnumber": 925645120,
+            "medicalconditions": [
+                "hyperlipidemia",
+                "hypertension"
+            ],
+            "firstname": "Amira",
+            "medications": [
+                "rosuvastatin",
+                "bisoprolol"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Williams",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 18
+                    },
+                    "title": "Eye infection",
+                    "body": "Patient has eye infection"
+                },
+                {
+                    "provider": "Dr. Jones",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 12
+                    },
+                    "title": "Skin rash",
+                    "body": "Patient presenting with skin rash"
+                }
+            ],
+            "age": 53,
+            "lastname": "Garcia"
+        },
+        {
+            "allergies": [
                 "tetracycline",
                 "aspirin"
             ],
@@ -183,5 +182,6 @@
             "age": 54,
             "lastname": "Smith"
         }
-    ]
+    ],
+    "name": "Medicare Clinic"
 }

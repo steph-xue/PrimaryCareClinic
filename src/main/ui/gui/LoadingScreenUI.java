@@ -7,7 +7,7 @@ import java.awt.*;
 // EHR image images/ehr.jpg retrieved from https://www.vecteezy.com/
 // Loading gif image images/loading.gif retrieved from https://icons8.com/icons/set/dots-loading--animated
 
-// Loading Screen UI displays an image and welcome message to the user with a loading gif for 10 seconds
+// LoadingScreenUI displays loading screen with an image and welcome message to the user with a loading gif for 10 seconds
 public class LoadingScreenUI extends JPanel {
     private JPanel contentPanel;
     private JLabel welcomeLabel;

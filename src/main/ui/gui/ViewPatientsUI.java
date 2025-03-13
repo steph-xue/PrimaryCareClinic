@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// ViewPatientsUI displays the homepage with a list of all patients in the clinic
+// ViewPatientsUI displays the homepage with a table view of all patients in the clinic
 public class ViewPatientsUI extends JPanel {
     private MainUI parent;
     private Clinic clinic;
@@ -21,7 +21,7 @@ public class ViewPatientsUI extends JPanel {
     private DefaultTableModel tableModel;
     private NavigationBarUI navBar;
 
-    // EFFECTS: Constructs a ViewPatientsUI screen displaying all patients in a table with a navigation bar
+    // EFFECTS: Constructs a view patients UI JPanel displaying all patients in a table with a navigation bar
     public ViewPatientsUI(MainUI parent, Clinic clinic) {
         this.parent = parent;
         this.clinic = clinic;
@@ -117,5 +117,10 @@ public class ViewPatientsUI extends JPanel {
                 p.getAge(), p.getPersonalHealthNumber()};
             tableModel.addRow(rowData);
         }
+    }
+
+    // EFFECTS: Returns navigation bar so MainUI can update it
+    public NavigationBarUI getNavBar() {
+        return navBar;
     }
 }
