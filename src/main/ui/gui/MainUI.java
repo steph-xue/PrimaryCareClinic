@@ -162,9 +162,34 @@ public class MainUI extends JFrame {
         cardLayout.show(mainPanel, "add patient");
     }
 
-    // EFFECTS: Allows the user to rename the clinic
+    // MODIFIES: this
+    // EFFECTS: Allows the user to rename the clinic; prints out a success message if clinic is successfully 
+    // named or prints an error message if clinic name is empty
     public void renameClinic() {
-        System.out.println("hi");
+        String clinicName = (String) JOptionPane.showInputDialog(
+                this, 
+                "Rename clinic: ",
+                "Rename Clinic",
+                JOptionPane.DEFAULT_OPTION, 
+                new ImageIcon("images/health.jpg"), null, null);
+
+        if (clinicName != null && !clinicName.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Clinic successfully renamed to \"" + clinicName + "\"!",
+                    "Success", 
+                    JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon("images/health.jpg"));
+            clinic.setClinicName(clinicName);
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Clinic name cannot be empty!",
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE,
+                    new ImageIcon("images/health.jpg"));
+        }
+        showViewPatientsScreen();
     }
 
     // EFFECTS: Displays SaveQuitUI which allows the user to save and quit, or quit the application without saving
