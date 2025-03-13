@@ -15,9 +15,20 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 
+// References
+// https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html 
+// https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application
+// https://docs.oracle.com/javase/tutorial/uiswing/events/intro.html 
+// https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html
+// https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseAdapter.html
+// https://codehs.com/tutorial/david/java-swing-mouse-events
+// https://www.tutorialspoint.com/swing/swing_mouseadapter.htm
+// Java GUI: Full Course https://www.youtube.com/watch?v=Kmgo00avvEw
+// Code referenced from SpaceInvaders, RobustTrafficLights, AlarmSystem, DrawingPlayer, SmartHome
+
 // Image References
-// Health image images/health.jpg retrieved from https://www.freepik.com/premium-vector/basic-healthcare-icon-vector
-//-image-can-be-used-home-services_157661598.htm
+// JOptionPane Health Logo images/health.jpg retrieved from https://www.freepik.com/premium-vector/basic-healthcare-icon-vector
+//-image-can-be-used-home-services_157661598.html
 
 // MainUI displays the main contents of the primary care clinic application
 public class MainUI extends JFrame {
@@ -42,6 +53,7 @@ public class MainUI extends JFrame {
         startApp();
     }
 
+    // MODIFIES: this
     // EFFECTS: Initializes the primary care clinic application UI with default settings
     public void init() {
         setTitle("Primary Care Clinic Application");
@@ -55,6 +67,7 @@ public class MainUI extends JFrame {
         clinic = new Clinic("My Clinic");
     }
 
+    // MODIFIES: this
     // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, view patients screen,
     // view add patient screen, and the view save/quit screen
     public void setupLayout() {
@@ -164,6 +177,12 @@ public class MainUI extends JFrame {
     }
 
     // MODIFIES: this
+    // EFFECTS: Add new patient to the clinic based on the user's form inputs
+    public void addNewPatient() {
+        System.out.println("hello");
+    }
+
+    // MODIFIES: this
     // EFFECTS: Allows the user to rename the clinic; prints out a success message if clinic is successfully 
     // named or prints an error message if clinic name is empty
     public void renameClinic() {
@@ -198,6 +217,7 @@ public class MainUI extends JFrame {
         cardLayout.show(mainPanel, "save and quit");
     }
 
+    // MODIFIES: this
     // EFFECTS: Saves the clinic data to file and quits the application
     public void saveQuit() {
         try {
@@ -227,6 +247,7 @@ public class MainUI extends JFrame {
         System.exit(0);
     }
 
+    // MODIFIES: this
     // EFFECTS: Displays ViewPatientProfileUI which allows the user to view a specific patient profile
     public void viewPatientProfileScreen(Patient p) {
         viewPatientProfileScreen = new ViewPatientProfileUI(this, clinic, p);

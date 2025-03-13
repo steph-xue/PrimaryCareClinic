@@ -39,11 +39,12 @@ public class ViewPatientsUI extends JPanel {
 
     // EFFECTS: Creates table for patient information
     public void createTable() {
-        String[] columnNames = {"First Name", "Last Name", "Date of Birth (DOB)", "Age", "Personal Health Number (PHN)"};
+        String[] columnNames = {"First Name", "Last Name", "Date of Birth (DOB)", "Age", 
+            "Personal Health Number (PHN)"};
 
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
-            public boolean isCellEditable(int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
@@ -93,6 +94,21 @@ public class ViewPatientsUI extends JPanel {
         patientTable.getColumnModel().getColumn(4).setPreferredWidth(250);
     }
 
+    // EFFECTS: Loads patient information into the table
+    public void loadPatients() {
+        tableModel.setRowCount(0);
+        for (Patient p: clinic.getPatients()) {
+            Object[] rowData = { p.getFirstName(), p.getLastName(), p.getDateOfBirth().printDate(), 
+                p.getAge(), p.getPersonalHealthNumber()};
+            tableModel.addRow(rowData);
+        }
+    }
+
+    // EFFECTS: Returns navigation bar so MainUI can update it
+    public NavigationBarUI getNavBar() {
+        return navBar;
+    }
+
     // EFFECTS: Adds double click event listener to the table rows to view a specific patient profile
     public void addDoubleClickListener() {
         patientTable.addMouseListener(new MouseAdapter() {
@@ -107,20 +123,5 @@ public class ViewPatientsUI extends JPanel {
                 }
             }
         });
-    }
-
-    // EFFECTS: Loads patient information into the table
-    public void loadPatients() {
-        tableModel.setRowCount(0);
-        for (Patient p: clinic.getPatients()) {;
-            Object[] rowData = {p.getFirstName(), p.getLastName(), p.getDateOfBirth().printDate(), 
-                p.getAge(), p.getPersonalHealthNumber()};
-            tableModel.addRow(rowData);
-        }
-    }
-
-    // EFFECTS: Returns navigation bar so MainUI can update it
-    public NavigationBarUI getNavBar() {
-        return navBar;
     }
 }
