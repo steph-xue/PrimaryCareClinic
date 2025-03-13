@@ -82,6 +82,12 @@ public class Clinic implements Writable {
         this.name = nameCapitalized;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets list of patients
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+
     // Getters
     // EFFECTS: gets clinic's name
     public String getClinicName() {

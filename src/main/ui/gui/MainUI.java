@@ -30,7 +30,8 @@ public class MainUI extends JFrame {
     private JPanel mainPanel;
     private LoadingScreenUI loadingScreen;
     private StartScreenUI startScreen;
-    private JPanel mainContent;
+    private ViewPatientsUI viewPatientsPage;
+    private ViewPatientProfileUI viewPatientProfilePage;
 
     // EFFECTS: Constructs the main application UI JFrame
     public MainUI() {
@@ -48,6 +49,8 @@ public class MainUI extends JFrame {
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+
+        clinic = new Clinic("My Clinic");
     }
 
     // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, main content panel
@@ -56,10 +59,10 @@ public class MainUI extends JFrame {
         mainPanel = new JPanel(cardLayout);
         loadingScreen = new LoadingScreenUI();
         startScreen = new StartScreenUI(this);
-        mainContent = createMainContent(); 
+        viewPatientsPage = new ViewPatientsUI(this, clinic);
         mainPanel.add(loadingScreen, "loading");
         mainPanel.add(startScreen, "start");
-        mainPanel.add(mainContent, "main");
+        mainPanel.add(viewPatientsPage, "patients");
 
         add(mainPanel);
         setVisible(true);
@@ -89,13 +92,18 @@ public class MainUI extends JFrame {
     // or error message if unable to read from file
     public void loadClinicData() {
         try {
-            clinic = jsonReader.read();
+            Clinic loadedClinic = jsonReader.read();
+            clinic.setClinicName(loadedClinic.getClinicName());
+            clinic.setPatients(loadedClinic.getPatients());
+
             JOptionPane.showMessageDialog(
                     this,
                     "Clinic \"" + clinic.getClinicName() + "\" loaded successfully!",
                     "Success", 
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("images/health.jpg"));
+                    
+            viewPatientsPage.loadPatients();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     this,
@@ -104,6 +112,7 @@ public class MainUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE,
                     new ImageIcon("images/health.jpg"));
         }
+        showViewPatients();
     }
 
     // MODIFIES: this
@@ -133,23 +142,19 @@ public class MainUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE,
                     new ImageIcon("images/health.jpg"));
         }
+        showViewPatients();
     }
 
-    // EFFECTS: Creates the main content panel after the loading screen
-    private JPanel createMainContent() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-
-        JLabel mainLabel = new JLabel("Main Application Home Screen", SwingConstants.CENTER);
-        mainLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        panel.add(mainLabel, BorderLayout.CENTER);
-
-        return panel;
+    // EFFECTS: Displays ViewPatientsUI 
+    public void showViewPatients() {
+        cardLayout.show(mainPanel, "patients");
     }
 
-    // EFFECTS: Shows the main content
-    public void showMainContent() {
-        cardLayout.show(mainPanel, "main");
+    // EFFECTS: Displays ViewPatientsUI 
+    public void viewPatientProfile(Patient p) {
+        viewPatientProfilePage = new ViewPatientProfileUI(this, clinic, p);
+        mainPanel.add(viewPatientProfilePage, "patient");
+        cardLayout.show(mainPanel, "patient");
     }
     
     // EFFECTS: Runs the main application application 

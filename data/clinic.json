@@ -1,5 +1,97 @@
 {
+    "name": "My Clinic",
     "patients": [
+        {
+            "firstname": "Mya",
+            "lastname": "Cornell",
+            "dateofbirth": {
+                    "month": 8,
+                    "day": 16,
+                    "year": 1965
+                },
+            "age": 59,
+            "personalhealthnumber": 925245285,
+            "allergies": [
+                "penicillin",
+                "codeine"
+            ],
+            "medications": [
+                "metformin",
+                "ramipril",
+                "amlodipine"
+            ],
+            "medicalconditions": [
+                "diabetes",
+                "hypertension"
+            ],
+            "clinicalnotes": [
+                {
+                    "title": "Coughing",
+                    "body": "Patient presenting with severe cough",
+                    "provider": "Dr. Campbell",
+                    "visitdate": {
+                            "month": 1,
+                            "day": 16,
+                            "year": 2025
+                        }
+                },
+                {
+                    "title": "Ear infection",
+                    "body": "Patient presenting with infected ear",
+                    "provider": "Dr. Singh",
+                    "visitdate": {
+                            "month": 2,
+                            "day": 20,
+                            "year": 2025
+                        }
+                }
+            ]
+        },
+        {
+            "firstname": "Amira",
+            "lastname": "Garcia",
+            "dateofbirth": {
+                    "month": 11,
+                    "day": 8,
+                    "year": 1971
+                },
+            "age": 53,
+            "personalhealthnumber": 925645120,
+            "allergies": [
+                "ciprofloxacin",
+                "azithromycin"
+            ],
+            "medications": [
+                "rosuvastatin",
+                "bisoprolol"
+            ],
+            "medicalconditions": [
+                "hyperlipidemia",
+                "hypertension"
+            ],
+            "clinicalnotes": [
+                {
+                    "title": "Eye infection",
+                    "body": "Patient has eye infection",
+                    "provider": "Dr. Williams",
+                    "visitdate": {
+                            "month": 1,
+                            "day": 18,
+                            "year": 2025
+                        }
+                },
+                {
+                    "title": "Skin rash",
+                    "body": "Patient presenting with skin rash",
+                    "provider": "Dr. Jones",
+                    "visitdate": {
+                            "month": 2,
+                            "day": 12,
+                            "year": 2025
+                        }
+                }
+            ]
+        }, 
         {
             "allergies": [
                 "amoxicillin",
@@ -40,7 +132,7 @@
                         "day": 15
                     },
                     "title": "Urinary tract infection",
-                    "body": "Patient presenting with signs of a urinary tract infection"
+                    "body": "Patient presenting with bladder infection"
                 }
             ],
             "age": 56,
@@ -75,7 +167,7 @@
                         "day": 18
                     },
                     "title": "Allergic rhinitis",
-                    "body": "Patient presenting with sneezing and nasal congestion"
+                    "body": "Patient presenting with nasal congestion"
                 },
                 {
                     "provider": "Dr. Young",
@@ -91,6 +183,5 @@
             "age": 54,
             "lastname": "Smith"
         }
-    ],
-    "name": "Medicare Clinic"
+    ]
 }

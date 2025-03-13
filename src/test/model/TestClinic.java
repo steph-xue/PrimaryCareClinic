@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -171,6 +174,15 @@ public class TestClinic {
         assertEquals("Medicare Clinic", clinic.getClinicName());
         clinic.setClinicName("PlusCare Clinic");
         assertEquals("PlusCare Clinic", clinic.getClinicName());
+    }
+
+    @Test
+    public void setPatientsTest() {
+        List<Patient> patients = new ArrayList<>();
+        patients.add(patient1);
+        patients.add(patient2);
+        clinic.setPatients(patients);
+        assertEquals(patients, clinic.getPatients());
     }
 
     

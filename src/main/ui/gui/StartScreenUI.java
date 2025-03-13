@@ -65,7 +65,7 @@ public class StartScreenUI extends JPanel {
         button.setPreferredSize(new Dimension(500, 50));
         button.setMaximumSize(new Dimension(500, 50));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setBackground(new Color(160, 100, 180));
+        button.setBackground(new Color(70, 10, 70));
         button.setForeground(Color.WHITE);
         button.setOpaque(true);
         button.setBorderPainted(false);
@@ -79,12 +79,12 @@ public class StartScreenUI extends JPanel {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                button.setBackground(new Color(200, 160, 215));
+                button.setBackground(new Color(90, 40, 90));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(160, 100, 180));
+                button.setBackground(new Color(70, 10, 70));
             }
         });
     }
