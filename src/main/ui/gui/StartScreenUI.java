@@ -16,6 +16,7 @@ public class StartScreenUI extends JPanel {
     // EFFECTS: Constructs a start screen UI JPanel
     public StartScreenUI(MainUI parent) {
         this.parent = parent;
+        
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 

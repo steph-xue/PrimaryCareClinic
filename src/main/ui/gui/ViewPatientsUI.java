@@ -1,6 +1,7 @@
 package ui.gui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -24,6 +25,7 @@ public class ViewPatientsUI extends JPanel {
     public ViewPatientsUI(MainUI parent, Clinic clinic) {
         this.parent = parent;
         this.clinic = clinic;
+
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
@@ -33,14 +35,9 @@ public class ViewPatientsUI extends JPanel {
         contentPanel.add(navBar, BorderLayout.NORTH);
         createTable();
         add(contentPanel, BorderLayout.CENTER);
-
-        adjustTableHeader();
-        setColumnWidths();
-        addDoubleClickListener();
-        loadPatients();
     }
 
-    // EFFECTS: Creates table with formatting
+    // EFFECTS: Creates table for patient information
     public void createTable() {
         String[] columnNames = {"First Name", "Last Name", "Date of Birth (DOB)", "Age", "Personal Health Number (PHN)"};
 
@@ -52,19 +49,38 @@ public class ViewPatientsUI extends JPanel {
         };
 
         patientTable = new JTable(tableModel);
+        adjustTableFormatting();
+        adjustTableHeader();
+        setColumnWidths();
+        addDoubleClickListener();
+        loadPatients();
+    }
+
+    // EFFECTS: Adjusts patient table formatting
+    public void adjustTableFormatting() {
         patientTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        patientTable.setSelectionBackground(new Color(230, 230, 230));
+        patientTable.setSelectionForeground(Color.BLACK);
         patientTable.setRowHeight(30);
-        patientTable.setFont(new Font("Arial", Font.PLAIN, 16));
+        patientTable.setFont(new Font("Arial", Font.PLAIN, 18));
+        patientTable.setShowHorizontalLines(false);
+        patientTable.setShowVerticalLines(false);
+        patientTable.setDefaultEditor(Object.class, null);
+        patientTable.setFocusable(false);
 
         JScrollPane scrollPane = new JScrollPane(patientTable);
         scrollPane.setPreferredSize(new Dimension(1000, 500));
-        contentPanel.add(scrollPane);
+        JPanel tableContainer = new JPanel(new BorderLayout());
+        tableContainer.setBackground(Color.WHITE);
+        tableContainer.setBorder(new EmptyBorder(0, 80, 40, 80));
+        tableContainer.add(scrollPane, BorderLayout.CENTER);
+        contentPanel.add(tableContainer, BorderLayout.CENTER);
     }
 
     // EFFECTS: Adjusts patient table header formatting
     public void adjustTableHeader() {
         JTableHeader tableHeader = patientTable.getTableHeader();
-        tableHeader.setFont(new Font("Arial", Font.BOLD, 18));
+        tableHeader.setFont(new Font("Arial", Font.BOLD, 20));
         add(tableHeader, BorderLayout.NORTH);
     }
 
@@ -73,7 +89,7 @@ public class ViewPatientsUI extends JPanel {
         patientTable.getColumnModel().getColumn(0).setPreferredWidth(150);
         patientTable.getColumnModel().getColumn(1).setPreferredWidth(150);
         patientTable.getColumnModel().getColumn(2).setPreferredWidth(150);
-        patientTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        patientTable.getColumnModel().getColumn(3).setPreferredWidth(75);
         patientTable.getColumnModel().getColumn(4).setPreferredWidth(250);
     }
 

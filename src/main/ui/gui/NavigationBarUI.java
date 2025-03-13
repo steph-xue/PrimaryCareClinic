@@ -26,7 +26,7 @@ public class NavigationBarUI extends JPanel {
         this.clinic = clinic;
 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(1000, 130));
+        setPreferredSize(new Dimension(1000, 150));
 
         buttonPanel = new JPanel(new GridLayout(1, 14, 10, 0));
         buttonPanel.setBackground(new Color(70, 10, 70));
@@ -124,11 +124,11 @@ public class NavigationBarUI extends JPanel {
     // EFFECTS: Create clinic title label
     public void createClinicTitleLabel() {
         clinicTitleLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
-        clinicTitleLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        clinicTitleLabel.setFont(new Font("Arial", Font.BOLD, 35));
         clinicTitleLabel.setForeground(Color.BLACK);
         clinicTitleLabel.setOpaque(true);
         clinicTitleLabel.setBackground(Color.WHITE);
-        clinicTitleLabel.setPreferredSize(new Dimension(1000, 80));
+        clinicTitleLabel.setPreferredSize(new Dimension(1000,100));
     }
     
 }
