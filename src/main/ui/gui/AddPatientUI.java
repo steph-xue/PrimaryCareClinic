@@ -21,9 +21,9 @@ import java.awt.event.MouseEvent;
 public class AddPatientUI extends JPanel {
     private MainUI parent;
     private Clinic clinic;
-    private JPanel contentPanel;
-    private JPanel mainContainerPanel;
     private NavigationBarUI navBar;
+    private JPanel mainContainerPanel;
+    private JPanel contentPanel;
     private JTextField firstNameField;
     private JTextField lastNameField;
     private JTextField dateOfBirthField;
