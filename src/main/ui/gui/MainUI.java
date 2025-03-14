@@ -160,6 +160,11 @@ public class MainUI extends JFrame {
         cardLayout.show(mainPanel, "patients");
     }
 
+    // EFFECTS: Gets the ViewPatientsUI screen for reloading the patient table data
+    public ViewPatientsUI getViewPatientsScreen() {
+       return viewPatientsScreen;
+    }
+
     // EFFECTS: Displays AddPatientUI which allows the user to add a new patient
     public void showAddPatientScreen() {
         cardLayout.show(mainPanel, "add patient");

@@ -271,6 +271,8 @@ public class AddPatientUI extends JPanel {
                     "New patient \"" + firstName + " " + lastName + "\" added successfully!",
                     "Success", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/health.jpg"));
         System.out.println(clinic.getPatients());
+
+        parent.getViewPatientsScreen().loadPatients();
         parent.showViewPatientsScreen();
     }
 
