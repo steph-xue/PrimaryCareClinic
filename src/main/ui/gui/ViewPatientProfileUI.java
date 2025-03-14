@@ -77,6 +77,7 @@ public class ViewPatientProfileUI extends JPanel {
         contentPanel.add(imagePanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: Create and add labels for patient data to the content panel
     public void addPatientInfo() {
         JLabel firstNameLabel = createLabel("First Name: " + patient.getFirstName());

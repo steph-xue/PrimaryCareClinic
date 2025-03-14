@@ -258,14 +258,15 @@ public class AddPatientUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Adds new patient to the clinic
+    // EFFECTS: Adds new patient to the clinic with user inputed information
     public void addPatient(String firstName, String lastName, Date parsedDateOfBirth, int parsedAge, 
             long parsedPersonalHealthNumber) {
 
         Patient newPatient = new Patient(firstName, lastName, parsedDateOfBirth, parsedAge,
                 parsedPersonalHealthNumber);
-
+        addPatientListData(newPatient);
         clinic.addPatient(newPatient);
+
         JOptionPane.showMessageDialog(
                     this,
                     "New patient \"" + firstName + " " + lastName + "\" added successfully!",
@@ -274,6 +275,22 @@ public class AddPatientUI extends JPanel {
 
         parent.getViewPatientsScreen().loadPatients();
         parent.showViewPatientsScreen();
+    }
+
+    // MODIFIES: newPatient
+    // EFFECTS: Adds allergies, medications, and medical condtions inputed by the user to the new patient
+    public void addPatientListData(Patient newPatient) {
+        for (String allergy: currentAllergiesList) {
+            newPatient.addAllergy(allergy);
+        }
+
+        for (String medication: currentMedicationsList) {
+            newPatient.addMedication(medication);
+        }
+
+        for (String medicalCondition: currentMedicalConditionsList) {
+            newPatient.addMedicalCondition(medicalCondition);
+        }
     }
 
     // MODIFIES: button
