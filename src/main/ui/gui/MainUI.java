@@ -162,7 +162,7 @@ public class MainUI extends JFrame {
 
     // EFFECTS: Gets the ViewPatientsUI screen for reloading the patient table data
     public ViewPatientsUI getViewPatientsScreen() {
-       return viewPatientsScreen;
+        return viewPatientsScreen;
     }
 
     // EFFECTS: Displays AddPatientUI which allows the user to add a new patient

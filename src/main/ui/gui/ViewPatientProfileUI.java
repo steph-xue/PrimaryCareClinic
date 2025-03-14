@@ -4,11 +4,11 @@ import javax.swing.*;
 
 import model.Clinic;
 import model.Patient;
+import model.ClinicalNote;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.concurrent.Flow;
 
 // Image References
 // Patient image images/patient.jpg retrieved from https://www.istockphoto.com/vector/patient-icon-vector-of-
@@ -40,9 +40,13 @@ public class ViewPatientProfileUI extends JPanel {
         addPatientInfo();
         addClinicalNotes();
 
-        mainContainerPanel.add(contentPanel);
+        JScrollPane scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        
         add(navBar, BorderLayout.NORTH);
-        add(mainContainerPanel, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
     }
 
     // MODIFIES: this
@@ -59,7 +63,8 @@ public class ViewPatientProfileUI extends JPanel {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 40));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
+        mainContainerPanel.add(contentPanel);
     }
 
     // MODIFIES: this
@@ -73,7 +78,7 @@ public class ViewPatientProfileUI extends JPanel {
 
         JPanel imagePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         imagePanel.setBackground(Color.WHITE);
-        imagePanel.setBorder(BorderFactory.createEmptyBorder(0, 35, 0, 0));
+        imagePanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         imagePanel.add(patientImageLabel);
 
         contentPanel.add(imagePanel);
@@ -81,13 +86,14 @@ public class ViewPatientProfileUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Create and add panels for patient data to add to the content panel
+    // EFFECTS: Create and add panels for patient data to add to the contentPanel
     public void addPatientInfo() {
-        JPanel firstNamePanel = createPanel("First Name: " , patient.getFirstName());
+        JPanel firstNamePanel = createPanel("First Name: ", patient.getFirstName());
         JPanel lastNamePanel = createPanel("Last Name: ", patient.getLastName());
         JPanel dateOfBirthPanel = createPanel("Date of Birth (MM-DD-YYYY): ", patient.getDateOfBirth().printDate());
         JPanel agePanel = createPanel("Age: ", String.valueOf(patient.getAge()));
-        JPanel phnPanel = createPanel("Personal Health Number (PHN): ", String.valueOf(patient.getPersonalHealthNumber()));
+        JPanel phnPanel = createPanel("Personal Health Number (PHN): ", 
+                String.valueOf(patient.getPersonalHealthNumber()));
         JPanel allergiesPanel = createPanel("Allergies: ", patient.printAllergies());
         JPanel medicationsPanel = createPanel("Medications: ", patient.printMedications());
         JPanel medicalConditionsPanel = createPanel("Medical Conditions: ", patient.printMedicalConditions());
@@ -115,11 +121,76 @@ public class ViewPatientProfileUI extends JPanel {
 
         panel.add(headerLabel);
         panel.add(dataLabel);
-        panel.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 250, 0, 0));
         return panel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: Adds clinical notes in individual boxes to contentPanel or displays no notes if
+    // patient does not have any clinical notes
     public void addClinicalNotes() {
+        addClinicalNoteTitle();
+
+        if (patient.getClinicalNotes().isEmpty() || patient.getClinicalNotes() == null) {
+            JLabel noNotesLabel = new JLabel("No clinical notes avaliable");
+            noNotesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+            contentPanel.add(noNotesLabel);
+        } else {
+            for (ClinicalNote note: patient.getClinicalNotes()) {
+                contentPanel.add(createClinicalNoteBox(note));
+                contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Adds clinical note title to contentPanel
+    public void addClinicalNoteTitle() {
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        JLabel notesTitle = new JLabel("Clinical Notes");
+        notesTitle.setFont(new Font("Arial", Font.BOLD, 25));
+        notesTitle.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        notesTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        contentPanel.add(notesTitle);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates a clinical note box with all note data to add to contentPanel
+    public JPanel createClinicalNoteBox(ClinicalNote note) {
+        JPanel notePanel = createNotePanel();
+
+        JLabel titleLabel = new JLabel(note.getClinicalNoteTitle());
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JLabel dateLabel = new JLabel(note.getClinicalNoteDate().printDate());
+        dateLabel.setFont(new Font("Arial", Font.ITALIC, 20));
+
+        JLabel providerLabel = new JLabel(note.getClinicalNoteProvider());
+        providerLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JLabel bodyLabel = new JLabel(note.getClinicalNoteBody());
+        bodyLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        notePanel.add(titleLabel);
+        notePanel.add(dateLabel);
+        notePanel.add(providerLabel);
+        notePanel.add(bodyLabel);
+        return notePanel;
+    }
+
+    // EFFECTS: Creates a clinical note panel with styling for the box
+    public JPanel createNotePanel() {
+        JPanel notePanel = new JPanel();
+        notePanel.setLayout(new BoxLayout(notePanel, BoxLayout.Y_AXIS));
+        notePanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.BLACK, 1),
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+        notePanel.setBackground(Color.WHITE);
+        notePanel.setPreferredSize(new Dimension(1000, 200));
+        notePanel.setMinimumSize(new Dimension(1000, 200));
+        notePanel.setMaximumSize(new Dimension(1000, 1000));
+        notePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        return notePanel;
     }
     
 }
