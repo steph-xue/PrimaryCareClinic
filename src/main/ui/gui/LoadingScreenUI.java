@@ -33,6 +33,7 @@ public class LoadingScreenUI extends JPanel {
         add(contentPanel, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a welcome label with an image and welcome message
     public void createWelcomeLabel() {
         ImageIcon ehrImage = new ImageIcon("images/ehr.jpg");
@@ -47,6 +48,7 @@ public class LoadingScreenUI extends JPanel {
         welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a loading panel with a loading gif and message
     public void createLoadingPanel() {
         JLabel imageLabel = new JLabel();

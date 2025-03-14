@@ -3,8 +3,6 @@ package ui.gui;
 import javax.swing.*;
 
 import model.Clinic;
-import model.ClinicalNote;
-import model.Date;
 import model.Patient;
 
 import persistence.JsonReader;
@@ -13,7 +11,6 @@ import persistence.JsonWriter;
 import java.awt.*;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 
 // References
 // https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html 
@@ -69,7 +66,7 @@ public class MainUI extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: Sets up the main panel, card layout, loading screen, start screen, view patients screen,
-    // view add patient screen, and the view save/quit screen
+    // add patient screen, and the save/quit screen
     public void setupLayout() {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
@@ -77,7 +74,7 @@ public class MainUI extends JFrame {
         startScreen = new StartScreenUI(this);
         viewPatientsScreen = new ViewPatientsUI(this, clinic);
         addPatientScreen = new AddPatientUI(this, clinic);
-        saveQuitScreen = new SaveQuitUI(this, clinic);
+        saveQuitScreen = new SaveQuitUI(this);
         mainPanel.add(loadingScreen, "loading");
         mainPanel.add(startScreen, "start");
         mainPanel.add(viewPatientsScreen, "patients");
@@ -88,7 +85,7 @@ public class MainUI extends JFrame {
         setVisible(true);
     }
     
-    // Start the application and show the loading screen
+    // EFFECTS: Start the application and show the loading screen
     public void startApp() {
         showLoadingScreen();
     }
@@ -126,18 +123,14 @@ public class MainUI extends JFrame {
             viewPatientsScreen.getNavBar().updateClinicTitle();
             viewPatientsScreen.loadPatients();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Unable to read from file!",
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE,
-                    new ImageIcon("images/health.jpg"));
+            JOptionPane.showMessageDialog(this, "Unable to read from file: " + JSON_STORE, "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         showViewPatientsScreen();
     }
 
     // MODIFIES: this
-    // EFFECTS: Create a new clinic and allows user to input a new clinic name; prints out a success message
+    // EFFECTS: Create a new clinic and allows user to input a clinic name; prints out a success message
     // if clinic is successfully named or prints an error message if clinic name is empty 
     public void createNewClinic() {
         String clinicName = (String) JOptionPane.showInputDialog(
@@ -156,12 +149,8 @@ public class MainUI extends JFrame {
                     new ImageIcon("images/health.jpg"));
             clinic.setClinicName(clinicName);
         } else {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Clinic name cannot be empty!",
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE,
-                    new ImageIcon("images/health.jpg"));
+            JOptionPane.showMessageDialog(this, "Clinic name cannot be empty!", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         showViewPatientsScreen();
     }
@@ -174,12 +163,6 @@ public class MainUI extends JFrame {
     // EFFECTS: Displays AddPatientUI which allows the user to add a new patient
     public void showAddPatientScreen() {
         cardLayout.show(mainPanel, "add patient");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Add new patient to the clinic based on the user's form inputs
-    public void addNewPatient() {
-        System.out.println("hello");
     }
 
     // MODIFIES: this
@@ -202,12 +185,8 @@ public class MainUI extends JFrame {
                     new ImageIcon("images/health.jpg"));
             clinic.setClinicName(clinicName);
         } else {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Clinic name cannot be empty!",
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE,
-                    new ImageIcon("images/health.jpg"));
+            JOptionPane.showMessageDialog(this, "Clinic name cannot be empty!", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         showViewPatientsScreen();
     }
@@ -231,18 +210,14 @@ public class MainUI extends JFrame {
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("images/health.jpg"));
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Unable to write to file: " + JSON_STORE,
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE,
-                    new ImageIcon("images/health.jpg"));
+            JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE, "Error", 
+                    JOptionPane.ERROR_MESSAGE);
         }
         System.exit(0);
 
     }
 
-    // EFFECTS: Quits the application wihtout saving
+    // EFFECTS: Quits the application without saving
     public void quit() {
         System.exit(0);
     }

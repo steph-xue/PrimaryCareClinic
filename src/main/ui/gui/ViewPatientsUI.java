@@ -37,7 +37,8 @@ public class ViewPatientsUI extends JPanel {
         add(contentPanel, BorderLayout.CENTER);
     }
 
-    // EFFECTS: Creates table for patient information
+    // MODIFIES: this
+    // EFFECTS: Creates table for patient information and loads patient data
     public void createTable() {
         String[] columnNames = {"First Name", "Last Name", "Date of Birth (DOB)", "Age", 
             "Personal Health Number (PHN)"};
@@ -57,6 +58,7 @@ public class ViewPatientsUI extends JPanel {
         loadPatients();
     }
 
+    // MODIFIES: this
     // EFFECTS: Adjusts patient table formatting
     public void adjustTableFormatting() {
         patientTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -78,6 +80,7 @@ public class ViewPatientsUI extends JPanel {
         contentPanel.add(tableContainer, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     // EFFECTS: Adjusts patient table header formatting
     public void adjustTableHeader() {
         JTableHeader tableHeader = patientTable.getTableHeader();
@@ -85,6 +88,7 @@ public class ViewPatientsUI extends JPanel {
         add(tableHeader, BorderLayout.NORTH);
     }
 
+    // MODIFIES: this
     // EFFECTS: Sets patient table column widths
     public void setColumnWidths() {
         patientTable.getColumnModel().getColumn(0).setPreferredWidth(150);
@@ -94,6 +98,7 @@ public class ViewPatientsUI extends JPanel {
         patientTable.getColumnModel().getColumn(4).setPreferredWidth(250);
     }
 
+    // MODIFIES: this
     // EFFECTS: Loads patient information into the table
     public void loadPatients() {
         tableModel.setRowCount(0);
@@ -109,6 +114,7 @@ public class ViewPatientsUI extends JPanel {
         return navBar;
     }
 
+    // MODIFIES: this
     // EFFECTS: Adds double click event listener to the table rows to view a specific patient profile
     public void addDoubleClickListener() {
         patientTable.addMouseListener(new MouseAdapter() {

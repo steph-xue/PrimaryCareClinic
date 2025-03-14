@@ -37,6 +37,7 @@ public class StartScreenUI extends JPanel {
         add(contentPanel, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a message label to load from file or create a new clinic
     public void createMessageLabel() {
         messageLabel = new JLabel();
@@ -46,6 +47,7 @@ public class StartScreenUI extends JPanel {
         messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a load from file button
     public void createLoadButton() {
         loadButton = new JButton("Load clinic data from file");
@@ -53,6 +55,7 @@ public class StartScreenUI extends JPanel {
         loadButton.addActionListener(e -> parent.loadClinicData());
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a create new clinic button
     public void createNewClinicButton() {
         newClinicButton = new JButton("Create a new clinic");
@@ -60,7 +63,8 @@ public class StartScreenUI extends JPanel {
         newClinicButton.addActionListener(e -> parent.createNewClinic());
     }
 
-    // EFFECTS: Add styling to the buttons
+    // MODIFIES: button
+    // EFFECTS: Add styling to the button
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -75,7 +79,8 @@ public class StartScreenUI extends JPanel {
         addButtonEffects(button);
     }
 
-    // EFFECTS: Add hover effects to button
+    // MODIFIES: button
+    // EFFECTS: Add hover effects to the button
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

@@ -99,7 +99,7 @@
             ],
             "dateofbirth": {
                 "month": 11,
-                "year": 1971,
+                "year": 1975,
                 "day": 8
             },
             "personalhealthnumber": 925645120,
@@ -134,7 +134,7 @@
                     "body": "Patient presenting with skin rash"
                 }
             ],
-            "age": 53,
+            "age": 49,
             "lastname": "Garcia"
         },
         {
@@ -181,6 +181,98 @@
             ],
             "age": 54,
             "lastname": "Smith"
+        }, 
+        {
+            "allergies": [
+                "cephalexin",
+                "lidocaine"
+            ],
+            "dateofbirth": {
+                "month": 12,
+                "year": 1988,
+                "day": 5
+            },
+            "personalhealthnumber": 975245085,
+            "medicalconditions": [
+                "anxiety",
+                "asthma"
+            ],
+            "firstname": "Daniel",
+            "medications": [
+                "escitalopram",
+                "salbutamol",
+                "fluticasone"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Anderson",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 3
+                    },
+                    "title": "Asthma exacerbation",
+                    "body": "Patient presenting with shortness of breath and wheezing"
+                },
+                {
+                    "provider": "Dr. Nguyen",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 10
+                    },
+                    "title": "Heartburn",
+                    "body": "Patient presenting with burning sensation in the chest after eating and at night"
+                }
+            ],
+            "age": 36,
+            "lastname": "Zhou"
+        }, 
+        {
+            "allergies": [
+                "amoxicillin",
+                "erythromycin"
+            ],
+            "dateofbirth": {
+                "month": 3,
+                "year": 2000,
+                "day": 13
+            },
+            "personalhealthnumber": 925303585,
+            "medicalconditions": [
+                "allergic rhinitis",
+                "depression",
+                "eczema"
+            ],
+            "firstname": "Sophia",
+            "medications": [
+                "sertraline",
+                "loratadine"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Martinez",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 25
+                    },
+                    "title": "Acne",
+                    "body": "Patient presenting inflammatory acne and comedonal acne"
+                },
+                {
+                    "provider": "Dr. Harris",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 1
+                    },
+                    "title": "Eczema",
+                    "body": "Patient presenting with flare up of eczema"
+                }
+            ],
+            "age": 25,
+            "lastname": "Lee"
         }
     ],
     "name": "Medicare Clinic"

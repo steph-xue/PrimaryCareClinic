@@ -5,21 +5,17 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import model.Clinic;
-
 // SaveQuitUI displays the save and quit screen with an option to save and quit or quit without saving
 public class SaveQuitUI extends JPanel {
     private MainUI parent;
-    private Clinic clinic;
     private JPanel contentPanel;
     private JLabel messageLabel;
     private JButton saveQuitButton;
     private JButton quitButton;
 
     // EFFECTS: Constructs a save and quit screen UI JPanel
-    public SaveQuitUI(MainUI parent, Clinic clinic) {
+    public SaveQuitUI(MainUI parent) {
         this.parent = parent;
-        this.clinic = clinic;
         
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
@@ -41,6 +37,7 @@ public class SaveQuitUI extends JPanel {
         add(contentPanel, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a message label to save and quit or quit without saving
     public void createMessageLabel() {
         messageLabel = new JLabel();
@@ -50,6 +47,7 @@ public class SaveQuitUI extends JPanel {
         messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a save and quit button
     public void createSaveQuitButton() {
         saveQuitButton = new JButton("Save and quit");
@@ -57,6 +55,7 @@ public class SaveQuitUI extends JPanel {
         saveQuitButton.addActionListener(e -> parent.saveQuit());
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates a quit without saving button
     public void createQuitButton() {
         quitButton = new JButton("Quit without saving");
@@ -64,7 +63,8 @@ public class SaveQuitUI extends JPanel {
         quitButton.addActionListener(e -> parent.quit());
     }
 
-    // EFFECTS: Add styling to the buttons
+    // MODIFIES: button
+    // EFFECTS: Add styling to the button
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -79,6 +79,7 @@ public class SaveQuitUI extends JPanel {
         addButtonEffects(button);
     }
 
+    // MODIFIES: button
     // EFFECTS: Add hover effects to button
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
