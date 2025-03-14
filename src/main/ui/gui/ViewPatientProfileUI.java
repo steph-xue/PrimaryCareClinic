@@ -8,6 +8,7 @@ import model.Patient;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.Flow;
 
 // Image References
 // Patient image images/patient.jpg retrieved from https://www.istockphoto.com/vector/patient-icon-vector-of-
@@ -58,7 +59,7 @@ public class ViewPatientProfileUI extends JPanel {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 40));
     }
 
     // MODIFIES: this
@@ -72,39 +73,50 @@ public class ViewPatientProfileUI extends JPanel {
 
         JPanel imagePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         imagePanel.setBackground(Color.WHITE);
+        imagePanel.setBorder(BorderFactory.createEmptyBorder(0, 35, 0, 0));
         imagePanel.add(patientImageLabel);
 
         contentPanel.add(imagePanel);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
     }
 
     // MODIFIES: this
-    // EFFECTS: Create and add labels for patient data to the content panel
+    // EFFECTS: Create and add panels for patient data to add to the content panel
     public void addPatientInfo() {
-        JLabel firstNameLabel = createLabel("First Name: " + patient.getFirstName());
-        JLabel lastNameLabel = createLabel("Last Name: " + patient.getLastName());
-        JLabel dateOfBirthLabel = createLabel("Date of Birth (MM-DD-YYYY): " + patient.getDateOfBirth().printDate());
-        JLabel ageLabel = createLabel("Age: " + patient.getAge());
-        JLabel phnLabel = createLabel("Personal Health Number (PHN): " + patient.getPersonalHealthNumber());
-        JLabel allergiesLabel = createLabel("Allergies: " + patient.printAllergies());
-        JLabel medicationsLabel = createLabel("Medications: " + patient.printMedications());
-        JLabel medicalConditionsLabel = createLabel("Medical Conditions: " + patient.printMedicalConditions());
+        JPanel firstNamePanel = createPanel("First Name: " , patient.getFirstName());
+        JPanel lastNamePanel = createPanel("Last Name: ", patient.getLastName());
+        JPanel dateOfBirthPanel = createPanel("Date of Birth (MM-DD-YYYY): ", patient.getDateOfBirth().printDate());
+        JPanel agePanel = createPanel("Age: ", String.valueOf(patient.getAge()));
+        JPanel phnPanel = createPanel("Personal Health Number (PHN): ", String.valueOf(patient.getPersonalHealthNumber()));
+        JPanel allergiesPanel = createPanel("Allergies: ", patient.printAllergies());
+        JPanel medicationsPanel = createPanel("Medications: ", patient.printMedications());
+        JPanel medicalConditionsPanel = createPanel("Medical Conditions: ", patient.printMedicalConditions());
 
-        contentPanel.add(firstNameLabel);
-        contentPanel.add(lastNameLabel);
-        contentPanel.add(dateOfBirthLabel);
-        contentPanel.add(ageLabel);
-        contentPanel.add(phnLabel);
-        contentPanel.add(allergiesLabel);
-        contentPanel.add(medicationsLabel);
-        contentPanel.add(medicalConditionsLabel);
+        contentPanel.add(firstNamePanel);
+        contentPanel.add(lastNamePanel);
+        contentPanel.add(dateOfBirthPanel);
+        contentPanel.add(agePanel);
+        contentPanel.add(phnPanel);
+        contentPanel.add(allergiesPanel);
+        contentPanel.add(medicationsPanel);
+        contentPanel.add(medicalConditionsPanel);
     }
 
-    // EFFECTS: Create and style a label for patient data
-    public JLabel createLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.PLAIN, 20));
-        label.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        return label;
+    // EFFECTS: Create and style a panel for patient data
+    public JPanel createPanel(String header, String data) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JLabel headerLabel = new JLabel(header);
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JLabel dataLabel = new JLabel(data);
+        dataLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        panel.add(headerLabel);
+        panel.add(dataLabel);
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+        return panel;
     }
 
     public void addClinicalNotes() {
