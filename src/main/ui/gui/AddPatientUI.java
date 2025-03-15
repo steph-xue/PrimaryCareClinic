@@ -90,7 +90,7 @@ public class AddPatientUI extends JPanel {
         ageField = createStyledTextField();
         addFormField("Age: ", ageField);
         phnField = createStyledTextField();
-        addFormField("Personal Health Number (PHN): ", phnField);
+        addFormField("Personal Health Number (PHN) (9-digits): ", phnField);
     }
 
     // EFFECTS: Create styled text input field
@@ -223,8 +223,14 @@ public class AddPatientUI extends JPanel {
     }
 
     // EFFECTS: Parses phn from string to long; shows error message if phn is not in the right format
+    // or if it is not 9-digits long
     public long parsePersonalHealthNumber(String phn) {
         try {
+            if (phn.length() != 9) {
+                JOptionPane.showMessageDialog(this, "Personal health number (PHN) must be 9-digits!", "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                return 0;
+            }
             return Long.parseLong(phn);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid personal health number (PHN) format!", "Error", 

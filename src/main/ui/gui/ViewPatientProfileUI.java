@@ -23,6 +23,9 @@ public class ViewPatientProfileUI extends JPanel {
     private JPanel mainContainerPanel;
     private JPanel contentPanel;
     private JLabel patientImageLabel;
+    private JPanel buttonPanel;
+    private JButton newNoteButton;
+    private JButton deletePatientButton;
 
     // EFFECTS: Constructs a view patient profile UI JPanel displaying details of a specific patient
     public ViewPatientProfileUI(MainUI parent, Clinic clinic, Patient patient) {
@@ -39,11 +42,13 @@ public class ViewPatientProfileUI extends JPanel {
         addPatientImage();
         addPatientInfo();
         addClinicalNotes();
+        addButtonPanel();
 
         JScrollPane scrollPane = new JScrollPane(mainContainerPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
         
         add(navBar, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
@@ -161,20 +166,22 @@ public class ViewPatientProfileUI extends JPanel {
 
         JLabel titleLabel = new JLabel(note.getClinicalNoteTitle());
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel dateLabel = new JLabel(note.getClinicalNoteDate().printDate());
-        dateLabel.setFont(new Font("Arial", Font.ITALIC, 20));
+        dateLabel.setFont(new Font("Arial", Font.ITALIC, 18));
+        dateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel providerLabel = new JLabel(note.getClinicalNoteProvider());
-        providerLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        providerLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        providerLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JLabel bodyLabel = new JLabel(note.getClinicalNoteBody());
-        bodyLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        JTextArea bodyTextArea = createTextAreaBody(note);
 
         notePanel.add(titleLabel);
         notePanel.add(dateLabel);
         notePanel.add(providerLabel);
-        notePanel.add(bodyLabel);
+        notePanel.add(bodyTextArea);
         return notePanel;
     }
 
@@ -191,6 +198,98 @@ public class ViewPatientProfileUI extends JPanel {
         notePanel.setMaximumSize(new Dimension(1000, 1000));
         notePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         return notePanel;
+    }
+
+    // EFFECTS: Creates a JTextArea for the clinical note body
+    public JTextArea createTextAreaBody(ClinicalNote note) {
+        JTextArea bodyTextArea = new JTextArea(note.getClinicalNoteBody());
+        bodyTextArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        bodyTextArea.setWrapStyleWord(true);
+        bodyTextArea.setLineWrap(true);
+        bodyTextArea.setEditable(false);
+        bodyTextArea.setAlignmentX(Component.LEFT_ALIGNMENT);
+        return bodyTextArea;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates a button panel containing the delete patient and new clinical note buttons
+    private void addButtonPanel() {
+        buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.setBackground(Color.WHITE);
+
+        newNoteButton = new JButton("New Clinical Note");
+        styleButtonNewNote(newNoteButton);
+        deletePatientButton = new JButton("Remove Patient");
+        styleButtonDelete(deletePatientButton);
+
+        buttonPanel.add(newNoteButton);
+        buttonPanel.add(deletePatientButton);
+        contentPanel.add(buttonPanel);
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add styling to the new clinical note button
+    public void styleButtonNewNote(JButton button) {
+        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setPreferredSize(new Dimension(500, 50));
+        button.setMaximumSize(new Dimension(500, 50));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBackground(new Color(70, 10, 70));
+        button.setForeground(Color.WHITE);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.setFocusable(false);
+
+        addButtonEffectsAdd(button);
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add styling to the delete patient button
+    public void styleButtonDelete(JButton button) {
+        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setPreferredSize(new Dimension(500, 50));
+        button.setMaximumSize(new Dimension(500, 50));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBackground(new Color(170, 50, 60));
+        button.setForeground(Color.WHITE);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.setFocusable(false);
+
+        addButtonEffectsDelete(button);
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add hover effects to the button
+    public void addButtonEffectsAdd(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(90, 40, 90));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(70, 10, 70));
+            }
+        });
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add hover effects to the button
+    public void addButtonEffectsDelete(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(170, 70, 90));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(170, 50, 60));
+            }
+        });
     }
     
 }

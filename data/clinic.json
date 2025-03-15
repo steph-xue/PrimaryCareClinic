@@ -30,7 +30,7 @@
                         "day": 16
                     },
                     "title": "Coughing",
-                    "body": "Patient presenting with severe cough"
+                    "body": "Patient reports a persistent, severe cough lasting several days, sometimes accompanied by chest discomfort and phlegm production. They deny fever, chills, or hemoptysis but note occasional shortness of breath. Assessment will focus on ruling out respiratory infections, bronchitis, asthma exacerbation, or possible GERD-related cough."
                 },
                 {
                     "provider": "Dr. Singh",
@@ -40,7 +40,7 @@
                         "day": 20
                     },
                     "title": "Ear infection",
-                    "body": "Patient presenting with infected ear"
+                    "body": "Patient complains of ear pain, redness, and swelling, with possible drainage from the ear canal. Hearing appears slightly diminished on the affected side, and they report recent swimming activity. Otoscopic examination will determine if the infection is otitis externa or otitis media, with antibiotic treatment considered if bacterial involvement is suspected."
                 }
             ],
             "age": 59,
@@ -76,7 +76,7 @@
                         "day": 10
                     },
                     "title": "Constipation",
-                    "body": "Patient presenting with severe constipation"
+                    "body": "Patient reports infrequent, difficult bowel movements over the past week, accompanied by bloating and abdominal discomfort. They have a low fiber intake and limited water consumption but deny nausea, vomiting, or blood in the stool. Management will focus on increasing fiber, hydration, and possibly a short-term laxative if needed."
                 },
                 {
                     "provider": "Dr. Kaur",
@@ -86,7 +86,7 @@
                         "day": 15
                     },
                     "title": "Urinary tract infection",
-                    "body": "Patient presenting with bladder infection"
+                    "body": "Patient describes dysuria, frequent urination, and mild lower abdominal discomfort over the past few days. They deny fever or flank pain, but urinalysis will be performed to confirm a urinary tract infection (UTI). If bacterial, appropriate antibiotic therapy will be initiated, with counseling on hydration and UTI prevention."
                 }
             ],
             "age": 56,
@@ -121,7 +121,7 @@
                         "day": 18
                     },
                     "title": "Eye infection",
-                    "body": "Patient has eye infection"
+                    "body": "Patient reports redness, irritation, and discharge in one eye, with mild crusting upon waking. There is no history of trauma, but they have had recent exposure to someone with conjunctivitis. Examination will determine if the cause is bacterial, viral, or allergic, guiding appropriate treatment."
                 },
                 {
                     "provider": "Dr. Jones",
@@ -131,7 +131,7 @@
                         "day": 12
                     },
                     "title": "Skin rash",
-                    "body": "Patient presenting with skin rash"
+                    "body": "Patient presents with an itchy, red rash that has been spreading over the past few days. They deny recent exposure to new skincare products or known allergens, but mild swelling is present. Assessment will focus on ruling out dermatitis, fungal infection, or allergic reaction, with symptomatic relief options considered."
                 }
             ],
             "age": 49,
@@ -166,7 +166,7 @@
                         "day": 18
                     },
                     "title": "Allergic rhinitis",
-                    "body": "Patient presenting with nasal congestion"
+                    "body": "Patient complains of persistent nasal congestion, postnasal drip, and occasional sneezing, worsening over the past week. Symptoms suggest a viral upper respiratory infection or allergic rhinitis, as there is no fever or sinus pain. Management will include saline nasal irrigation, antihistamines, or decongestants as appropriate."
                 },
                 {
                     "provider": "Dr. Young",
@@ -176,7 +176,7 @@
                         "day": 12
                     },
                     "title": "Cold sore",
-                    "body": "Patient presenting with new cold sore"
+                    "body": "Patient reports a painful blister on the lower lip that appeared two days ago, with a tingling sensation before its onset. They have a history of occasional cold sores, often triggered by stress or illness. Treatment will focus on symptomatic relief and antiviral therapy if initiated early."
                 }
             ],
             "age": 54,
@@ -212,7 +212,7 @@
                         "day": 3
                     },
                     "title": "Asthma exacerbation",
-                    "body": "Patient presenting with shortness of breath and wheezing"
+                    "body": "Patient reports intermittent shortness of breath and wheezing, particularly at night and during physical activity. There is a history of mild asthma but no recent respiratory infections. Examination and spirometry testing will determine if an asthma exacerbation or another respiratory condition is present, guiding bronchodilator or corticosteroid therapy."
                 },
                 {
                     "provider": "Dr. Nguyen",
@@ -222,7 +222,7 @@
                         "day": 10
                     },
                     "title": "Heartburn",
-                    "body": "Patient presenting with burning sensation in the chest after eating and at night"
+                    "body": "Patient describes recurrent heartburn and a burning sensation in the chest, often occurring after meals and worsening when lying down. Symptoms are consistent with gastroesophageal reflux disease (GERD), especially given a diet high in acidic or spicy foods. Management will include dietary modifications, avoiding late-night meals, and possibly a trial of acid-suppressing medication."
                 }
             ],
             "age": 36,
@@ -258,7 +258,7 @@
                         "day": 25
                     },
                     "title": "Acne",
-                    "body": "Patient presenting inflammatory acne and comedonal acne"
+                    "body": "Patient presents with multiple inflamed pimples, blackheads, and whiteheads primarily on the face, with occasional cystic breakouts. They have tried over-the-counter treatments with minimal improvement. A tailored skincare regimen, including topical retinoids or benzoyl peroxide, will be recommended, with consideration of oral medication for severe cases."
                 },
                 {
                     "provider": "Dr. Harris",
@@ -268,7 +268,7 @@
                         "day": 1
                     },
                     "title": "Eczema",
-                    "body": "Patient presenting with flare up of eczema"
+                    "body": "Patient complains of an itchy, red, and dry patch of skin, consistent with a flare-up of known eczema. They report increased irritation due to cold weather and frequent handwashing. Treatment will focus on emollients, topical corticosteroids, and avoiding known triggers to manage symptoms effectively."
                 }
             ],
             "age": 25,
