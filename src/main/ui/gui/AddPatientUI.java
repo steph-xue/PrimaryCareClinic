@@ -268,6 +268,9 @@ public class AddPatientUI extends JPanel {
     // and lists once patient is successfully added with a success message
     public void addPatient(String firstName, String lastName, Date parsedDateOfBirth, int parsedAge, 
             long parsedPersonalHealthNumber) {
+                
+        firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
+        lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
 
         Patient newPatient = new Patient(firstName, lastName, parsedDateOfBirth, parsedAge,
                 parsedPersonalHealthNumber);

@@ -24,6 +24,7 @@ public class ViewPatientProfileUI extends JPanel {
     private JPanel contentPanel;
     private JLabel patientImageLabel;
     private JPanel buttonPanel;
+    private JScrollPane scrollPane;
     private JButton newNoteButton;
     private JButton deletePatientButton;
 
@@ -43,15 +44,12 @@ public class ViewPatientProfileUI extends JPanel {
         addPatientInfo();
         addClinicalNotes();
         addButtonPanel();
-
-        JScrollPane scrollPane = new JScrollPane(mainContainerPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(null);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        addScrollBar();
         
         add(navBar, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
+
+        SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition(new Point(0, 0)));
     }
 
     // MODIFIES: this
@@ -226,6 +224,16 @@ public class ViewPatientProfileUI extends JPanel {
         buttonPanel.add(newNoteButton);
         buttonPanel.add(deletePatientButton);
         contentPanel.add(buttonPanel);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates and styles a scrolling pane for the user profile
+    public void addScrollBar() {
+        scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 
     // MODIFIES: button
