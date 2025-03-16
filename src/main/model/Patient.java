@@ -26,10 +26,10 @@ public class Patient implements Writable {
     // EFFECTS: constructs a new record for a patient with their first name, last name, DOB, age, PHN, and an empty
     // list of current allergies, medications, medical conditions, and clinical notes
     public Patient(String firstName, String lastName, Date dateOfBirth, int age, long personalHealthNumber) {
-        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
         this.firstName = firstNameCapitalized;
 
-        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
         this.lastName = lastNameCapitalized;
 
         this.dateOfBirth = dateOfBirth;
@@ -304,14 +304,14 @@ public class Patient implements Writable {
     // MODIFIES: this
     // EFFECTS: sets the patient's first name to a new given first name
     public void setFirstName(String firstName) {
-        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+        String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
         this.firstName = firstNameCapitalized;
     }
 
     // MODIFIES: this
     // EFFECTS: sets the patient's last name to a new given last name
     public void setLastName(String lastName) {
-        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+        String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
         this.lastName = lastNameCapitalized;
     }
 
