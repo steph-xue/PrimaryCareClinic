@@ -264,7 +264,8 @@ public class AddPatientUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Adds new patient to the clinic with user inputed information
+    // EFFECTS: Adds new patient to the clinic with user inputed information and clears all fields
+    // and lists once patient is successfully added with a success message
     public void addPatient(String firstName, String lastName, Date parsedDateOfBirth, int parsedAge, 
             long parsedPersonalHealthNumber) {
 
@@ -272,6 +273,7 @@ public class AddPatientUI extends JPanel {
                 parsedPersonalHealthNumber);
         addPatientListData(newPatient);
         clinic.addPatient(newPatient);
+        clearFields();
 
         JOptionPane.showMessageDialog(
                     this,
@@ -297,6 +299,22 @@ public class AddPatientUI extends JPanel {
         for (String medicalCondition: currentMedicalConditionsList) {
             newPatient.addMedicalCondition(medicalCondition);
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Clears all user input fields and resets all lists
+    public void clearFields() {
+        firstNameField.setText("");
+        lastNameField.setText("");
+        dateOfBirthField.setText("");
+        ageField.setText("");
+        phnField.setText("");
+        currentAllergiesList.clear();
+        currentMedicationsList.clear();
+        currentMedicalConditionsList.clear();
+        currentAllergiesLabel.setText("None");
+        currentMedicationsLabel.setText("None");
+        currentMedicalConditionsLabel.setText("None");
     }
 
     // MODIFIES: button
