@@ -234,6 +234,12 @@ public class MainUI extends JFrame {
         mainPanel.add(viewPatientProfileScreen, "patient");
         cardLayout.show(mainPanel, "patient");
     }
+
+    // MODIFIES: this, patient
+    // EFFECTS: Displays AddClinicalNoteUI which allows the user to create a new clinic note for the patient
+    public void addClinicalNote(Patient p) {
+        System.out.println("Adding new note");
+    }
     
     // EFFECTS: Runs the main application 
     public static void main(String[] args) {

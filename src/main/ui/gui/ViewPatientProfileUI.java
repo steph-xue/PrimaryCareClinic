@@ -218,8 +218,11 @@ public class ViewPatientProfileUI extends JPanel {
 
         newNoteButton = new JButton("New Clinical Note");
         styleButtonNewNote(newNoteButton);
+        newNoteButton.addActionListener(e -> parent.addClinicalNote(patient));
+
         deletePatientButton = new JButton("Remove Patient");
         styleButtonDelete(deletePatientButton);
+        deletePatientButton.addActionListener(e -> removePatient());
 
         buttonPanel.add(newNoteButton);
         buttonPanel.add(deletePatientButton);
@@ -234,6 +237,14 @@ public class ViewPatientProfileUI extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setBorder(null);
         scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Removes patient from the clinic and redirects user to the view patients screen
+    public void removePatient() {
+        clinic.removePatient(patient);
+        parent.getViewPatientsScreen().loadPatients();
+        parent.showViewPatientsScreen();
     }
 
     // MODIFIES: button
