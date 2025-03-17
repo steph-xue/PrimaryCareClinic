@@ -42,6 +42,7 @@ public class MainUI extends JFrame {
     private AddPatientUI addPatientScreen;
     private SaveQuitUI saveQuitScreen;
     private ViewPatientProfileUI viewPatientProfileScreen;
+    private AddClinicalNoteUI addClinicaNoteScreen;
 
     // EFFECTS: Constructs the main application UI JFrame
     public MainUI() {
@@ -235,10 +236,12 @@ public class MainUI extends JFrame {
         cardLayout.show(mainPanel, "patient");
     }
 
-    // MODIFIES: this, patient
-    // EFFECTS: Displays AddClinicalNoteUI which allows the user to create a new clinic note for the patient
+    // MODIFIES: this
+    // EFFECTS: Displays AddClinicalNoteUI which allows the user to create and add a new clinic note for the patient
     public void addClinicalNote(Patient p) {
-        System.out.println("Adding new note");
+        addClinicaNoteScreen = new AddClinicalNoteUI(this, clinic, p);
+        mainPanel.add(addClinicaNoteScreen, "note");
+        cardLayout.show(mainPanel, "note");
     }
     
     // EFFECTS: Runs the main application 
