@@ -135,8 +135,7 @@ public class ViewPatientProfileUI extends JPanel {
         addClinicalNoteTitle();
 
         if (patient.getClinicalNotes().isEmpty() || patient.getClinicalNotes() == null) {
-            JLabel noNotesLabel = new JLabel("No clinical notes avaliable");
-            noNotesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+            JLabel noNotesLabel = createNoNotesLabel();
             contentPanel.add(noNotesLabel);
         } else {
             for (ClinicalNote note: patient.getClinicalNotes()) {
@@ -155,6 +154,15 @@ public class ViewPatientProfileUI extends JPanel {
         notesTitle.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         notesTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         contentPanel.add(notesTitle);
+    }
+
+    // EFFECTS: Creates a no clinical notes label to add to contentPanel
+    public JLabel createNoNotesLabel() {
+        JLabel noNotesLabel = new JLabel("No clinical notes avaliable");
+        noNotesLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        noNotesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        noNotesLabel.setBorder(BorderFactory.createEmptyBorder(20, 10, 60, 10));
+        return noNotesLabel;
     }
 
     // MODIFIES: this
