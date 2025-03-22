@@ -181,7 +181,7 @@ public class AddPatientUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: Add create button to add a new patient to the clinic
     public void createAddButton() {
-        addButton = new JButton("Add new patient");
+        addButton = new JButton("Add New Patient");
         styleButton(addButton);
         addButton.addActionListener(e -> createNewPatient());
     }

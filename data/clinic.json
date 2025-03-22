@@ -73,7 +73,7 @@
                     "visitdate": {
                         "month": 1,
                         "year": 2025,
-                        "day": 15
+                        "day": 10
                     },
                     "title": "Constipation",
                     "body": "Patient reports infrequent, difficult bowel movements over the past week, accompanied by bloating and abdominal discomfort. They have a low fiber intake and limited water consumption but deny nausea, vomiting, or blood in the stool. Management will focus on increasing fiber, hydration, and possibly a short-term laxative if needed."
@@ -83,7 +83,7 @@
                     "visitdate": {
                         "month": 2,
                         "year": 2025,
-                        "day": 10
+                        "day": 15
                     },
                     "title": "Urinary tract infection",
                     "body": "Patient describes dysuria, frequent urination, and mild lower abdominal discomfort over the past few days. They deny fever or flank pain, but urinalysis will be performed to confirm a urinary tract infection (UTI). If bacterial, appropriate antibiotic therapy will be initiated, with counseling on hydration and UTI prevention."
@@ -110,15 +110,15 @@
             "firstname": "Amira",
             "medications": [
                 "rosuvastatin",
-                "bisoprolol"
+                "amlodipine"
             ],
             "clinicalnotes": [
                 {
                     "provider": "Dr. Williams",
                     "visitdate": {
-                        "month": 2,
+                        "month": 1,
                         "year": 2025,
-                        "day": 12
+                        "day": 18
                     },
                     "title": "Eye infection",
                     "body": "Patient reports redness, irritation, and discharge in one eye, with mild crusting upon waking. There is no history of trauma, but they have had recent exposure to someone with conjunctivitis. Examination will determine if the cause is bacterial, viral, or allergic, guiding appropriate treatment."
@@ -126,9 +126,9 @@
                 {
                     "provider": "Dr. Jones",
                     "visitdate": {
-                        "month": 1,
+                        "month": 2,
                         "year": 2025,
-                        "day": 18
+                        "day": 8
                     },
                     "title": "Skin rash",
                     "body": "Patient presents with an itchy, red rash that has been spreading over the past few days. They deny recent exposure to new skincare products or known allergens, but mild swelling is present. Assessment will focus on ruling out dermatitis, fungal infection, or allergic reaction, with symptomatic relief options considered."
@@ -161,9 +161,9 @@
                 {
                     "provider": "Dr. Rodriguez",
                     "visitdate": {
-                        "month": 2,
+                        "month": 1,
                         "year": 2025,
-                        "day": 28
+                        "day": 4
                     },
                     "title": "Allergic rhinitis",
                     "body": "Patient complains of persistent nasal congestion, postnasal drip, and occasional sneezing, worsening over the past week. Symptoms suggest a viral upper respiratory infection or allergic rhinitis, as there is no fever or sinus pain. Management will include saline nasal irrigation, antihistamines, or decongestants as appropriate."
@@ -171,9 +171,9 @@
                 {
                     "provider": "Dr. Young",
                     "visitdate": {
-                        "month": 1,
+                        "month": 2,
                         "year": 2025,
-                        "day": 4
+                        "day": 28
                     },
                     "title": "Cold sore",
                     "body": "Patient reports a painful blister on the lower lip that appeared two days ago, with a tingling sensation before its onset. They have a history of occasional cold sores, often triggered by stress or illness. Treatment will focus on symptomatic relief and antiviral therapy if initiated early."
@@ -209,7 +209,7 @@
                     "visitdate": {
                         "month": 3,
                         "year": 2025,
-                        "day": 10
+                        "day": 3
                     },
                     "title": "Asthma exacerbation",
                     "body": "Patient reports intermittent shortness of breath and wheezing, particularly at night and during physical activity. There is a history of mild asthma but no recent respiratory infections. Examination and spirometry testing will determine if an asthma exacerbation or another respiratory condition is present, guiding bronchodilator or corticosteroid therapy."
@@ -219,7 +219,7 @@
                     "visitdate": {
                         "month": 3,
                         "year": 2025,
-                        "day": 3
+                        "day": 10
                     },
                     "title": "Heartburn",
                     "body": "Patient describes recurrent heartburn and a burning sensation in the chest, often occurring after meals and worsening when lying down. Symptoms are consistent with gastroesophageal reflux disease (GERD), especially given a diet high in acidic or spicy foods. Management will include dietary modifications, avoiding late-night meals, and possibly a trial of acid-suppressing medication."
@@ -246,16 +246,16 @@
             ],
             "firstname": "Sophia",
             "medications": [
-                "sertraline",
-                "loratadine"
+                "cetirizine",
+                "sertraline"
             ],
             "clinicalnotes": [
                 {
                     "provider": "Dr. Martinez",
                     "visitdate": {
-                        "month": 3,
+                        "month": 2,
                         "year": 2025,
-                        "day": 1
+                        "day": 25
                     },
                     "title": "Acne",
                     "body": "Patient presents with multiple inflamed pimples, blackheads, and whiteheads primarily on the face, with occasional cystic breakouts. They have tried over-the-counter treatments with minimal improvement. A tailored skincare regimen, including topical retinoids or benzoyl peroxide, will be recommended, with consideration of oral medication for severe cases."
@@ -263,9 +263,9 @@
                 {
                     "provider": "Dr. Harris",
                     "visitdate": {
-                        "month": 2,
+                        "month": 3,
                         "year": 2025,
-                        "day": 25
+                        "day": 5
                     },
                     "title": "Eczema",
                     "body": "Patient complains of an itchy, red, and dry patch of skin, consistent with a flare-up of known eczema. They report increased irritation due to cold weather and frequent handwashing. Treatment will focus on emollients, topical corticosteroids, and avoiding known triggers to manage symptoms effectively."
@@ -273,6 +273,187 @@
             ],
             "age": 25,
             "lastname": "Lee"
+        },
+        {
+            "allergies": [
+                "clindamycin",
+                "amoxicillin"
+            ],
+            "dateofbirth": {
+                "month": 6,
+                "year": 1994,
+                "day": 14
+            },
+            "personalhealthnumber": 909821633,
+            "medicalconditions": [
+                "allergic rhinitis",
+                "hypothyroidism"
+            ],
+            "firstname": "Leo",
+            "medications": [
+                "loratadine",
+                "levothyroxine"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Kappor",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 18
+                    },
+                    "title": "Fever and sore throat",
+                    "body": "Patient reports a sore throat, low-grade fever, and fatigue over the past three days. Examination reveals mild pharyngeal erythema without exudates. Rapid strep test is negative. Diagnosis is viral pharyngitis. Supportive care with fluids, rest, and analgesics recommended."
+                },
+                {
+                    "provider": "Dr. Chen",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 24
+                    },
+                    "title": "Lower back pain",
+                    "body": "Patient complains of persistent lower back pain after lifting heavy boxes last weekend. No radiation or neurological deficits noted. Muscular strain suspected. Plan includes rest, NSAIDs for pain, and stretching exercises. Will follow up if no improvement in 7 days."
+                }
+            ],
+            "age": 37,
+            "lastname": "Lin"
+        }, 
+        {
+            "allergies": [
+                "codeine",
+                "metronidazole",
+                "lidocaine"
+            ],
+            "dateofbirth": {
+                "month": 10,
+                "year": 1987,
+                "day": 27
+            },
+            "personalhealthnumber": 946846634,
+            "medicalconditions": [
+                "gastroesophageal reflux disease",
+                "anxiety"
+            ],
+            "firstname": "Freya",
+            "medications": [
+                "omeprazole",
+                "lorazepam"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Ibrahim",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 16
+                    },
+                    "title": "Knee injury",
+                    "body": "Patient reports right knee pain and swelling following a soccer game two days ago. No locking or instability reported. Exam reveals mild joint effusion and tenderness. Likely soft tissue strain. Conservative management with RICE, NSAIDs, and activity modification advised."
+                },
+                {
+                    "provider": "Dr. Nguyen",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 21
+                    },
+                    "title": "Heartburn",
+                    "body": "Patient presents with frequent heartburn and acid regurgitation, especially after meals. Symptoms suggestive of GERD. Recommended lifestyle modifications including weight management and elevating head of bed. Will start trial of proton pump inhibitor (PPI) for symptom control."
+                }
+            ],
+            "age": 54,
+            "lastname": "Kwon"
+        },
+        {
+            "allergies": [
+                "tetracycline",
+                "trimethoprim"
+            ],
+            "dateofbirth": {
+                "month": 11,
+                "year": 1973,
+                "day": 24
+            },
+            "personalhealthnumber": 911846264,
+            "medicalconditions": [
+                "hypertension",
+                "chronic lower back pain"
+            ],
+            "firstname": "Nora",
+            "medications": [
+                "lisinopril",
+                "acetaminophen"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Kim",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 26
+                    },
+                    "title": "Cerumen impaction",
+                    "body": "Patient presents with left ear discomfort and muffled hearing for 3 days. Otoscopic exam reveals cerumen impaction. No signs of infection or perforation. Plan includes manual removal with irrigation and follow-up if symptoms persist or worsen."
+                },
+                {
+                    "provider": "Dr. Brooks",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 12
+                    },
+                    "title": "Dyspepsia",
+                    "body": "Patient reports sharp epigastric pain aggravated by meals. No vomiting or GI bleeding. Exam reveals mild tenderness in upper abdomen. Suspected gastritis. Started on proton pump inhibitor and advised dietary modifications. Will reassess in 2 weeks."
+                }
+            ],
+            "age": 51,
+            "lastname": "Wilson"
+        },
+        {
+            "allergies": [
+                "aspirin",
+                "clindamycin"
+            ],
+            "dateofbirth": {
+                "month": 5,
+                "year": 2002,
+                "day": 3
+            },
+            "personalhealthnumber": 958244214,
+            "medicalconditions": [
+                "migraines",
+                "iron-deficiency anemia"
+            ],
+            "firstname": "Jasmine",
+            "medications": [
+                "sumatriptan",
+                "ferrous sulfate"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Patel",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 5
+                    },
+                    "title": "Acute migraine flare-up",
+                    "body": "Patient reports onset of a unilateral throbbing headache with nausea and light sensitivity lasting several hours. No aura or neurological symptoms. History of migraines noted. Took sumatriptan with partial relief. Advised rest in dark room and to monitor frequency."
+                },
+                {
+                    "provider": "Dr. Hassan",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 11
+                    },
+                    "title": "Iron Supplementation – Anemia Management",
+                    "body": "Patient reports improved energy levels since starting ferrous sulfate. Mild GI discomfort noted but tolerable. Hemoglobin trending upward. Plan to continue current dose and recheck CBC in 4 weeks to assess further response."
+                }
+            ],
+            "age": 22,
+            "lastname": "Park"
         }
     ],
     "name": "Medicare Clinic"

@@ -9,6 +9,8 @@ import model.ClinicalNote;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Collections;
 
 // Image References
 // Patient image images/patient.jpg retrieved from https://www.istockphoto.com/vector/patient-icon-vector-of-
@@ -138,7 +140,9 @@ public class ViewPatientProfileUI extends JPanel {
             JLabel noNotesLabel = createNoNotesLabel();
             contentPanel.add(noNotesLabel);
         } else {
-            for (ClinicalNote note: patient.getClinicalNotes()) {
+            List<ClinicalNote> notes = patient.getClinicalNotes();
+            Collections.reverse(notes);
+            for (ClinicalNote note: notes) {
                 contentPanel.add(createClinicalNoteBox(note));
                 contentPanel.add(Box.createRigidArea(new Dimension(0, 10)));
             }

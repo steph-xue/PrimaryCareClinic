@@ -1,6 +1,7 @@
 package ui.gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import model.Clinic;
 import model.ClinicalNote;
@@ -27,8 +28,8 @@ public class AddClinicalNoteUI extends JPanel {
     private JPanel contentPanel;
     private JTextField titleField;
     private JTextField providerField;
-    private JTextField bodyField;
-    private JButton addButton;
+    private JTextArea bodyField;
+    private JPanel addButtonPanel;
 
     // Constructs an add clinical note UI JPanel with a navigation bar to add a new clinical note to the clinic 
     public AddClinicalNoteUI(MainUI parent, Clinic clinic, Patient patient) {
@@ -44,7 +45,7 @@ public class AddClinicalNoteUI extends JPanel {
         addFormFields();
         createAddButton();
         contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
-        contentPanel.add(addButton);
+        contentPanel.add(addButtonPanel);
 
         mainContainerPanel.add(contentPanel);
         add(navBar, BorderLayout.NORTH);
@@ -71,33 +72,47 @@ public class AddClinicalNoteUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: Add form fields for user input
     public void addFormFields() {
-        titleField = createStyledTextField();
-        addFormField("Title: ", titleField);
-        providerField = createStyledTextField();
-        addFormField("Healthcare Provider: ", providerField);
-        bodyField = createStyledTextFieldLarge();
-        addFormField("Note Details: ", bodyField);
+        titleField = createStyledTextFieldTitle();
+        addFormField("Title:         ", titleField);
+        providerField = createStyledTextFieldProvider();
+        addFormField("Provider:  ", providerField);
+        bodyField = createStyledTextAreaBody();
+        addFormField("Body:       ", bodyField);
     }
 
-    // EFFECTS: Create styled text input field
-    public JTextField createStyledTextField() {
-        JTextField textfield = new JTextField(20);
+    // EFFECTS: Create styled text input field for title
+    public JTextField createStyledTextFieldTitle() {
+        JTextField textfield = new JTextField(35);
         textfield.setFont(new Font("Arial", Font.PLAIN, 18));
-        textfield.setPreferredSize(new Dimension(300, 35));
+        Border outer = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+        Border inner = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        textfield.setBorder(BorderFactory.createCompoundBorder(outer, inner));
         return textfield;
     }
 
-    // EFFECTS: Create large styled text input field
-    public JTextField createStyledTextFieldLarge() {
-        JTextField textfield = new JTextField(20);
+    // EFFECTS: Create styled text input field for provider
+    public JTextField createStyledTextFieldProvider() {
+        JTextField textfield = new JTextField(35);
         textfield.setFont(new Font("Arial", Font.PLAIN, 18));
-        textfield.setPreferredSize(new Dimension(300, 100));
+        Border outer = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+        Border inner = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        textfield.setBorder(BorderFactory.createCompoundBorder(outer, inner));
         return textfield;
+    }
+
+    // EFFECTS: Create styled text area field for body
+    public JTextArea createStyledTextAreaBody() {
+        JTextArea textArea = new JTextArea(15, 35);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        Border outer = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+        Border inner = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        textArea.setBorder(BorderFactory.createCompoundBorder(outer, inner));
+        return textArea;
     }
 
     // MODIFIES: this
     // EFFECTS: Add a label and text field for each form field
-    public void addFormField(String text, JTextField textField) {
+    public void addFormField(String text, JComponent textField) {
         JPanel panel = new JPanel(); 
         panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
         panel.setBackground(Color.WHITE);
@@ -115,9 +130,15 @@ public class AddClinicalNoteUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: Add create button to add a new clinical note for the patient
     public void createAddButton() {
-        addButton = new JButton("Create new clinical note");
+        JButton addButton = new JButton("Create New Clinical Note");
         styleButton(addButton);
         addButton.addActionListener(e -> createNewClinicalNote());
+
+        addButtonPanel = new JPanel();
+        addButtonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        addButtonPanel.setBackground(Color.WHITE);
+        addButtonPanel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));
+        addButtonPanel.add(addButton);
     }
 
     // EFFECTS: Create new clinical note object to add to the patient
