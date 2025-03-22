@@ -16,6 +16,8 @@ import java.util.Collections;
 // Image References
 // Patient image images/patient.jpg retrieved from https://www.istockphoto.com/vector/patient-icon-vector-of-
 // male-person-profile-avatar-symbol-for-medical-treatment-in-gm1147248235-309382448
+// Edit image images/edit.png retrieved from https://www.veryicon.com/icons/miscellaneous/linear-small-icon/
+// edit-246.html
 
 // ViewPatientProfileUI displays details of a specific patient profile
 public class ViewPatientProfileUI extends JPanel {
@@ -157,11 +159,11 @@ public class ViewPatientProfileUI extends JPanel {
     public void addEditActionListener(JButton editButton, String header, String fieldName, JLabel dataLabel) {
         editButton.addActionListener(e -> {
             String newValue = (String) JOptionPane.showInputDialog(
-                this, 
-                "Enter new " + header.substring(0, header.length() - 2) + ": ",
-                "Edit",
-                JOptionPane.DEFAULT_OPTION, 
-                new ImageIcon("images/health.jpg"), null, null
+                    this, 
+                    "Enter new " + header.substring(0, header.length() - 2) + ": ",
+                    "Edit",
+                    JOptionPane.DEFAULT_OPTION, 
+                    new ImageIcon("images/health.jpg"), null, null
             );
 
             if (newValue != null && !newValue.trim().isEmpty()) {
@@ -173,7 +175,7 @@ public class ViewPatientProfileUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: update patient information with user inputed edits based on the field selected
     public void updatePatientField(String key, String value,  JLabel dataLabel) {
-        switch(key) {
+        switch (key) {
             case "firstName":
                 patient.setFirstName(value);
                 dataLabel.setText(patient.getFirstName());
@@ -320,27 +322,19 @@ public class ViewPatientProfileUI extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: Creates a clinical note box with all note data to add to contentPanel
+    // with editing buttons (title, provider, body) and a delete clinical note button
     public JPanel createClinicalNoteBox(ClinicalNote note) {
         JPanel notePanel = createNotePanel();
 
-        JLabel titleLabel = new JLabel(note.getClinicalNoteTitle());
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JPanel titlePanel = createNoteTitlePanel(note);
+        JPanel datePanel = createNoteDatePanel(note);
+        JPanel providerPanel = createNoteProviderPanel(note);
+        JPanel bodyPanel = createNoteBodyPanel(note);
 
-        JLabel dateLabel = new JLabel(note.getClinicalNoteDate().printDate());
-        dateLabel.setFont(new Font("Arial", Font.ITALIC, 18));
-        dateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        JLabel providerLabel = new JLabel(note.getClinicalNoteProvider());
-        providerLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        providerLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        JTextArea bodyTextArea = createTextAreaBody(note);
-
-        notePanel.add(titleLabel);
-        notePanel.add(dateLabel);
-        notePanel.add(providerLabel);
-        notePanel.add(bodyTextArea);
+        notePanel.add(titlePanel);
+        notePanel.add(datePanel);
+        notePanel.add(providerPanel);
+        notePanel.add(bodyPanel);
         return notePanel;
     }
 
@@ -359,6 +353,68 @@ public class ViewPatientProfileUI extends JPanel {
         return notePanel;
     }
 
+    // EFFECTS: Creates a clinical note title panel with styling and an editing button 
+    public JPanel createNoteTitlePanel(ClinicalNote note) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JLabel titleLabel = new JLabel(note.getClinicalNoteTitle());
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JButton editButton = createEditNoteButton(note, "title", titleLabel);
+
+        panel.add(titleLabel);
+        panel.add(editButton);
+        return panel;
+    }
+
+    // EFFECTS: Creates a clinical note date panel with styling and an editing button 
+    public JPanel createNoteDatePanel(ClinicalNote note) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JLabel dateLabel = new JLabel(note.getClinicalNoteDate().printDate());
+        dateLabel.setFont(new Font("Arial", Font.ITALIC, 18));
+        dateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        panel.add(dateLabel);
+        return panel;
+    }
+
+    // EFFECTS: Creates a clinical note provider panel with styling and an editing button 
+    public JPanel createNoteProviderPanel(ClinicalNote note) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JLabel providerLabel = new JLabel(note.getClinicalNoteProvider());
+        providerLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        providerLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JButton editButton = createEditNoteButton(note, "provider", providerLabel);
+
+        panel.add(providerLabel);
+        panel.add(editButton);
+        return panel;
+    }
+
+    // EFFECTS: Creates a clinical note body panel with styling and an editing button 
+    public JPanel createNoteBodyPanel(ClinicalNote note) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.WHITE);
+
+        JTextArea bodyTextArea = createTextAreaBody(note);
+        JButton editButton = createEditNoteButton(note, "body", bodyTextArea);
+
+        panel.add(bodyTextArea, BorderLayout.CENTER);
+        panel.add(editButton, BorderLayout.EAST);
+        return panel;
+    }
+
     // EFFECTS: Creates a JTextArea for the clinical note body
     public JTextArea createTextAreaBody(ClinicalNote note) {
         JTextArea bodyTextArea = new JTextArea(note.getClinicalNoteBody());
@@ -368,6 +424,60 @@ public class ViewPatientProfileUI extends JPanel {
         bodyTextArea.setEditable(false);
         bodyTextArea.setAlignmentX(Component.LEFT_ALIGNMENT);
         return bodyTextArea;
+    }
+
+    // EFFECTS: Create and style editing button for each of the clinical note fields that allows the user
+    // to edit the selected field
+    public JButton createEditNoteButton(ClinicalNote note, String fieldName, JComponent dataComponent) {
+        JButton editButton = new JButton();
+        ImageIcon editIcon = new ImageIcon("images/edit.png");
+        Image scaledImage = editIcon.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        editButton.setIcon(new ImageIcon(scaledImage));
+        editButton.setPreferredSize(new Dimension(15, 15));
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setFocusPainted(false);
+
+        addEditNoteActionListener(note, editButton, fieldName, dataComponent);
+
+        return editButton;
+    }
+
+    // EFFECTS: Add action listener to edit button to allow the user to edit the selected field
+    public void addEditNoteActionListener(ClinicalNote note, JButton editButton, String fieldName, 
+            JComponent dataComponent) {
+        editButton.addActionListener(e -> {
+            String newValue = (String) JOptionPane.showInputDialog(
+                    this, 
+                    "Enter new " + fieldName + ": ",
+                    "Edit",
+                    JOptionPane.DEFAULT_OPTION, 
+                    new ImageIcon("images/health.jpg"), null, null
+            );
+
+            if (newValue != null && !newValue.trim().isEmpty()) {
+                updateNoteField(note, fieldName, newValue.trim(), dataComponent);
+            }
+        });
+    }
+
+    // MODIFIES: this
+    // EFFECTS: update patient information with user inputed edits based on the field selected
+    public void updateNoteField(ClinicalNote note, String key, String value, JComponent dataComponent) {
+        switch (key) {
+            case "title":
+                note.setClinicalNoteTitle(value);
+                ((JLabel) dataComponent).setText(note.getClinicalNoteTitle());
+                break;
+            case "provider":
+                note.setClinicalNoteProvider(value);
+                ((JLabel) dataComponent).setText(note.getClinicalNoteProvider());
+                break;
+            case "body":
+                note.setClinicalNoteBody(value);
+                ((JTextArea) dataComponent).setText(note.getClinicalNoteBody());
+                break;
+        }   
     }
 
     // MODIFIES: this
