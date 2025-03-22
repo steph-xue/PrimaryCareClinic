@@ -181,10 +181,8 @@ public class AddClinicalNoteUI extends JPanel {
                     this,
                     "New clinical note \"" + title + "\" added successfully!",
                     "Success", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("images/health.jpg"));
-        System.out.println(clinic.getPatients());
 
-        parent.getViewPatientsScreen().loadPatients();
-        parent.showViewPatientsScreen();
+        parent.viewPatientProfileScreen(patient);
     }
 
     // MODIFIES: this
