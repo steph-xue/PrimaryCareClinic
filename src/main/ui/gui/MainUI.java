@@ -158,6 +158,7 @@ public class MainUI extends JFrame {
 
     // EFFECTS: Displays ViewPatientsUI which allows the user to view the table of all patients
     public void showViewPatientsScreen() {
+        getViewPatientsScreen().loadPatients();
         cardLayout.show(mainPanel, "patients");
     }
 

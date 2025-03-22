@@ -315,11 +315,16 @@ public class Patient implements Writable {
         this.lastName = lastNameCapitalized;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the patient's DOB new given DOB 
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     // REQUIRES: age > 0
     // MODIFIES: this
-    // EFFECTS: sets the patient's DOB and age to a new given DOB and age
-    public void setDateOfBirthAndAge(Date dateOfBirth, int age) {
-        this.dateOfBirth = dateOfBirth;
+    // EFFECTS: sets the patient's age to a new given age
+    public void setAge(int age) {
         this.age = age;
     }
 

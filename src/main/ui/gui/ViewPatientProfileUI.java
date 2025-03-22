@@ -5,6 +5,7 @@ import javax.swing.*;
 import model.Clinic;
 import model.Patient;
 import model.ClinicalNote;
+import model.Date;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -93,15 +94,17 @@ public class ViewPatientProfileUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: Create and add panels for patient data to add to the contentPanel
     public void addPatientInfo() {
-        JPanel firstNamePanel = createPanel("First Name: ", patient.getFirstName());
-        JPanel lastNamePanel = createPanel("Last Name: ", patient.getLastName());
-        JPanel dateOfBirthPanel = createPanel("Date of Birth (MM-DD-YYYY): ", patient.getDateOfBirth().printDate());
-        JPanel agePanel = createPanel("Age: ", String.valueOf(patient.getAge()));
+        JPanel firstNamePanel = createPanel("First Name: ", patient.getFirstName(), "firstName");
+        JPanel lastNamePanel = createPanel("Last Name: ", patient.getLastName(), "lastName");
+        JPanel dateOfBirthPanel = createPanel("Date of Birth (MM-DD-YYYY): ", patient.getDateOfBirth().printDate(),
+                "dob");
+        JPanel agePanel = createPanel("Age: ", String.valueOf(patient.getAge()), "age");
         JPanel phnPanel = createPanel("Personal Health Number (PHN): ", 
-                String.valueOf(patient.getPersonalHealthNumber()));
-        JPanel allergiesPanel = createPanel("Allergies: ", patient.printAllergies());
-        JPanel medicationsPanel = createPanel("Medications: ", patient.printMedications());
-        JPanel medicalConditionsPanel = createPanel("Medical Conditions: ", patient.printMedicalConditions());
+                String.valueOf(patient.getPersonalHealthNumber()), "phn");
+        JPanel allergiesPanel = createListPanel("Allergies: ", patient.printAllergies(), "allergies");
+        JPanel medicationsPanel = createListPanel("Medications: ", patient.printMedications(), "medications");
+        JPanel medicalConditionsPanel = createListPanel("Medical Conditions: ", patient.printMedicalConditions(), 
+                "medicalConditions");
 
         contentPanel.add(firstNamePanel);
         contentPanel.add(lastNamePanel);
@@ -114,7 +117,153 @@ public class ViewPatientProfileUI extends JPanel {
     }
 
     // EFFECTS: Create and style a panel for patient data
-    public JPanel createPanel(String header, String data) {
+    public JPanel createPanel(String header, String data, String fieldName) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JLabel headerLabel = new JLabel(header);
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JLabel dataLabel = new JLabel(data);
+        dataLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        JButton editButton = createEditButton(header, fieldName, dataLabel);
+
+        panel.add(headerLabel);
+        panel.add(dataLabel);
+        panel.add(editButton);
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 250, 0, 0));
+        return panel;
+    }
+
+    // EFFECTS: Create and style editing button for each of the user fields that allows the user
+    // to edit the selected field
+    public JButton createEditButton(String header, String fieldName, JLabel dataLabel) {
+        JButton editButton = new JButton();
+        ImageIcon editIcon = new ImageIcon("images/edit.png");
+        Image scaledImage = editIcon.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
+        editButton.setIcon(new ImageIcon(scaledImage));
+        editButton.setPreferredSize(new Dimension(15, 15));
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setFocusPainted(false);
+
+        addEditActionListener(editButton, header, fieldName, dataLabel);
+
+        return editButton;
+    }
+
+    // EFFECTS: Add action listener to edit button to allow the user to edit the selected field
+    public void addEditActionListener(JButton editButton, String header, String fieldName, JLabel dataLabel) {
+        editButton.addActionListener(e -> {
+            String newValue = (String) JOptionPane.showInputDialog(
+                this, 
+                "Enter new " + header.substring(0, header.length() - 2) + ": ",
+                "Edit",
+                JOptionPane.DEFAULT_OPTION, 
+                new ImageIcon("images/health.jpg"), null, null
+            );
+
+            if (newValue != null && !newValue.trim().isEmpty()) {
+                updatePatientField(fieldName, newValue.trim(), dataLabel);
+            }
+        });
+    }
+
+    // MODIFIES: this
+    // EFFECTS: update patient information with user inputed edits based on the field selected
+    public void updatePatientField(String key, String value,  JLabel dataLabel) {
+        switch(key) {
+            case "firstName":
+                patient.setFirstName(value);
+                dataLabel.setText(patient.getFirstName());
+                break;
+            case "lastName":
+                patient.setLastName(value);
+                dataLabel.setText(patient.getLastName());
+                break;
+            case "dob":
+                parseAndSetDateOfBirth(value);
+                dataLabel.setText(patient.getDateOfBirth().printDate());
+                break;
+            case "age":
+                parseAndSetAge(value);
+                dataLabel.setText(String.valueOf(patient.getAge()));
+                break;
+            case "phn":
+                parseAndSetPersonalHealthNumber(value);
+                dataLabel.setText(String.valueOf(patient.getPersonalHealthNumber()));
+                break;
+        }   
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Parses date of birth in (MM-DD-YYYY) string format to date object to set for the selected patient;
+    // shows error message if string date is not in the right format
+    public void parseAndSetDateOfBirth(String dateOfBirth) {
+        try {
+            String[] parts = dateOfBirth.split("-");
+            if (parts.length != 3) {
+                JOptionPane.showMessageDialog(this, "Invalid date format!", "Error", 
+                            JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int month = Integer.parseInt(parts[0]);
+            int day = Integer.parseInt(parts[1]);
+            int year = Integer.parseInt(parts[2]);
+            Date date = new Date(month, day, year);
+
+            patient.setDateOfBirth(date);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid date format!", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Parses age from string to integer to set for the selected patient; shows error message 
+    // if age is not in the right format
+    public void parseAndSetAge(String age) {
+        int parsedAge;
+
+        try {
+            parsedAge = Integer.parseInt(age);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid age format!", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        patient.setAge(parsedAge);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Parses phn from string to long to set for the selected patient; shows error message
+    // if phn is not in the right format or if it is not 9-digits long
+    public void parseAndSetPersonalHealthNumber(String phn) {
+        long parsedPersonalHealthNumber;
+
+        try {
+            if (phn.length() != 9) {
+                JOptionPane.showMessageDialog(this, "Personal health number (PHN) must be 9-digits!", "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            parsedPersonalHealthNumber = Long.parseLong(phn);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid personal health number (PHN) format!", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        patient.setPersonalHealthNumber(parsedPersonalHealthNumber);
+    }
+
+    // EFFECTS: Create and style a panel for patient list data
+    public JPanel createListPanel(String header, String data, String fieldName) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panel.setBackground(Color.WHITE);
 

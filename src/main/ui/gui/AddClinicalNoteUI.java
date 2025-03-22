@@ -21,7 +21,6 @@ import java.awt.event.MouseEvent;
 // AddClinicalNoteUI displays the page to add a new clinical note for a specific patient
 public class AddClinicalNoteUI extends JPanel {
     private MainUI parent;
-    private Clinic clinic;
     private Patient patient;
     private NavigationBarUI navBar;
     private JPanel mainContainerPanel;
@@ -34,7 +33,6 @@ public class AddClinicalNoteUI extends JPanel {
     // Constructs an add clinical note UI JPanel with a navigation bar to add a new clinical note to the clinic 
     public AddClinicalNoteUI(MainUI parent, Clinic clinic, Patient patient) {
         this.parent = parent;
-        this.clinic = clinic;
         this.patient = patient;
 
         setLayout(new BorderLayout());
@@ -104,6 +102,8 @@ public class AddClinicalNoteUI extends JPanel {
     public JTextArea createStyledTextAreaBody() {
         JTextArea textArea = new JTextArea(15, 35);
         textArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
         Border outer = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
         Border inner = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         textArea.setBorder(BorderFactory.createCompoundBorder(outer, inner));

@@ -139,95 +139,50 @@
         },
         {
             "allergies": [
-                "tetracycline",
-                "aspirin"
-            ],
-            "dateofbirth": {
-                "month": 1,
-                "year": 1971,
-                "day": 6
-            },
-            "personalhealthnumber": 905845652,
-            "medicalconditions": [
-                "diabetes",
-                "epilepsy"
-            ],
-            "firstname": "Thomas",
-            "medications": [
-                "metformin",
-                "valproic acid"
-            ],
-            "clinicalnotes": [
-                {
-                    "provider": "Dr. Rodriguez",
-                    "visitdate": {
-                        "month": 1,
-                        "year": 2025,
-                        "day": 4
-                    },
-                    "title": "Allergic rhinitis",
-                    "body": "Patient complains of persistent nasal congestion, postnasal drip, and occasional sneezing, worsening over the past week. Symptoms suggest a viral upper respiratory infection or allergic rhinitis, as there is no fever or sinus pain. Management will include saline nasal irrigation, antihistamines, or decongestants as appropriate."
-                },
-                {
-                    "provider": "Dr. Young",
-                    "visitdate": {
-                        "month": 2,
-                        "year": 2025,
-                        "day": 28
-                    },
-                    "title": "Cold sore",
-                    "body": "Patient reports a painful blister on the lower lip that appeared two days ago, with a tingling sensation before its onset. They have a history of occasional cold sores, often triggered by stress or illness. Treatment will focus on symptomatic relief and antiviral therapy if initiated early."
-                }
-            ],
-            "age": 54,
-            "lastname": "Smith"
-        }, 
-        {
-            "allergies": [
-                "cephalexin",
+                "codeine",
+                "metronidazole",
                 "lidocaine"
             ],
             "dateofbirth": {
-                "month": 12,
-                "year": 1988,
-                "day": 5
+                "month": 10,
+                "year": 1987,
+                "day": 27
             },
-            "personalhealthnumber": 975245085,
+            "personalhealthnumber": 946846634,
             "medicalconditions": [
-                "anxiety",
-                "asthma"
+                "gastroesophageal reflux disease",
+                "anxiety"
             ],
-            "firstname": "Daniel",
+            "firstname": "Freya",
             "medications": [
-                "escitalopram",
-                "salbutamol",
-                "fluticasone"
+                "omeprazole",
+                "lorazepam"
             ],
             "clinicalnotes": [
                 {
-                    "provider": "Dr. Anderson",
+                    "provider": "Dr. Ibrahim",
                     "visitdate": {
-                        "month": 3,
+                        "month": 2,
                         "year": 2025,
-                        "day": 3
+                        "day": 16
                     },
-                    "title": "Asthma exacerbation",
-                    "body": "Patient reports intermittent shortness of breath and wheezing, particularly at night and during physical activity. There is a history of mild asthma but no recent respiratory infections. Examination and spirometry testing will determine if an asthma exacerbation or another respiratory condition is present, guiding bronchodilator or corticosteroid therapy."
+                    "title": "Knee injury",
+                    "body": "Patient reports right knee pain and swelling following a soccer game two days ago. No locking or instability reported. Exam reveals mild joint effusion and tenderness. Likely soft tissue strain. Conservative management with RICE, NSAIDs, and activity modification advised."
                 },
                 {
                     "provider": "Dr. Nguyen",
                     "visitdate": {
                         "month": 3,
                         "year": 2025,
-                        "day": 10
+                        "day": 21
                     },
                     "title": "Heartburn",
-                    "body": "Patient describes recurrent heartburn and a burning sensation in the chest, often occurring after meals and worsening when lying down. Symptoms are consistent with gastroesophageal reflux disease (GERD), especially given a diet high in acidic or spicy foods. Management will include dietary modifications, avoiding late-night meals, and possibly a trial of acid-suppressing medication."
+                    "body": "Patient presents with frequent heartburn and acid regurgitation, especially after meals. Symptoms suggestive of GERD. Recommended lifestyle modifications including weight management and elevating head of bed. Will start trial of proton pump inhibitor (PPI) for symptom control."
                 }
             ],
-            "age": 36,
-            "lastname": "Zhou"
-        }, 
+            "age": 54,
+            "lastname": "Kwon"
+        },
         {
             "allergies": [
                 "amoxicillin",
@@ -318,52 +273,96 @@
             ],
             "age": 37,
             "lastname": "Lin"
-        }, 
+        },
         {
             "allergies": [
-                "codeine",
-                "metronidazole",
-                "lidocaine"
+                "aspirin",
+                "clindamycin"
             ],
             "dateofbirth": {
-                "month": 10,
-                "year": 1987,
-                "day": 27
+                "month": 5,
+                "year": 2002,
+                "day": 3
             },
-            "personalhealthnumber": 946846634,
+            "personalhealthnumber": 958244214,
             "medicalconditions": [
-                "gastroesophageal reflux disease",
-                "anxiety"
+                "migraines",
+                "iron-deficiency anemia"
             ],
-            "firstname": "Freya",
+            "firstname": "Jasmine",
             "medications": [
-                "omeprazole",
-                "lorazepam"
+                "sumatriptan",
+                "ferrous sulfate"
             ],
             "clinicalnotes": [
                 {
-                    "provider": "Dr. Ibrahim",
+                    "provider": "Dr. Patel",
                     "visitdate": {
                         "month": 2,
                         "year": 2025,
-                        "day": 16
+                        "day": 5
                     },
-                    "title": "Knee injury",
-                    "body": "Patient reports right knee pain and swelling following a soccer game two days ago. No locking or instability reported. Exam reveals mild joint effusion and tenderness. Likely soft tissue strain. Conservative management with RICE, NSAIDs, and activity modification advised."
+                    "title": "Acute migraine flare-up",
+                    "body": "Patient reports onset of a unilateral throbbing headache with nausea and light sensitivity lasting several hours. No aura or neurological symptoms. History of migraines noted. Took sumatriptan with partial relief. Advised rest in dark room and to monitor frequency."
                 },
                 {
-                    "provider": "Dr. Nguyen",
+                    "provider": "Dr. Hassan",
                     "visitdate": {
                         "month": 3,
                         "year": 2025,
-                        "day": 21
+                        "day": 11
                     },
-                    "title": "Heartburn",
-                    "body": "Patient presents with frequent heartburn and acid regurgitation, especially after meals. Symptoms suggestive of GERD. Recommended lifestyle modifications including weight management and elevating head of bed. Will start trial of proton pump inhibitor (PPI) for symptom control."
+                    "title": "Iron Supplementation Anemia Management",
+                    "body": "Patient reports improved energy levels since starting ferrous sulfate. Mild GI discomfort noted but tolerable. Hemoglobin trending upward. Plan to continue current dose and recheck CBC in 4 weeks to assess further response."
+                }
+            ],
+            "age": 22,
+            "lastname": "Park"
+        },
+        {
+            "allergies": [
+                "tetracycline",
+                "aspirin"
+            ],
+            "dateofbirth": {
+                "month": 1,
+                "year": 1971,
+                "day": 6
+            },
+            "personalhealthnumber": 905845652,
+            "medicalconditions": [
+                "diabetes",
+                "epilepsy"
+            ],
+            "firstname": "Thomas",
+            "medications": [
+                "metformin",
+                "valproic acid"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Rodriguez",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 4
+                    },
+                    "title": "Allergic rhinitis",
+                    "body": "Patient complains of persistent nasal congestion, postnasal drip, and occasional sneezing, worsening over the past week. Symptoms suggest a viral upper respiratory infection or allergic rhinitis, as there is no fever or sinus pain. Management will include saline nasal irrigation, antihistamines, or decongestants as appropriate."
+                },
+                {
+                    "provider": "Dr. Young",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 28
+                    },
+                    "title": "Cold sore",
+                    "body": "Patient reports a painful blister on the lower lip that appeared two days ago, with a tingling sensation before its onset. They have a history of occasional cold sores, often triggered by stress or illness. Treatment will focus on symptomatic relief and antiviral therapy if initiated early."
                 }
             ],
             "age": 54,
-            "lastname": "Kwon"
+            "lastname": "Smith"
         },
         {
             "allergies": [
@@ -412,20 +411,157 @@
         },
         {
             "allergies": [
+                "cephalexin",
+                "lidocaine"
+            ],
+            "dateofbirth": {
+                "month": 12,
+                "year": 1988,
+                "day": 5
+            },
+            "personalhealthnumber": 975245085,
+            "medicalconditions": [
+                "anxiety",
+                "asthma"
+            ],
+            "firstname": "Daniel",
+            "medications": [
+                "escitalopram",
+                "salbutamol",
+                "fluticasone"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Anderson",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 3
+                    },
+                    "title": "Asthma exacerbation",
+                    "body": "Patient reports intermittent shortness of breath and wheezing, particularly at night and during physical activity. There is a history of mild asthma but no recent respiratory infections. Examination and spirometry testing will determine if an asthma exacerbation or another respiratory condition is present, guiding bronchodilator or corticosteroid therapy."
+                },
+                {
+                    "provider": "Dr. Nguyen",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 10
+                    },
+                    "title": "Heartburn",
+                    "body": "Patient describes recurrent heartburn and a burning sensation in the chest, often occurring after meals and worsening when lying down. Symptoms are consistent with gastroesophageal reflux disease (GERD), especially given a diet high in acidic or spicy foods. Management will include dietary modifications, avoiding late-night meals, and possibly a trial of acid-suppressing medication."
+                }
+            ],
+            "age": 36,
+            "lastname": "Zhou"
+        },
+        {
+            "allergies": [
+                "cephalexin",
+                "lidocaine"
+            ],
+            "dateofbirth": {
+                "month": 3,
+                "year": 1998,
+                "day": 10
+            },
+            "personalhealthnumber": 927481356,
+            "medicalconditions": [
+                "anxiety",
+                "asthma"
+            ],
+            "firstname": "Bella",
+            "medications": [
+                "escitalopram",
+                "salbutamol",
+                "fluticasone"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Anderson",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 3
+                    },
+                    "title": "Asthma exacerbation",
+                    "body": "Patient reports intermittent shortness of breath and wheezing, particularly at night and during physical activity. There is a history of mild asthma but no recent respiratory infections. Examination and spirometry testing will determine if an asthma exacerbation or another respiratory condition is present, guiding bronchodilator or corticosteroid therapy."
+                },
+                {
+                    "provider": "Dr. Nguyen",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 10
+                    },
+                    "title": "Heartburn",
+                    "body": "Patient describes recurrent heartburn and a burning sensation in the chest, often occurring after meals and worsening when lying down. Symptoms are consistent with gastroesophageal reflux disease (GERD), especially given a diet high in acidic or spicy foods. Management will include dietary modifications, avoiding late-night meals, and possibly a trial of acid-suppressing medication."
+                }
+            ],
+            "age": 26,
+            "lastname": "Chen"
+        },
+        {
+            "allergies": [
+                "tetracycline",
+                "trimethoprim"
+            ],
+            "dateofbirth": {
+                "month": 12,
+                "year": 1982,
+                "day": 21
+            },
+            "personalhealthnumber": 911846264,
+            "medicalconditions": [
+                "hypertension",
+                "chronic lower back pain"
+            ],
+            "firstname": "Aiden",
+            "medications": [
+                "lisinopril",
+                "acetaminophen"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Kim",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 26
+                    },
+                    "title": "Cerumen impaction",
+                    "body": "Patient presents with left ear discomfort and muffled hearing for 3 days. Otoscopic exam reveals cerumen impaction. No signs of infection or perforation. Plan includes manual removal with irrigation and follow-up if symptoms persist or worsen."
+                },
+                {
+                    "provider": "Dr. Brooks",
+                    "visitdate": {
+                        "month": 3,
+                        "year": 2025,
+                        "day": 12
+                    },
+                    "title": "Dyspepsia",
+                    "body": "Patient reports sharp epigastric pain aggravated by meals. No vomiting or GI bleeding. Exam reveals mild tenderness in upper abdomen. Suspected gastritis. Started on proton pump inhibitor and advised dietary modifications. Will reassess in 2 weeks."
+                }
+            ],
+            "age": 42,
+            "lastname": "Foster"
+        },
+        {
+            "allergies": [
                 "aspirin",
                 "clindamycin"
             ],
             "dateofbirth": {
-                "month": 5,
-                "year": 2002,
-                "day": 3
+                "month": 3,
+                "year": 1997,
+                "day": 15
             },
             "personalhealthnumber": 958244214,
             "medicalconditions": [
                 "migraines",
                 "iron-deficiency anemia"
             ],
-            "firstname": "Jasmine",
+            "firstname": "Zoe",
             "medications": [
                 "sumatriptan",
                 "ferrous sulfate"
@@ -448,12 +584,57 @@
                         "year": 2025,
                         "day": 11
                     },
-                    "title": "Iron Supplementation – Anemia Management",
+                    "title": "Iron Supplementation Anemia Management",
                     "body": "Patient reports improved energy levels since starting ferrous sulfate. Mild GI discomfort noted but tolerable. Hemoglobin trending upward. Plan to continue current dose and recheck CBC in 4 weeks to assess further response."
                 }
             ],
-            "age": 22,
-            "lastname": "Park"
+            "age": 28,
+            "lastname": "Grant"
+        },
+        {
+            "allergies": [
+                "clindamycin",
+                "amoxicillin"
+            ],
+            "dateofbirth": {
+                "month": 6,
+                "year": 1991,
+                "day": 7
+            },
+            "personalhealthnumber": 909821633,
+            "medicalconditions": [
+                "allergic rhinitis",
+                "hypothyroidism"
+            ],
+            "firstname": "Grace",
+            "medications": [
+                "loratadine",
+                "levothyroxine"
+            ],
+            "clinicalnotes": [
+                {
+                    "provider": "Dr. Kappor",
+                    "visitdate": {
+                        "month": 1,
+                        "year": 2025,
+                        "day": 18
+                    },
+                    "title": "Fever and sore throat",
+                    "body": "Patient reports a sore throat, low-grade fever, and fatigue over the past three days. Examination reveals mild pharyngeal erythema without exudates. Rapid strep test is negative. Diagnosis is viral pharyngitis. Supportive care with fluids, rest, and analgesics recommended."
+                },
+                {
+                    "provider": "Dr. Chen",
+                    "visitdate": {
+                        "month": 2,
+                        "year": 2025,
+                        "day": 24
+                    },
+                    "title": "Lower back pain",
+                    "body": "Patient complains of persistent lower back pain after lifting heavy boxes last weekend. No radiation or neurological deficits noted. Muscular strain suspected. Plan includes rest, NSAIDs for pain, and stretching exercises. Will follow up if no improvement in 7 days."
+                }
+            ],
+            "age": 33,
+            "lastname": "Wong"
         }
     ],
     "name": "Medicare Clinic"

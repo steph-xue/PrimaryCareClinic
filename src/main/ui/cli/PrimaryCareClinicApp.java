@@ -583,7 +583,8 @@ public class PrimaryCareClinicApp {
         int age = this.scanner.nextInt();
         scanner.nextLine(); 
         Date dateOfBirth = new Date(monthofBirth, dayofBirth, yearofBirth);
-        patient.setDateOfBirthAndAge(dateOfBirth, age);
+        patient.setDateOfBirth(dateOfBirth);
+        patient.setAge(age);
         
         printDivider();
 

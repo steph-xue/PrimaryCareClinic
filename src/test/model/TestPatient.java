@@ -475,7 +475,8 @@ public class TestPatient {
     public void setDateOfBirthAndAgeTest() {
         assertEquals(dateOfBirth1, patient1.getDateOfBirth());
         assertEquals(52, patient1.getAge());
-        patient1.setDateOfBirthAndAge(dateOfBirth2, 63);
+        patient1.setDateOfBirth(dateOfBirth2);
+        patient1.setAge(63);
         assertEquals(dateOfBirth2, patient1.getDateOfBirth());
         assertEquals(63, patient1.getAge());
     }
