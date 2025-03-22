@@ -330,11 +330,13 @@ public class ViewPatientProfileUI extends JPanel {
         JPanel datePanel = createNoteDatePanel(note);
         JPanel providerPanel = createNoteProviderPanel(note);
         JPanel bodyPanel = createNoteBodyPanel(note);
+        JPanel deleteNoteButtonPanel = createDeleteNoteButtonPanel(note);
 
         notePanel.add(titlePanel);
         notePanel.add(datePanel);
         notePanel.add(providerPanel);
         notePanel.add(bodyPanel);
+        notePanel.add(deleteNoteButtonPanel);
         return notePanel;
     }
 
@@ -346,7 +348,6 @@ public class ViewPatientProfileUI extends JPanel {
                 BorderFactory.createLineBorder(Color.BLACK, 1),
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         notePanel.setBackground(Color.WHITE);
-        notePanel.setPreferredSize(new Dimension(1000, 200));
         notePanel.setMinimumSize(new Dimension(1000, 200));
         notePanel.setMaximumSize(new Dimension(1000, 1000));
         notePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -478,6 +479,56 @@ public class ViewPatientProfileUI extends JPanel {
                 ((JTextArea) dataComponent).setText(note.getClinicalNoteBody());
                 break;
         }   
+    }
+
+    // MODIFIES: this, note
+    // EFFECTS: Creates a delete note button for a clinical note with an action listener to
+    // delete the note from the clinic
+    public JPanel createDeleteNoteButtonPanel(ClinicalNote note) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panel.setBackground(Color.WHITE);
+
+        JButton deleteNoteButton = new JButton("Remove Note");
+        styleButtonDeleteNote(deleteNoteButton);
+        deleteNoteButton.addActionListener(e -> {
+            patient.removeClinicalNote(note);
+            parent.viewPatientProfileScreen(patient);
+        });
+        
+        panel.add(deleteNoteButton);
+        return panel;
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add styling to the delete clinical note button
+    public void styleButtonDeleteNote(JButton button) {
+        button.setFont(new Font("Arial", Font.PLAIN, 14));
+        button.setPreferredSize(new Dimension(150, 30));
+        button.setMaximumSize(new Dimension(150, 30));
+        button.setBackground(Color.GRAY);
+        button.setForeground(Color.WHITE);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.setFocusable(false);
+
+        addButtonEffectsDeleteNote(button);
+    }
+
+    // MODIFIES: button
+    // EFFECTS: Add hover effects to the button
+    public void addButtonEffectsDeleteNote(JButton button) {
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(170, 50, 60));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(Color.GRAY);
+            }
+        });
     }
 
     // MODIFIES: this
