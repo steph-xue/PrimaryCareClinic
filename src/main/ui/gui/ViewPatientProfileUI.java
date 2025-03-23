@@ -242,6 +242,7 @@ public class ViewPatientProfileUI extends JPanel {
         editButton.setBorderPainted(false);
         editButton.setContentAreaFilled(false);
         editButton.setFocusPainted(false);
+        editButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         addEditActionListener(editButton, header, fieldName, dataLabel);
 
@@ -464,6 +465,7 @@ public class ViewPatientProfileUI extends JPanel {
         editButton.setBorderPainted(false);
         editButton.setContentAreaFilled(false);
         editButton.setFocusPainted(false);
+        editButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         addEditNoteActionListener(note, editButton, fieldName, dataComponent);
 
