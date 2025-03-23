@@ -150,6 +150,7 @@ public class MainUI extends JFrame {
                     JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon("images/health.jpg"));
             clinic.setClinicName(clinicName);
+            viewPatientsScreen.getNavBar().updateClinicTitle();
         } else {
             JOptionPane.showMessageDialog(this, "Clinic name cannot be empty!", "Error", 
                     JOptionPane.ERROR_MESSAGE);
