@@ -14,7 +14,7 @@ public class LoadingScreenUI extends JPanel {
     private JLabel welcomeLabel;
     private JPanel loadingPanel;
 
-    // EFFECTS: Constructs a loading screen UI JPanel
+    // EFFECTS: Constructs a LoadingScreenUI JPanel
     public LoadingScreenUI() {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);

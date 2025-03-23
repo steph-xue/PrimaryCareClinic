@@ -13,7 +13,7 @@ public class StartScreenUI extends JPanel {
     private JButton loadButton;
     private JButton newClinicButton;
 
-    // EFFECTS: Constructs a start screen UI JPanel
+    // EFFECTS: Constructs a StartScreenUI JPanel
     public StartScreenUI(MainUI parent) {
         this.parent = parent;
 
@@ -56,7 +56,7 @@ public class StartScreenUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates a create new clinic button
+    // EFFECTS: Creates a create a new clinic button
     public void createNewClinicButton() {
         newClinicButton = new JButton("Create a new clinic");
         styleButton(newClinicButton);
@@ -64,7 +64,7 @@ public class StartScreenUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add styling to the button
+    // EFFECTS: Add styling to the button (load from file/create a new clinic buttons)
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -80,7 +80,7 @@ public class StartScreenUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add hover effects to the button
+    // EFFECTS: Add hover effects to the button (load from file/create a new clinic buttons)
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

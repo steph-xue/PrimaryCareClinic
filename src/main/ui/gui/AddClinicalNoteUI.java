@@ -1,24 +1,22 @@
 package ui.gui;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-
 import model.Clinic;
 import model.ClinicalNote;
 import model.Patient;
 import model.Date;
 
-import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.Border;
 import java.time.LocalDate;
-
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 // Image References
-// JOptionPane Health Logo images/health.jpg retrieved from https://www.freepik.com/premium-vector/basic-healthcare-icon-vector
-//-image-can-be-used-home-services_157661598.html
+// JOptionPane Health Logo images/health.jpg retrieved from https://www.freepik.com/premium-vector/
+//basic-healthcare-icon-vector-image-can-be-used-home-services_157661598.html
 
-// AddClinicalNoteUI displays the page to add a new clinical note for a specific patient
+// AddClinicalNoteUI displays a form to add a new clinical note for a specific patient
 public class AddClinicalNoteUI extends JPanel {
     private MainUI parent;
     private Patient patient;
@@ -30,7 +28,8 @@ public class AddClinicalNoteUI extends JPanel {
     private JTextArea bodyField;
     private JPanel addButtonPanel;
 
-    // Constructs an add clinical note UI JPanel with a navigation bar to add a new clinical note to the clinic 
+    // Constructs an AddClinicalNoteUI JPanel with a navigation bar to make and add a new clinical note  
+    // for the selected patient based on the user's inputs
     public AddClinicalNoteUI(MainUI parent, Clinic clinic, Patient patient) {
         this.parent = parent;
         this.patient = patient;
@@ -51,7 +50,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Create main container panel for centered layout
+    // EFFECTS: Create main container panel for overall centered layout
     public void createMainContainerPanel() {
         mainContainerPanel = new JPanel();
         mainContainerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -68,7 +67,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Add form fields for user input
+    // EFFECTS: Make and add form fields for user input (title, provider, body)
     public void addFormFields() {
         titleField = createStyledTextFieldTitle();
         addFormField("Title:         ", titleField);
@@ -78,7 +77,7 @@ public class AddClinicalNoteUI extends JPanel {
         addFormField("Body:       ", bodyField);
     }
 
-    // EFFECTS: Create styled text input field for title
+    // EFFECTS: Create styled text input field for title, returned as a JTextField
     public JTextField createStyledTextFieldTitle() {
         JTextField textfield = new JTextField(35);
         textfield.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -88,7 +87,7 @@ public class AddClinicalNoteUI extends JPanel {
         return textfield;
     }
 
-    // EFFECTS: Create styled text input field for provider
+    // EFFECTS: Create styled text input field for provider, returned as a JTextField
     public JTextField createStyledTextFieldProvider() {
         JTextField textfield = new JTextField(35);
         textfield.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -98,7 +97,7 @@ public class AddClinicalNoteUI extends JPanel {
         return textfield;
     }
 
-    // EFFECTS: Create styled text area field for body
+    // EFFECTS: Create styled text area field for body, returned as a JTextArea
     public JTextArea createStyledTextAreaBody() {
         JTextArea textArea = new JTextArea(15, 35);
         textArea.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -111,7 +110,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Add a label and text field for each form field
+    // EFFECTS: Add a label and the styled text field for each form field 
     public void addFormField(String text, JComponent textField) {
         JPanel panel = new JPanel(); 
         panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
@@ -128,7 +127,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Add create button to add a new clinical note for the patient
+    // EFFECTS: Add create new clinical note button in a button panel
     public void createAddButton() {
         JButton addButton = new JButton("Create New Clinical Note");
         styleButton(addButton);
@@ -141,7 +140,7 @@ public class AddClinicalNoteUI extends JPanel {
         addButtonPanel.add(addButton);
     }
 
-    // EFFECTS: Create new clinical note object to add to the patient
+    // EFFECTS: Get user input from the text fields from the form to create a new clinical note
     public void createNewClinicalNote() {
         String title = titleField.getText().trim();
         String provider = providerField.getText().trim();
@@ -165,8 +164,8 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Adds new clinical note for the specific patient with user inputed information and
-    // clears all fields once clinical note is successfully added with a success message
+    // EFFECTS: Creates a new clinical note object and adds it for the specified patient; clears
+    // all fields once clinical note is successfully added and displays a success message
     public void addNote(String title, String provider, String body, Date date) {
 
         title = title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase();
@@ -194,7 +193,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add styling to the button
+    // EFFECTS: Add styling to the button (add new note button)
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -210,7 +209,7 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add hover effects to the button
+    // EFFECTS: Add hover effects to the button (add new note button)
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

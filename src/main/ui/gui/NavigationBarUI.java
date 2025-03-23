@@ -1,9 +1,8 @@
 package ui.gui;
 
-import javax.swing.*;
-
 import model.Clinic;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,7 +18,7 @@ public class NavigationBarUI extends JPanel {
     private JButton saveQuitButton;
     private JLabel clinicTitleLabel;
 
-    // EFFECTS: Constructs a navigation bar UI JPanel with a panel containing buttons for different actions, 
+    // EFFECTS: Constructs a NavigationBarUI JPanel with a panel containing buttons for different screens, 
     // as well as a label for displaying the clinic name
     public NavigationBarUI(MainUI parent, Clinic clinic) {
         this.parent = parent;
@@ -57,7 +56,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates a view patients button
+    // EFFECTS: Creates a view patients button that displays the view all patients screen
     public void createViewPatientsButton() {
         viewPatientsButton = new JButton("View Patients");
         styleButton(viewPatientsButton);
@@ -65,7 +64,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates an add patient button
+    // EFFECTS: Creates an add patient button that displays the form to add a new patient
     public void createNewPatientButton() {
         newPatientButton = new JButton("Add Patient");
         styleButton(newPatientButton);
@@ -73,7 +72,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates a rename clinic button
+    // EFFECTS: Creates a rename clinic button that allows the user to updates the name of the clinic
     public void createRenameClinicButton() {
         renameClinicButton = new JButton("Rename Clinic");
         styleButton(renameClinicButton);
@@ -84,13 +83,13 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Updates clinic title when renamed
+    // EFFECTS: Updates clinic title in the navigation bar when renamed
     public void updateClinicTitle() {
         clinicTitleLabel.setText(clinic.getClinicName());
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates a save and quit button
+    // EFFECTS: Creates a save and quit button that displays the save and quit screen
     public void createSaveQuitButton() {
         saveQuitButton = new JButton("Save & Quit");
         styleButton(saveQuitButton);
@@ -98,7 +97,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Create clinic title label
+    // EFFECTS: Create clinic title label to display on the navigation bar
     public void createClinicTitleLabel() {
         clinicTitleLabel = new JLabel(clinic.getClinicName(), SwingConstants.CENTER);
         clinicTitleLabel.setFont(new Font("Arial", Font.BOLD, 35));
@@ -109,7 +108,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add styling and hover effects to the button
+    // EFFECTS: Add styling and hover effects to the button (all navigation buttons)
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -125,7 +124,7 @@ public class NavigationBarUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add hover effects to the button
+    // EFFECTS: Add hover effects to the button (all navigation buttons)
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override

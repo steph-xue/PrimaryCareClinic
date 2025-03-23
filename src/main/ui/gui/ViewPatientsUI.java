@@ -1,13 +1,12 @@
 package ui.gui;
 
+import model.Clinic;
+import model.Patient;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-
-import model.Clinic;
-import model.Patient;
-
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,7 +20,7 @@ public class ViewPatientsUI extends JPanel {
     private DefaultTableModel tableModel;
     private NavigationBarUI navBar;
 
-    // EFFECTS: Constructs a view patients UI JPanel displaying all patients in a table with a navigation bar
+    // EFFECTS: Constructs a ViewPatientsUI JPanel with a navigation bar, displaying all patients in a table format
     public ViewPatientsUI(MainUI parent, Clinic clinic) {
         this.parent = parent;
         this.clinic = clinic;
@@ -38,7 +37,7 @@ public class ViewPatientsUI extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: Creates table for patient information and loads patient data
+    // EFFECTS: Creates a table to display all patients and loads patient data
     public void createTable() {
         String[] columnNames = {"First Name", "Last Name", "Date of Birth (DOB)", "Age", 
             "Personal Health Number (PHN)"};

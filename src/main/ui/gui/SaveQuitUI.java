@@ -13,7 +13,7 @@ public class SaveQuitUI extends JPanel {
     private JButton saveQuitButton;
     private JButton quitButton;
 
-    // EFFECTS: Constructs a save and quit screen UI JPanel
+    // EFFECTS: Constructs a SaveQuitUI JPanel
     public SaveQuitUI(MainUI parent) {
         this.parent = parent;
         
@@ -64,7 +64,7 @@ public class SaveQuitUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add styling to the button
+    // EFFECTS: Add styling to the button (save and quit/quit without saving buttons)
     public void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.BOLD, 20));
         button.setPreferredSize(new Dimension(500, 50));
@@ -80,7 +80,7 @@ public class SaveQuitUI extends JPanel {
     }
 
     // MODIFIES: button
-    // EFFECTS: Add hover effects to button
+    // EFFECTS: Add hover effects to button (save and quit/quit without saving buttons)
     public void addButtonEffects(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             @Override
