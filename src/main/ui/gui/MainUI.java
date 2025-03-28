@@ -10,6 +10,8 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
@@ -29,7 +31,7 @@ import java.io.FileNotFoundException;
 //basic-healthcare-icon-vector-image-can-be-used-home-services_157661598.html
 
 // MainUI displays the main frame and primary contents of the primary care clinic application
-public class MainUI extends JFrame {
+public class MainUI extends JFrame implements WindowListener {
     private static final String JSON_STORE = "./data/clinic.json";
 
     private JsonWriter jsonWriter;
@@ -60,6 +62,7 @@ public class MainUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+        addWindowListener(this);
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -193,7 +196,7 @@ public class MainUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: Saves the clinic data to file and quits the application; prints event log to console
+    // EFFECTS: Saves the clinic data to file and quits the application
     public void saveQuit() {
         try {
             jsonWriter.open();
@@ -210,21 +213,14 @@ public class MainUI extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
 
-        for (Event event : EventLog.getInstance()) {
-            System.out.println(event.getDate() + " - " + event.getDescription());
-        }
-
+        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         System.exit(0);
 
     }
 
-    // EFFECTS: Quits the application without saving and prints event log to console
+    // EFFECTS: Quits the application without saving
     public void quit() {
-
-        for (Event event : EventLog.getInstance()) {
-            System.out.println(event.getDate() + " - " + event.getDescription());
-        }
-
+        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         System.exit(0);
     }
 
@@ -266,5 +262,43 @@ public class MainUI extends JFrame {
     // EFFECTS: Runs the main application 
     public static void main(String[] args) {
         new MainUI();
+    }
+
+    // EFFECTS: Prints the event log upon closing the window
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDate() + " - " + event.getDescription());
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        // No action
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        // No action
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        // No action
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        // No action
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        // No action
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        // No action
     }
 }
