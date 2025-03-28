@@ -43,7 +43,7 @@ This project is of interest to me, as I have a background in the healthcare indu
   - Remove the patient from the clinic by clicking on the red "remove patient" button at the bottom of the profile
   - Click on the grey edit buttons beside any of the patient data fields to update information
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by double clicking on a patient in the "view all patients" screen to view a specific patient profile and clicking on the purple "new clinical note" button to create a new clinical note to add to the patient's profile. Then you can fill out all of the information (title, provider, body) and click the "create new clinical note" button at the bottom to add it to the patient's profile
-  - There are also other subactions you can do related to the patient's clinical note including:
+  - There are also other subactions you can do related to a patient's clinical notes including:
     - Remove the clinical note by clicking on the grey "remove note" button at the bottom of the note in the profile page
     - Click on the grey edit buttons beside any of the clinical note data fields to update information
 - You can locate my visual component by opening up the application where the electronic health record (EHR) image and loading gif will be displayed on the loading screen for 10 seconds. There is also a patient profile image located at the top of each of the patient profiles
