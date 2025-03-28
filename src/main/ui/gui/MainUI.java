@@ -2,6 +2,8 @@ package ui.gui;
 
 import model.Clinic;
 import model.Patient;
+import model.Event;
+import model.EventLog;
 
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -191,7 +193,7 @@ public class MainUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: Saves the clinic data to file and quits the application
+    // EFFECTS: Saves the clinic data to file and quits the application; prints event log to console
     public void saveQuit() {
         try {
             jsonWriter.open();
@@ -207,12 +209,22 @@ public class MainUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE, "Error", 
                     JOptionPane.ERROR_MESSAGE);
         }
+
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDate() + " - " + event.getDescription());
+        }
+
         System.exit(0);
 
     }
 
-    // EFFECTS: Quits the application without saving
+    // EFFECTS: Quits the application without saving and prints event log to console
     public void quit() {
+
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDate() + " - " + event.getDescription());
+        }
+
         System.exit(0);
     }
 

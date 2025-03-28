@@ -50,3 +50,23 @@ This project is of interest to me, as I have a background in the healthcare indu
 - You can save the state of my application by clicking on the "save & quit" button at the top right of the navigation bar. This will bring you to a screen where you can either click to "save & quit" or "quit without saving"
 - You can reload the state of my application by click on the "load clinic data from file" button on the start screen upon reopening the application (or create a new clinic if you do not want to load from file)
 
+<br>
+
+## Phase 4: Task 2
+Event Log:
+Fri Mar 28 01:54:35 PDT 2025 - Clinic name set to Medicare Plus
+Fri Mar 28 01:55:26 PDT 2025 - Patient Mya Cornell added to the clinic
+Fri Mar 28 01:56:04 PDT 2025 - Patient Ashley Davis added to the clinic
+Fri Mar 28 01:56:36 PDT 2025 - Patient Amira Garcia added to the clinic
+Fri Mar 28 01:56:55 PDT 2025 - Set first name of patient Amira Garcia to Freya
+Fri Mar 28 01:57:00 PDT 2025 - Set last name of patient Freya Garcia to Kwon
+Fri Mar 28 01:57:19 PDT 2025 - Set date of birth of patient Freya Kwon to 10/27/1987
+Fri Mar 28 01:57:23 PDT 2025 - Set age of patient Freya Kwon to 54
+Fri Mar 28 01:57:29 PDT 2025 - Set personal health number of patient Freya Kwon to 946846634
+Fri Mar 28 01:58:00 PDT 2025 - Added new clinical note for patient Freya Kwon
+Fri Mar 28 01:58:15 PDT 2025 - Clinical note title set to Heartburn
+Fri Mar 28 01:58:25 PDT 2025 - Clinical note provider set to Dr. Nguyen
+Fri Mar 28 01:58:34 PDT 2025 - Clinical note body set to Patient presents with frequent heartburn and acid regurgitation
+Fri Mar 28 01:58:39 PDT 2025 - Removed clinical note for patient Freya Kwon
+Fri Mar 28 01:58:40 PDT 2025 - Patient Freya Kwon removed from the clinic
+Fri Mar 28 01:59:14 PDT 2025 - Clinic name set to Careplus

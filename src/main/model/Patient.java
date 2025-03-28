@@ -50,6 +50,8 @@ public class Patient implements Writable {
 
         if (!this.allergies.contains(allergyLowerCase)) {
             this.allergies.add(allergyLowerCase);
+            EventLog.getInstance().logEvent(new Event("Added new allergy " + allergyLowerCase + " for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -64,6 +66,8 @@ public class Patient implements Writable {
 
         if (this.allergies.contains(allergyLowerCase)) {
             this.allergies.remove(allergyLowerCase);
+            EventLog.getInstance().logEvent(new Event("Removed allergy " + allergyLowerCase + " for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -81,6 +85,8 @@ public class Patient implements Writable {
         if (this.allergies.contains(oldAllergyLowerCase)) {
             int index = this.allergies.indexOf(oldAllergyLowerCase);
             this.allergies.set(index, newAllergyLowerCase);
+            EventLog.getInstance().logEvent(new Event("Allergy " + oldAllergyLowerCase + " set to " 
+                    + newAllergyLowerCase + " for patient " + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -96,6 +102,8 @@ public class Patient implements Writable {
 
         if (!this.medications.contains(medicationLowerCase)) {
             this.medications.add(medicationLowerCase);
+            EventLog.getInstance().logEvent(new Event("Added new medication " + medicationLowerCase + " for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -111,6 +119,8 @@ public class Patient implements Writable {
 
         if (this.medications.contains(medicationLowerCase)) {
             this.medications.remove(medicationLowerCase);
+            EventLog.getInstance().logEvent(new Event("Removed medication " + medicationLowerCase + " for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -128,6 +138,8 @@ public class Patient implements Writable {
         if (this.medications.contains(oldMedicationLowerCase)) {
             int index = this.medications.indexOf(oldMedicationLowerCase);
             this.medications.set(index, newMedicationLowerCase);
+            EventLog.getInstance().logEvent(new Event("Medication " + oldMedicationLowerCase + " set to " 
+                    + newMedicationLowerCase + " for patient " + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -143,6 +155,8 @@ public class Patient implements Writable {
 
         if (!this.medicalConditions.contains(medicalConditionLowerCase)) {
             this.medicalConditions.add(medicalConditionLowerCase);
+            EventLog.getInstance().logEvent(new Event("Added new medical condition " + medicalConditionLowerCase
+                    + " for patient " + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -158,6 +172,8 @@ public class Patient implements Writable {
 
         if (this.medicalConditions.contains(medicalConditionLowerCase)) {
             this.medicalConditions.remove(medicalConditionLowerCase);
+            EventLog.getInstance().logEvent(new Event("Removed medical condition " + medicalConditionLowerCase 
+                    + " for patient " + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -175,6 +191,8 @@ public class Patient implements Writable {
         if (this.medicalConditions.contains(oldMedicalConditionLowerCase)) {
             int index = this.medicalConditions.indexOf(oldMedicalConditionLowerCase);
             this.medicalConditions.set(index, newMedicalConditionLowerCase);
+            EventLog.getInstance().logEvent(new Event("Medical condition " + oldMedicalConditionLowerCase + " set to "
+                    + newMedicalConditionLowerCase + " for patient " + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -187,6 +205,8 @@ public class Patient implements Writable {
     public boolean addClinicalNote(ClinicalNote note) {
         if (!this.clinicalNotes.contains(note)) {
             this.clinicalNotes.add(note);
+            EventLog.getInstance().logEvent(new Event("Added new clinical note for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -199,6 +219,8 @@ public class Patient implements Writable {
     public boolean removeClinicalNote(ClinicalNote note) {
         if (this.clinicalNotes.contains(note)) {
             this.clinicalNotes.remove(note);
+            EventLog.getInstance().logEvent(new Event("Removed clinical note for patient " 
+                    + this.firstName + " " + this.lastName));
             return true;
         } else {
             return false;
@@ -304,21 +326,29 @@ public class Patient implements Writable {
     // MODIFIES: this
     // EFFECTS: sets the patient's first name to a new given first name
     public void setFirstName(String firstName) {
+        String oldFirstName = this.firstName;
         String firstNameCapitalized = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase();
         this.firstName = firstNameCapitalized;
+        EventLog.getInstance().logEvent(new Event("Set first name of patient " + oldFirstName + " " + lastName
+                + " to " + this.firstName));
     }
 
     // MODIFIES: this
     // EFFECTS: sets the patient's last name to a new given last name
     public void setLastName(String lastName) {
+        String oldLastName = this.lastName;
         String lastNameCapitalized = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
         this.lastName = lastNameCapitalized;
+        EventLog.getInstance().logEvent(new Event("Set last name of patient " + firstName +  " " + oldLastName 
+                + " to " + this.lastName));
     }
 
     // MODIFIES: this
     // EFFECTS: sets the patient's DOB new given DOB 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        EventLog.getInstance().logEvent(new Event("Set date of birth of patient " + this.firstName 
+                + " " + this.lastName + " to " + this.dateOfBirth.printDate()));
     }
 
     // REQUIRES: age > 0
@@ -326,6 +356,8 @@ public class Patient implements Writable {
     // EFFECTS: sets the patient's age to a new given age
     public void setAge(int age) {
         this.age = age;
+        EventLog.getInstance().logEvent(new Event("Set age of patient " + this.firstName 
+                + " " + this.lastName + " to " + this.age));
     }
 
     // REQUIRES: personalHealthNumber > 0
@@ -333,6 +365,8 @@ public class Patient implements Writable {
     // EFFECTS: sets the patient's PHN to a new given PHN
     public void setPersonalHealthNumber(long personalHealthNumber) {
         this.personalHealthNumber = personalHealthNumber;
+        EventLog.getInstance().logEvent(new Event("Set personal health number of patient " + this.firstName
+                + " " + this.lastName + " to " + this.personalHealthNumber));
     }
 
     // Getters

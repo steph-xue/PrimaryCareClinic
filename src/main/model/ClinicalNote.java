@@ -46,6 +46,7 @@ public class ClinicalNote implements Writable {
     public void setClinicalNoteTitle(String title) {
         String titleCapitalized = title.substring(0, 1).toUpperCase() + title.substring(1);
         this.title = titleCapitalized;
+        EventLog.getInstance().logEvent(new Event("Clinical note title set to " + this.title));
     }
 
     // MODIFIES: this
@@ -53,6 +54,7 @@ public class ClinicalNote implements Writable {
     public void setClinicalNoteBody(String body) {
         String bodyCapitalized = body.substring(0, 1).toUpperCase() + body.substring(1);
         this.body = bodyCapitalized;
+        EventLog.getInstance().logEvent(new Event("Clinical note body set to " + this.body));
     }
 
     // MODIFIES: this
@@ -60,6 +62,7 @@ public class ClinicalNote implements Writable {
     public void setClinicalNoteProvider(String name) {
         String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
         this.healthCareProvider = nameCapitalized;
+        EventLog.getInstance().logEvent(new Event("Clinical note provider set to " + this.healthCareProvider));
     }
 
     // Getters

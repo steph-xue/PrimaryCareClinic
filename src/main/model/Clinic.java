@@ -30,6 +30,8 @@ public class Clinic implements Writable {
     public boolean addPatient(Patient patient) {
         if (!this.patients.contains(patient)) {
             this.patients.add(patient);
+            EventLog.getInstance().logEvent(new Event("Patient " + patient.getFullName() 
+                    + " added to the clinic"));
             patients.sort(Comparator.comparing((Patient p) -> p.getLastName().toLowerCase())
                     .thenComparing(p -> p.getFirstName().toLowerCase()));
             return true;
@@ -44,6 +46,8 @@ public class Clinic implements Writable {
     public boolean removePatient(Patient patient) {
         if (this.patients.contains(patient)) {
             this.patients.remove(patient);
+            EventLog.getInstance().logEvent(new Event("Patient " + patient.getFullName()
+                    + " removed from the clinic"));
             return true;
         } else {
             return false;
@@ -80,6 +84,7 @@ public class Clinic implements Writable {
     public void setClinicName(String name) {
         String nameCapitalized = name.substring(0, 1).toUpperCase() + name.substring(1);
         this.name = nameCapitalized;
+        EventLog.getInstance().logEvent(new Event("Clinic name set to " + this.name));
     }
 
     // MODIFIES: this
