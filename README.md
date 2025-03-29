@@ -53,7 +53,7 @@ This project is of interest to me, as I have a background in the healthcare indu
 <br>
 
 ## Phase 4: Task 2
-### Event Log:
+### Event Log
 - Fri Mar 28 01:54:35 PDT 2025 - Clinic name set to Medicare Plus
 - Fri Mar 28 01:55:26 PDT 2025 - Patient Mya Cornell added to the clinic
 - Fri Mar 28 01:56:04 PDT 2025 - Patient Ashley Davis added to the clinic
@@ -70,3 +70,11 @@ This project is of interest to me, as I have a background in the healthcare indu
 - Fri Mar 28 01:58:39 PDT 2025 - Removed clinical note for patient Freya Kwon
 - Fri Mar 28 01:58:40 PDT 2025 - Patient Freya Kwon removed from the clinic
 - Fri Mar 28 01:59:14 PDT 2025 - Clinic name set to Careplus
+
+
+## Phase 4: Task 3
+### Potential Design Improvements
+There are some things I would refactor to improve the design of my project if I had more time:
+- I would refactor the PrimaryCareClinicApp class of the UI package that runs the functionality of the command-line user interface by breaking it into smaller, seperate classes to improve readability and maintainability.
+- For classes in the the model package, I would also try to abstract duplicated code into new methods to improve method coupling to make it easier to understand and maintain. For example, I would abstract out code for addAllergy, addMedication, and addMedicalCondition into a separate method to minimize code dupication.
+- Furthermore,
