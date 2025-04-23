@@ -25,9 +25,13 @@ public class LoadingScreenUI extends JPanel {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+        
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        int topPadding = screenHeight / 8; 
+        
+        contentPanel.add(Box.createRigidArea(new Dimension(0, topPadding)));
         contentPanel.add(welcomeLabel);
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 50))); 
         contentPanel.add(loadingPanel);
 
         add(contentPanel, BorderLayout.CENTER);

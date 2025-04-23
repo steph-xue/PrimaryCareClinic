@@ -121,50 +121,64 @@ public class ViewPatientProfileUI extends JPanel {
     // EFFECTS: Create and style a panel for a patient data field with the header, data, and edit button;
     // returns it as a JPanel
     public JPanel createPanel(String header, String data, String fieldName) {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT));
         panel.setBackground(Color.WHITE);
-
+        panel.setBorder(BorderFactory.createEmptyBorder(5, 250, 5, 0));
+    
         JLabel headerLabel = new JLabel(header);
         headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
-
+    
+        // Wrap the data and edit button together
+        JPanel valuePanel = new JPanel();
+        valuePanel.setLayout(new BoxLayout(valuePanel, BoxLayout.X_AXIS));
+        valuePanel.setBackground(Color.WHITE);
+        valuePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+    
         JLabel dataLabel = new JLabel(data);
-        dataLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-
+        dataLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        dataLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));  // Small spacing
+    
         JButton editButton = createEditButton(header, fieldName, dataLabel);
-
+    
+        valuePanel.add(dataLabel);
+        valuePanel.add(editButton);
+    
         panel.add(headerLabel);
-        panel.add(dataLabel);
-        panel.add(editButton);
-        panel.setBorder(BorderFactory.createEmptyBorder(0, 250, 0, 0));
+        panel.add(valuePanel);
+    
         return panel;
     }
-
+    
     // MODIFIES: this
     // EFFECTS: update patient information with user inputed edits based on the field selected
-    public void updatePatientField(String key, String value,  JLabel dataLabel) {
+    public void updatePatientField(String key, String value, JComponent dataComponent) {
         switch (key) {
             case "firstName":
                 patient.setFirstName(value);
-                dataLabel.setText(patient.getFirstName());
                 break;
             case "lastName":
                 patient.setLastName(value);
-                dataLabel.setText(patient.getLastName());
                 break;
             case "dob":
                 parseAndSetDateOfBirth(value);
-                dataLabel.setText(patient.getDateOfBirth().printDate());
                 break;
             case "age":
                 parseAndSetAge(value);
-                dataLabel.setText(String.valueOf(patient.getAge()));
                 break;
             case "phn":
                 parseAndSetPersonalHealthNumber(value);
-                dataLabel.setText(String.valueOf(patient.getPersonalHealthNumber()));
                 break;
-        }   
+        }
+    
+        if (dataComponent instanceof JLabel) {
+            ((JLabel) dataComponent).setText(value);
+        } else if (dataComponent instanceof JTextArea) {
+            ((JTextArea) dataComponent).setText(value);
+        }
     }
+    
+    
 
     // MODIFIES: this
     // EFFECTS: Parses date of birth in (MM-DD-YYYY) string format to date object to set for the selected patient;
@@ -233,7 +247,7 @@ public class ViewPatientProfileUI extends JPanel {
 
     // EFFECTS: Create and style editing button that allows the user to edit the selected field;
     // returns the editing button as a JButton
-    public JButton createEditButton(String header, String fieldName, JLabel dataLabel) {
+    public JButton createEditButton(String header, String fieldName, JComponent dataComponent) {
         JButton editButton = new JButton();
         ImageIcon editIcon = new ImageIcon("images/edit.png");
         Image scaledImage = editIcon.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
@@ -243,47 +257,158 @@ public class ViewPatientProfileUI extends JPanel {
         editButton.setContentAreaFilled(false);
         editButton.setFocusPainted(false);
         editButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        addEditActionListener(editButton, header, fieldName, dataLabel);
-
+    
+        addEditActionListener(editButton, header, fieldName, dataComponent);
         return editButton;
     }
+    
 
     // EFFECTS: Add action listener to edit button to allow the user to update the selected field
-    public void addEditActionListener(JButton editButton, String header, String fieldName, JLabel dataLabel) {
+    public void addEditActionListener(JButton editButton, String header, String fieldName, JComponent dataComponent) {
         editButton.addActionListener(e -> {
             String newValue = (String) JOptionPane.showInputDialog(
-                    this, 
+                    this,
                     "Enter new " + header.substring(0, header.length() - 2) + ": ",
                     "Edit",
-                    JOptionPane.DEFAULT_OPTION, 
+                    JOptionPane.DEFAULT_OPTION,
                     new ImageIcon("images/health.jpg"), null, null
             );
-
+    
             if (newValue != null && !newValue.trim().isEmpty()) {
-                updatePatientField(fieldName, newValue.trim(), dataLabel);
+                updatePatientField(fieldName, newValue.trim(), dataComponent);
             }
         });
     }
+    
 
     // EFFECTS: Create and style a panel to display patient list data with the header and data (allergies,
-    // medications, medical conditions); returns it as a JPanel
+    // medications, medical conditions) and right-aligned add/remove buttons; returns it as a JPanel;
     public JPanel createListPanel(String header, String data, String fieldName) {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.setBackground(Color.WHITE);
-
+        JPanel outerPanel = new JPanel();
+        outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.Y_AXIS));
+        outerPanel.setBackground(Color.WHITE);
+        outerPanel.setBorder(BorderFactory.createEmptyBorder(5, 250, 5, 0)); 
+    
+        // Row: header + data
+        JPanel dataRow = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        dataRow.setBackground(Color.WHITE);
+    
         JLabel headerLabel = new JLabel(header);
         headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
+    
+        JTextArea dataArea = new JTextArea(data);
+        dataArea.setFont(new Font("Arial", Font.PLAIN, 18));
+        dataArea.setWrapStyleWord(true);    
+        dataArea.setLineWrap(true);         
+        dataArea.setOpaque(false);        
+        dataArea.setEditable(false);        
+        dataArea.setFocusable(false);      
+        dataArea.setBorder(null);           
+        dataArea.setAlignmentX(Component.LEFT_ALIGNMENT);
+        dataArea.setSize(new Dimension(500, Short.MAX_VALUE));
+        Dimension preferredSize = dataArea.getPreferredSize();
+        dataArea.setPreferredSize(new Dimension(500, preferredSize.height));
+        dataRow.add(headerLabel);
+        dataRow.add(dataArea);
+    
+        JPanel buttonRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        buttonRow.setBackground(Color.WHITE);
+    
+        JButton addButton = new JButton("Add");
+        JButton removeButton = new JButton("Remove");
+    
+        styleSmallButton(addButton);
+        styleSmallButton(removeButton);
+    
+        addButton.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog(this, "Enter new item to add:");
+            if (input != null && !input.trim().isEmpty()) {
+                updateListField(fieldName, input.trim(), true);
+                refreshView();
+            }
+        });
+    
+        removeButton.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog(this, "Enter item to remove:");
+            if (input != null && !input.trim().isEmpty()) {
+                updateListField(fieldName, input.trim(), false);
+                refreshView();
+            }
+        });
+    
+        buttonRow.add(addButton);
+        buttonRow.add(removeButton);
+    
+        // Add both rows to outer panel
+        outerPanel.add(dataRow);
+        outerPanel.add(buttonRow);
+    
+        return outerPanel;
+    }    
 
-        JLabel dataLabel = new JLabel(data);
-        dataLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+    // MODIFIES: patient
+    // EFFECTS: Adds or removes an item from a list based on the field name and shows error message
+    // if trying to remove a non-existent item
+    public void updateListField(String fieldName, String value, boolean add) {
+        boolean success = false;
 
-        panel.add(headerLabel);
-        panel.add(dataLabel);
-        panel.setBorder(BorderFactory.createEmptyBorder(0, 250, 0, 0));
-        return panel;
+        switch (fieldName) {
+            case "allergies":
+                if (add) {
+                    patient.addAllergy(value);
+                    success = true;
+                } else if (patient.getAllergies().contains(value)) {
+                    patient.removeAllergy(value);
+                    success = true;
+                }
+                break;
+            case "medications":
+                if (add) {
+                    patient.addMedication(value);
+                    success = true;
+                } else if (patient.getMedications().contains(value)) {
+                    patient.removeMedication(value);
+                    success = true;
+                }
+                break;
+            case "medicalConditions":
+                if (add) {
+                    patient.addMedicalCondition(value);
+                    success = true;
+                } else if (patient.getMedicalConditions().contains(value)) {
+                    patient.removeMedicalCondition(value);
+                    success = true;
+                }
+                break;
+        }
+
+        if (!success && !add) {
+            JOptionPane.showMessageDialog(this,
+                    "Item not found in " + fieldName + ", unable to remove.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
+    // MODIFIES: button
+    // EFFECTS: Styles small "Add" and "Remove" buttons
+    public void styleSmallButton(JButton button) {
+        button.setFont(new Font("Arial", Font.PLAIN, 12));
+        button.setBackground(new Color(200, 200, 255));
+        button.setForeground(Color.BLACK);
+        button.setFocusPainted(false);
+        button.setPreferredSize(new Dimension(75, 25)); 
+        button.setMinimumSize(new Dimension(75, 25));
+        button.setMaximumSize(new Dimension(75, 25));
+        button.setMargin(new Insets(2, 6, 2, 6));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Re-renders the patient profile screen to reflect changes
+    public void refreshView() {
+        parent.viewPatientProfileScreen(patient);
+    }
+    
     // MODIFIES: this
     // EFFECTS: Adds clinical notes in individual boxes to contentPanel or displays no notes if
     // patient does not have any clinical notes

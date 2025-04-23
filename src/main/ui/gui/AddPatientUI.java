@@ -23,14 +23,15 @@ public class AddPatientUI extends JPanel {
     private NavigationBarUI navBar;
     private JPanel mainContainerPanel;
     private JPanel contentPanel;
+    private JScrollPane scrollPane;
     private JTextField firstNameField;
     private JTextField lastNameField;
     private JTextField dateOfBirthField;
     private JTextField ageField;
     private JTextField phnField;
-    private JLabel currentAllergiesLabel;
-    private JLabel currentMedicationsLabel;
-    private JLabel currentMedicalConditionsLabel;
+    private JList<String> allergiesListUI;
+    private JList<String> medicationsListUI;
+    private JList<String> conditionsListUI;
     private List<String> currentAllergiesList;
     private List<String> currentMedicationsList;
     private List<String> currentMedicalConditionsList;
@@ -47,17 +48,20 @@ public class AddPatientUI extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
         navBar = new NavigationBarUI(parent, clinic);
+
         createMainContainerPanel();
         createContentPanel();
         addFormFields();
         addListFields();
         createAddButton();
-        contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
-        contentPanel.add(addButton);
+        contentPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        contentPanel.add(addButton); 
+        addScrollBar();
 
-        mainContainerPanel.add(contentPanel);
         add(navBar, BorderLayout.NORTH);
-        add(mainContainerPanel, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
+
+        SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition(new Point(0, 0)));
     }
 
     // MODIFIES: this
@@ -75,6 +79,14 @@ public class AddPatientUI extends JPanel {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.WHITE);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+    
+        JLabel titleLabel = new JLabel("Create A New Patient Profile");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 30, 0)); // vertical spacing
+        contentPanel.add(titleLabel);
+    
+        mainContainerPanel.add(contentPanel);
     }
 
     // MODIFIES: this
@@ -110,7 +122,7 @@ public class AddPatientUI extends JPanel {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
         JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.PLAIN, 18));
+        label.setFont(new Font("Arial", Font.BOLD, 18));
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         panel.add(label);
@@ -121,45 +133,76 @@ public class AddPatientUI extends JPanel {
     // MODIFIES: this
     // EFFECTS: Add list fields for user input (for allergies, medications, medical conditions)
     public void addListFields() {
-        currentAllergiesLabel = createStyledLabel();
-        addListField("Allergies: ", currentAllergiesLabel, currentAllergiesList);
-
-        currentMedicationsLabel = createStyledLabel();
-        addListField("Medications: ", currentMedicationsLabel, currentMedicationsList);
-
-        currentMedicalConditionsLabel = createStyledLabel();
-        addListField("Medical conditions: ", currentMedicalConditionsLabel, currentMedicalConditionsList);
+        allergiesListUI = createStyledList();
+        addListField("Allergies:", allergiesListUI, currentAllergiesList);
+    
+        medicationsListUI = createStyledList();
+        addListField("Medications:", medicationsListUI, currentMedicationsList);
+    
+        conditionsListUI = createStyledList();
+        addListField("Medical Conditions:", conditionsListUI, currentMedicalConditionsList);
     }
 
-    // EFFECTS: Create styled label for displaying list items (for allergies, medications, medical conditions);
-    // returns it as a JLabel
-    public JLabel createStyledLabel() {
-        JLabel label = new JLabel("None");
-        label.setFont(new Font("Arial", Font.PLAIN, 18));
-        return label;
+    // EFFECTS: Create styled list for displaying list items (for allergies, medications, medical conditions);
+    // returns it as a JList
+    public JList<String> createStyledList() {
+        JList<String> list = new JList<>(new DefaultListModel<>());
+        list.setVisibleRowCount(3);
+        list.setFixedCellHeight(25);
+        list.setFont(new Font("Arial", Font.PLAIN, 16));
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.setSelectionBackground(new Color(230, 230, 230));
+        list.setSelectionForeground(Color.BLACK);
+
+        return list;
     }
 
     // MODIFIES: this
-    // EFFECTS: Add the title, current list text, and button to add more to the list for each list field
+    // EFFECTS: Add the title, current list text, and button to add/remove to the list for each list field
     // (allergies, medications, medical conditions)
-    public void addListField(String title, JLabel currentTextLabel, List<String> currentList) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+    public void addListField(String title, JList<String> listUI, List<String> backingList) {
+        JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-
+    
         JLabel titleLabel = new JLabel(title);
-        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        titleLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        currentTextLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        JButton addButton = new JButton("Add another");
-        addButton.setPreferredSize(new Dimension(120, 35));
-        addButton.addActionListener(e -> addToList(currentList, currentTextLabel));
-
-        panel.add(titleLabel);
-        panel.add(currentTextLabel);
-        panel.add(addButton);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+    
+        JScrollPane scrollPane = new JScrollPane(listUI);
+        scrollPane.setPreferredSize(new Dimension(400, 75));
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220)));
+        scrollPane.setFocusable(false);
+        listUI.setFocusable(false);
+    
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        buttonPanel.setBackground(Color.WHITE);
+    
+        JButton addButton = new JButton("Add");
+        addButton.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog(this, "Enter new item:");
+            if (input != null && !input.trim().isEmpty()) {
+                String formatted = Character.toUpperCase(input.charAt(0)) + input.substring(1).toLowerCase();
+                backingList.add(formatted);
+                ((DefaultListModel<String>) listUI.getModel()).addElement(formatted);
+            }
+        });
+    
+        JButton removeButton = new JButton("Remove");
+        removeButton.addActionListener(e -> {
+            int selected = listUI.getSelectedIndex();
+            if (selected != -1) {
+                backingList.remove(selected);
+                ((DefaultListModel<String>) listUI.getModel()).remove(selected);
+            }
+        });
+    
+        buttonPanel.add(addButton);
+        buttonPanel.add(removeButton);
+    
+        panel.add(titleLabel, BorderLayout.NORTH);
+        panel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+    
         contentPanel.add(panel);
     }
 
@@ -260,7 +303,7 @@ public class AddPatientUI extends JPanel {
     }
 
     // EFFECTS: Parses date of birth in (MM-DD-YYYY) string format to date object; shows error message if
-    // string date is not in the right format; returns date of birth as a date object
+    // string date is not in the right format or invalid date; returns date of birth as a date object
     public Date parseDateOfBirth(String dateOfBirth) {
         try {
             String[] parts = dateOfBirth.split("-");
@@ -273,8 +316,33 @@ public class AddPatientUI extends JPanel {
             int month = Integer.parseInt(parts[0]);
             int day = Integer.parseInt(parts[1]);
             int year = Integer.parseInt(parts[2]);
-            Date date = new Date(month, day, year);
-            return date;
+            
+            if (month < 1 || month > 12) {
+                JOptionPane.showMessageDialog(this, "Month must be between 1 and 12!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+    
+            if (day < 1 || day > 31) {
+                JOptionPane.showMessageDialog(this, "Day must be between 1 and 31!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+    
+            if (year < 1900 || year > java.time.LocalDate.now().getYear()) {
+                JOptionPane.showMessageDialog(this, "Year must be reasonable and not in the future!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+    
+            java.time.LocalDate dob = java.time.LocalDate.of(year, month, day);
+            if (dob.isAfter(java.time.LocalDate.now())) {
+                JOptionPane.showMessageDialog(this, "Date of birth cannot be in the future!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+    
+            return new Date(month, day, year);
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid date format!", "Error", 
@@ -319,9 +387,10 @@ public class AddPatientUI extends JPanel {
         currentAllergiesList.clear();
         currentMedicationsList.clear();
         currentMedicalConditionsList.clear();
-        currentAllergiesLabel.setText("None");
-        currentMedicationsLabel.setText("None");
-        currentMedicalConditionsLabel.setText("None");
+        ((DefaultListModel<String>) allergiesListUI.getModel()).clear();
+        ((DefaultListModel<String>) medicationsListUI.getModel()).clear();
+        ((DefaultListModel<String>) conditionsListUI.getModel()).clear();
+
     }
 
     // MODIFIES: button
@@ -354,5 +423,15 @@ public class AddPatientUI extends JPanel {
                 button.setBackground(new Color(70, 10, 70));
             }
         });
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates and styles a scrolling pane for the create new user screen
+    public void addScrollBar() {
+        scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 }
