@@ -244,7 +244,7 @@ To enable users to save and reload their clinic data between sessions, I impleme
 ### Writing data
 - JsonWriter.java is responsible for converting the current state of the Clinic object into a well-structured JSON file, which includes all patients and their associated clinical notes
 - This allows for easy storage, backup, and transferability of clinic data
-- 
+
 ### Reading data
 - JsonReader.java reads a previously saved JSON file
 - It reconstructs the complete clinic state by creating new Clinic, Patient, and ClinicalNote objects based on the serialized data
