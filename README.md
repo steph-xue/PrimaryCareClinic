@@ -185,6 +185,17 @@ Removing a clinical note
 
 <br>
 
+## Tech Stack
+- Frontend:
+  - Graphical User Interface (GUI): Developed with Java Swing to provide a responsive and user-friendly experience
+  - Command-Line Interface (CLI): Implemented in Java for lightweight, text-based interactions
+- Backend:
+  - Core application logic written in Java
+  - Unit testing conducted using JUnit Jupiter to ensure code reliability and maintainability
+
+
+<br>
+
 ## Event Log
 The application automatically generates a detailed event log that tracks all significant actions taken during a session. This includes changes to clinic information, additions and updates to patient records, and any modifications to clinical notes. Each log entry includes a precise timestamp and a clear description of the action performed, providing a transparent and traceable history of user interactions within the system. This feature supports auditing, debugging, and better accountability for patient data management.
 
