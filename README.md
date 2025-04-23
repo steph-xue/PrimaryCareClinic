@@ -186,14 +186,56 @@ Removing a clinical note
 <br>
 
 ## Tech Stack
-- Frontend:
-  - Graphical User Interface (GUI): Developed with Java Swing to provide a responsive and user-friendly experience
-  - Command-Line Interface (CLI): Implemented in Java for lightweight, text-based interactions
-- Backend:
-  - Core application logic written in Java
-  - Unit testing conducted using JUnit Jupiter to ensure code reliability and maintainability
+
+### Frontend
+- Graphical User Interface (GUI): Developed with Java Swing to provide a responsive and user-friendly experience
+- Command-Line Interface (CLI): Implemented in Java for lightweight, text-based interactions
+  
+### Backend
+- Core application logic written in Java
+- Unit testing conducted using JUnit Jupiter to ensure code reliability and maintainability
 
 
+<br>
+
+## Dual Interface Options: CLI and GUI
+To maximize usability and accessibility, I implemented two distinct user interfaces that share the same backend logic. Both interfaces interact with the same model and persistence layers, ensuring consistency in behavior regardless of how the application is accessed. 
+
+### Command-Line Interface (CLI)
+- Found in Main.java in the cli folder (main/ui/cli/Main.java)
+- Offers a text-based interface ideal for terminal-based workflows
+- Provides simple menu-driven navigation with input validation to guide users through interactions
+- 
+### Graphical User Interface (GUI)
+- Found in MainUI.java in the gui folder (main/ui/gui/MainUI.java)
+- Provides a visual, user-friendly experience with clearly structured panels and a navigation bar that enables smooth switching between screens
+
+<br>
+
+## Object-Oriented Programming (OOP) Principles
+OOP principles are fundamental to the architecture and design of my application. Core OOP principles such as modularity, reusability, the single responsibility principle (SRP), abstraction, encapsulation, inheritance, and polymorphism are applied throughout the application to ensure clean separation of models, reusability, and data integrity.
+
+### Modularity and reusability
+- Each major concept in my clinic system is modeled as its own class, making the system modular for maintability and reusability
+- These include:
+    - Clinic - manages and stores patients
+    - Patient - stores individual patient data and clinical notes
+    - ClinicalNote - holds individual clinical note entries for patients
+    - Date - stores date-related logic
+
+### Single Responsibility Principle (SRP)
+- Each class has one main well-defined responsibility
+- Helps to improve the scalability of the application, allowing new features to be added with minimal disruption to the existing codebase
+
+### Abstraction and encapsulation
+- Abstraction is employed to hide implementation details and expose only relevant functionality
+- Encapsulation is achieved by designing each model class with private fields and public getter/setter methods, to ensure that an object’s internal state cannot be accessed or modified directly from outside the class, reducing the likelihood of bugs and unintended behavior
+
+
+### Inheritance and polymorphism
+- Writable is an interface that is implemented by model classes like Clinic, Patient, and Clinical note
+- This allows polymorphic behavior when writing to JSON
+  
 <br>
 
 ## Event Log
