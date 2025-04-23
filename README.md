@@ -6,15 +6,109 @@
   An Electronic Health Record (EHR) designed to optimize patient management for clinicians working in primary care clinics
 </h2>
 
-### What will the application do and who will use it? ###
-The application serves as an EHR system designed for primary care clinics, enabling efficient management of patients who are currently registered within the clinic. The application will allow for the tracking of patient information, including first and last name, date of birth (DOB), age, personal health number (PHN), allergies, current medications, and medical conditions. Patient data will be presented in a list view, sorted alphabetically by last name then first name. The application will also support the addition of new patients, removal of existing patients, and updates to patient details as required. Additionally, the application will enable users to record and review detailed clinical notes for patient visits, capturing information including the reason for the visit (title), visit details (body), healthcare provider seen, and date of the visit. Users can then view a complete history of all clinical notes for the patient.  
+<p align="center">
+  <img src="screenshots/logo.png" alt="logo" width="500"/>
+</p>
+
+<br>
+
+## What will the application do and who will use it? ###
+The application serves as an EHR system designed for primary care clinics, providing an efficient way to manage all patients currently registered at a clinic. It displays a comprehensive, alphabetically sorted list of patients by last and first name, and allows clinicians to add new patient profiles, update existing information, or remove patients from the system. Each patient record allows for the tracking of both demographic and clinical information, including first and last name, date of birth (DOB), age, personal health number (PHN), allergies, medications, and medical conditions. In addition, the application allows clinicinas to create, edit, and delete clinical notes for patient visits, capturing key details such as the reason for the visit, visit summary, healthcare provider, and visit date. Clinicians can also view the full clinical history for any patient.
 
 The primary care clinic application is designed to be used by medical professionals and administrative staff, including physicians, clinical pharmacists, nurses, and medical office assistants, to streamline patient management and ensure accurate record-keeping for the improved delivery of patient care.
 
-### Why is this project of interest to you? ###
-This project is of interest to me, as I have a background in the healthcare industry as a pharmacist and have worked at a variety of healthcare settings, including community pharmacies, hospitals, and ambulatory care clinics. As a result, I have a multitude of experiences working with different EHR systems, and have firsthand experience with the challenges faced by healthcare professionals in managing patient records. By creating an EHR application, I can apply my technical skills in computer science with my background domain knowledge in healthcare to develop a practical application for clinicians. Moreover, working on this application aligns with my goal to leverage technology to automate processes and enhance operational efficiency in the healthcare industry.
+<br>
+
+## Why is this project of interest to you? ###
+This project interests me because I have a background in the healthcare industry as a pharmacist and have worked at a variety of healthcare settings, including community pharmacies, hospitals, and ambulatory care clinics. I've worked with different EHR systems and understand the challenges healthcare professionals face when managing patient records. By building an EHR application, I can combine my healthcare knowledge with my technical skills to create a more efficient and user-friendly system for clinicians. It also supports my goal of using technology to streamline healthcare processes and improve overall efficiency.
 
 <br>
+
+## Features
+- Starting and loading the application
+    - Load existing clinic data from file upon launching the application
+    - Start a new clinic file if no data is loaded
+    - Quit confirmation prompt reminds users to save clinic data before exiting
+- Rename the clinic
+    - Rename the clinic to customize the header/title of the application
+- Patient Record Management
+    - Add new patient records with the following details:
+        - First name
+        - Last name
+        - Date of birth (DOB)
+        - Age
+        - Personal Health Number (PHN)
+        - Allergies (can add and remove)
+        - Medications (can add and remove)
+        - Medical conditions (can add and remove)
+
+➕ Patient Record Management
+Add new patient records with the following details:
+
+First name
+
+Last name
+
+Date of birth (DOB) — age is automatically calculated
+
+Personal Health Number (PHN)
+
+Allergies (can add multiple)
+
+Medications (can add multiple)
+
+Medical conditions (can add multiple)
+
+📃 Viewing Patient Records
+Display all patients in the clinic in a list view
+
+Sorted alphabetically by last name, then first name
+
+Select a patient from the list to view their full profile
+
+📝 Patient Profile Management
+Edit patient information:
+
+Update name
+
+Update DOB (age is recalculated)
+
+Update PHN
+
+Add or remove allergies
+
+Add or remove medications
+
+Add or remove medical conditions
+
+Remove a patient record entirely from the clinic
+
+📄 Clinical Notes Management
+Add new clinical notes for a selected patient:
+
+Visit title (reason for visit)
+
+Visit details (note body)
+
+Healthcare provider name
+
+Date of visit (automatically assigned as the current date)
+
+View clinical history:
+
+Displays all past notes for the patient
+
+Ordered in reverse chronological order (most recent first)
+
+Edit existing clinical notes:
+
+Update visit title
+
+Edit visit details
+
+Change healthcare provider name
+
+Remove a clinical note from a patient’s record
 
 ## User Stories
 - As a user, I want to be able to create and add a name for the clinic
