@@ -198,14 +198,14 @@ Removing a clinical note
 
 <br>
 
-## Dual Interface Options: CLI and GUI
+## Dual User Interface Options
 To maximize usability and accessibility, I implemented two distinct user interfaces that share the same backend logic. Both interfaces interact with the same model and persistence layers, ensuring consistency in behavior regardless of how the application is accessed. 
 
 ### Command-Line Interface (CLI)
 - Found in Main.java in the cli folder (main/ui/cli/Main.java)
 - Offers a text-based interface ideal for terminal-based workflows
 - Provides simple menu-driven navigation with input validation to guide users through interactions
-- 
+  
 ### Graphical User Interface (GUI)
 - Found in MainUI.java in the gui folder (main/ui/gui/MainUI.java)
 - Provides a visual, user-friendly experience with clearly structured panels and a navigation bar that enables smooth switching between screens
@@ -236,6 +236,34 @@ OOP principles are fundamental to the architecture and design of my application.
 - Writable is an interface that is implemented by model classes like Clinic, Patient, and Clinical note
 - This allows polymorphic behavior when writing to JSON
   
+<br>
+
+## JSON-Based Data Persistance
+To enable users to save and reload their clinic data between sessions, I implemented JSON-based data persistence using custom file readers and writers. This system allows users to choose between starting a new session or loading a previously saved clinic. It also ensures robust error handling for missing files, improving reliability.
+
+### Writing data
+- JsonWriter.java is responsible for converting the current state of the Clinic object—including all patients and their associated clinical notes—into a well-structured JSON file
+- This allows for easy storage, backup, and transferability of clinic data
+### Reading data
+- JsonReader.java reads a previously saved JSON file
+- It reconstructs the complete clinic state by creating new Clinic, Patient, and ClinicalNote objects based on the serialized data
+
+<br>
+
+## Unit Testing (JUnit Jupiter)
+- Test was essential to ensure the application was robust and error-free
+- I used JUnit 5 (Jupiter) to write unit tests for every class and method in the model and persistence packages including:
+    - Models:
+        - TestClinic.java 
+        - TestPatient.java
+        - TestClinicalNote.java
+        - TestData.java
+    - Persistance:
+        - JsonReaderTest.java
+        - JsonTest.java
+        - JsonWriterTest.java
+- Every branch, condition, and exception pathway is covered to ensure correctness under all scenarios, resulting in 100% test coverage
+
 <br>
 
 ## Event Log
