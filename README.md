@@ -213,3 +213,20 @@ There are some things I would refactor to improve the design of my project if I 
 - I would refactor the PrimaryCareClinicApp class of the UI package that runs the functionality of the command-line user interface by breaking it into smaller, seperate classes to ensure these classes align with the Single Responsibility Principle. This will ensure each class handles one distinct task (e.g. user input, command parsing, output display) to improve cohesion, readability and maintainability.
 - For classes in the the model package, I would also try to abstract duplicated code into new methods. For example, I would abstract out code for addAllergy, addMedication, and addMedicalCondition into a separate method to minimize code dupication. Abstracting out duplicated code improves code reusability and enhances maintainbility, as updates to shared logic only need to be made in one place, reducing the risk of inconsistencies.
 - I would refactor the NavigationBarUI class of the UI package so that instead of having multiple UI screen classes of the graphical user interface instantiating NavigationBarUI, I would just have it instantiated once for the entire application in the MainUI class. This would allow for a centralized control of navigation and prevent redundant instances, ensuring consistent behaviour across all UI screens.
+
+<br>
+
+## How to Run Locally
+- Install the latest version of java
+    - Check the version using the command
+        - ```java --version```
+- Clone the repository from github by typing in the command line
+    - HTTPS: ```git clone https://github.com/steph-xue/PrimaryCareClinic.git```
+    - SSH: ```git clone git@github.com:steph-xue/PrimaryCareClinic.git```
+- Navigate into the project directory
+    - ```cd PrimaryCareClinic```
+- Run the application
+    - To run the CLI version of the application:
+        - Run Main.java in the cli folder (in main/ui)
+    - To run the GUI version of the application:
+        - Run MainUI.java in the gui folder (in main/ui)
