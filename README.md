@@ -68,6 +68,8 @@ This project interests me because I have a background in the healthcare industry
 
 ### Rename the clinic
 - The user can choose to rename the clinic
+
+Renaming the clinic from "MedCare Clinic" to "CarePlus Clinic"
 ![Rename](./screenshots/rename.png?raw=true "Rename")
 ![Rename Success](./screenshots/renameSuccess.png?raw=true "Rename Success")
 ![Rename Result](./screenshots/renameResult.png?raw=true "Rename Result")
@@ -93,11 +95,18 @@ This project interests me because I have a background in the healthcare industry
     - Medical conditions (can add and remove)
 - The user can also remove a patient record entirely from the clinic
 
+User profile for Mya Cornell
 ![Profile 1](./screenshots/profile1.png?raw=true "Profile 1")
 ![Profile 2](./screenshots/profile2.png?raw=true "Profile 2")
+
+Changing the first name to Mia
 ![Profile Edit Name](./screenshots/editName.png?raw=true "Profile Edit Name")
+
+Adding a clindamycin allergy
 ![Profile Add Allergy](./screenshots/profileAddAllergy.png?raw=true "Profile Add Allergy")
 ![Profile Add Allergy Success](./screenshots/profileAddAllergySuccess.png?raw=true "Profile Add Allergy Success")
+
+Removing a codeine allergy
 ![Profile Remove Allergy](./screenshots/profileRemoveAllergy.png?raw=true "Profile Remove Allergy")
 ![Profile Remove Allergy Success](./screenshots/profileRemoveAllergySuccess.png?raw=true "Profile Remove Allergy Success")
 
@@ -114,13 +123,22 @@ This project interests me because I have a background in the healthcare industry
     - Medications (can add and remove multiple)
     - Medical conditions (can add and remove multiple)
 
+Create new patient record
 ![New Patient Empty 1](./screenshots/newPatientEmpty1.png?raw=true "New Patient Empty 1")
 ![New Patient Empty 2](./screenshots/newPatientEmpty2.png?raw=true "New Patient Empty 2")
+
+Create new patient record with sample patient data
 ![New Patient 1](./screenshots/newPatient1.png?raw=true "New Patient 1")
 ![New Patient 2](./screenshots/newPatient2.png?raw=true "New Patient 2")
+
+Add allergy
 ![New Patient Add Allergy](./screenshots/newPatientAddAllergy.png?raw=true "New Patient Add Allergy")
+
+Adding new patient
 ![New Patient Success](./screenshots/newPatientSuccess.png?raw=true "New Patient Success")
-![New Patient Success Result](./screenshots/newPatientSuccessResult.png?raw=true "New Patient Success Result")
+![New Patient Success View All](./screenshots/newPatientSuccessViewAll.png?raw=true "New Patient Success View All")
+
+New patient profile
 ![New Profile 1](./screenshots/newProfile1.png?raw=true "New Profile 1")
 ![New Profile 2](./screenshots/newProfile2.png?raw=true "New Profile 2")
 
@@ -140,12 +158,19 @@ This project interests me because I have a background in the healthcare industry
     - Healthcare provider
 - The user can remove a clinical note from a patient’s record
 
+Create new clinical note
 ![Add Note Empty](./screenshots/addNoteEmpty.png?raw=true "Add Note Empty")
+
+Create new clinical note with sample clinical information
 ![Add Note](./screenshots/addNote.png?raw=true "Add Note")
 ![Add Note Success](./screenshots/addNoteSuccess.png?raw=true "Add Note Success")
 ![Add Note Success Result](./screenshots/addNoteSuccessResult.png?raw=true "Add Note Success Result")
+
+Changing the title of a clinical note
 ![Edit Title](./screenshots/editTitle.png?raw=true "Edit Title")
 ![Edit Title Success](./screenshots/editTitleSuccess.png?raw=true "Edit Title Success")
+
+Removing a clinical note
 ![Remove Note](./screenshots/removeNote.png?raw=true "Remove Note")
 ![Remove Note Success](./screenshots/removeNoteSuccess.png?raw=true "Remove Note Success")
 
