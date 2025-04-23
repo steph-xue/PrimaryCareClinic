@@ -24,94 +24,92 @@ This project interests me because I have a background in the healthcare industry
 
 <br>
 
+## Overview of Features
+- Loading and quitting the application:
+    - Upon starting the application, users can choose to load clinic data from file or start a new clinic file (and add a name for the clinic)
+    - Upon quitting the application, users can choose to save their clinic data to file or quit without saving
+- Clinic management
+    - Users can choose to rename the clinic at anytime
+- Patient record management
+    - Users can view the list of all patient records in the clinic
+        - Sorted alphabetically by last name then first name
+    - Users can add new patient records to the clinic
+        - Specify each patient's first and last name, DOB, age, PHN, allergies, current medications, and medication conditions
+    - Users can remove an existing patient record from the system
+    - Users can view a specific patient profile by double clicking their information in the view all patients scrreen
+    - Users can update information in a patient's record
+        - Can edit the patient's first and last name, DOB, age, PHN, add/remove allergies, add/remove medications, and add/remove medication conditions
+- Clinical note management
+    - Users can view the history of all clinical notes for a specific patient (ordered in reverse chronological order)
+    - Users can add new clinical notes to a patient's record
+        - Can include details such as the reason for visit (title), visit details (body), name of the healthcare provider seen, and the visit date (current date)
+    - Users can update a clinical note from a patient's record
+        - Can edit the title, body, and healthcare provider seen
+    - Users can remove a clinical note from a patient's record
+
+
 ## Features
-- Users can:
-    - Start and load the application
-        - Load existing clinic data from a saved file 
-        - Start a new clinic file 
-    - Rename the clinic
-    - Manage patient records
-        - View all patient records
-            - Displayed in a list view sorted alphabetically by last name then first name
-            - Double click a patient from the list to view their full profile
-        - Add a new patient record with the following details:
-            - First name
-            - Last name
-            - Date of birth (DOB)
-            - Age
-            - Personal Health Number (PHN)
-            - Allergies (can add and remove multiple)
-            - Medications (can add and remove multiple)
-            - Medical conditions (can add and remove multiple)
-        - View a specific patient profile
-            - Can view and edit details including:
-                - First name
-                - Last name
-                - Date of birth (DOB)
-                - Age
-                - Personal Health Number (PHN)
-                - Allergies (can add and remove)
-                - Medications (can add and remove)
-                - Medical conditions (can add and remove)
-            - Can view and manage clinical notes
-                - All past clinical notes for the patient are displayed in reverse chronological order (most recent first)
-                - Can add a new clinical note:
-                    - Visit title (reason for visit)
-                    - Healthcare provider name
-                    - Visit details (note body)
-                    - Date of visit (automatically assigned as the current date)
-                - Can edit existing clinical notes:
-                    - Update visit title
-                    - Edit visit details
-                    - Change healthcare provider name
-                    - Remove a clinical note from a patient’s record
-            - Can remove a patient record entirely from the clinic
+### Start and load the clinic application
+- The user is given the option to either:
+    - Load existing clinic data from a saved file 
+    - Start a new file and add a new name for the clinic
+
+### Rename the clinic
+- The user can choose to rename the clinic
+
+### View all patient records
+- All patient records are displayed in a list view sorted alphabetically by last name then first name
+- The user can double click a patient from the list to view their full profile
+
+### Add a new patient record:
+- The user can add a new patient record with the following details:
+    - First name
+    - Last name
+    - Date of birth (DOB)
+    - Age
+    - Personal Health Number (PHN)
+    - Allergies (can add and remove multiple)
+    - Medications (can add and remove multiple)
+    - Medical conditions (can add and remove multiple)
+      
+### View a specific patient profile
+- The user can view and edit patient details including:
+    - First name
+    - Last name
+    - Date of birth (DOB)
+    - Age
+    - Personal Health Number (PHN)
+    - Allergies (can add and remove)
+    - Medications (can add and remove)
+    - Medical conditions (can add and remove)
+- The user can also remove a patient record entirely from the clinic
+  
+### View and manage clinical notes 
+- All past clinical notes for the patient are displayed in reverse chronological order (most recent first)
+- The user can add a new clinical note with the following information:
+    - Visit title (reason for visit)
+    - Healthcare provider name
+    - Visit details (note body)
+    - Date of visit (automatically assigned as the current date)
+- The user can edit the following for existing clinical notes:
+    - Visit title
+    - Visit body
+    - Healthcare provider
+- The user can remove a clinical note from a patient’s record
+      
+### Save and quit the clinic application
+- Upon quitting the application, yhe user is given the option to either:
+    - Save the clinic data before quitting
+    - Quit without saving
   
   
 
 
-## User Stories
-- As a user, I want to be able to create and add a name for the clinic
-- As a user, I want to be able to rename the clinic
-- As a user, I want to be able to add new patient records to the clinic and specify each patient's first and last name, DOB, age, PHN, allergies, current medications, and medication conditions
-- As a user, I want to be able to view the list of all patient records in the clinic (sorted alphabetically by last name then first name)
-- As a user, I want to be able to remove an existing patient record
-- As a user, I want to be able to update information in a patient's record
-  - Edit the name
-  - Edit the DOB and age
-  - Edit the PHN
-  - Edit (add/remove) an allergy
-  - Edit (add/remove) a medication
-  - Edit (add/remove) a medical condition
-- As a user, I want to be able to add new clinical notes to a patient's record with details such as the reason for visit (title), visit details (body), name of the healthcare provider seen, and the visit date (current date)
-- As a user, I want to be able to view the history of all clinical notes for a specific patient (ordered in reverse chronological order)
-- As a user, I want to be able to remove a clinical note from a patient's record
-- As a user, I want to be able to update a clinical note from a patient's record
-  - Edit the title
-  - Edit the body
-  - Edit the healthcare provider seen
-- As a user, when I start the application, I want to be given the option to load my clinic data from file
-- As a user, when I select the quit option from the application menu, I want to be reminded to save my clinic data to file and have the option to do so or not
 
 <br>
 
-## Instructions for End User
-- You can "add an X to a Y" by clicking on the "add patient" button on the top navigation bar, inputing information in all of the fields (first name, last name, DOB, age, PHN, allergies, medications, medical conditions) and clicking on the "add new patient" button at the bottom of the screen
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by double clicking on a patient in the "view all patients" screen to view all patient specific details. Here there are multiple subactions you can do related directly to the patient:
-  - Remove the patient from the clinic by clicking on the red "remove patient" button at the bottom of the profile
-  - Click on the grey edit buttons beside any of the patient data fields to update information
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by double clicking on a patient in the "view all patients" screen to view a specific patient profile and clicking on the purple "new clinical note" button to create a new clinical note to add to the patient's profile. Then you can fill out all of the information (title, provider, body) and click the "create new clinical note" button at the bottom to add it to the patient's profile
-  - There are also other subactions you can do related to a patient's clinical notes including:
-    - Remove the clinical note by clicking on the grey "remove note" button at the bottom of the note in the profile page
-    - Click on the grey edit buttons beside any of the clinical note data fields to update information
-- You can locate my visual component by opening up the application where the electronic health record (EHR) image and loading gif will be displayed on the loading screen for 10 seconds. There is also a patient profile image located at the top of each of the patient profiles
-- You can save the state of my application by clicking on the "save & quit" button at the top right of the navigation bar. This will bring you to a screen where you can either click to "save & quit" or "quit without saving"
-- You can reload the state of my application by click on the "load clinic data from file" button on the start screen upon reopening the application (or create a new clinic if you do not want to load from file)
-
-<br>
-
-## Phase 4: Task 2
-### Event Log
+## Event Log
+Sample event log records:
 - Fri Mar 28 01:54:35 PDT 2025 - Clinic name set to Medicare Plus
 - Fri Mar 28 01:55:26 PDT 2025 - Patient Mya Cornell added to the clinic
 - Fri Mar 28 01:56:04 PDT 2025 - Patient Ashley Davis added to the clinic
@@ -130,8 +128,7 @@ This project interests me because I have a background in the healthcare industry
 - Fri Mar 28 01:59:14 PDT 2025 - Clinic name set to Careplus
 
 
-## Phase 4: Task 3
-### Potential Design Improvements
+## Potential Design Improvements
 There are some things I would refactor to improve the design of my project if I had more time:
 - I would refactor the PrimaryCareClinicApp class of the UI package that runs the functionality of the command-line user interface by breaking it into smaller, seperate classes to ensure these classes align with the Single Responsibility Principle. This will ensure each class handles one distinct task (e.g. user input, command parsing, output display) to improve cohesion, readability and maintainability.
 - For classes in the the model package, I would also try to abstract duplicated code into new methods. For example, I would abstract out code for addAllergy, addMedication, and addMedicalCondition into a separate method to minimize code dupication. Abstracting out duplicated code improves code reusability and enhances maintainbility, as updates to shared logic only need to be made in one place, reducing the risk of inconsistencies.
