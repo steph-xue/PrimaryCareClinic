@@ -51,29 +51,36 @@ This project interests me because I have a background in the healthcare industry
 <br>
 
 ## Features
-### Start and load the clinic application
+### Loading screen
+- A visually engaging loading screen that dynamically appears during application startup
+![Landing](./screenshots/landing.png?raw=true "Landing")
+
+<br>
+
+### Load the clinic application
 - The user is given the option to either:
     - Load existing clinic data from a saved file 
     - Start a new file and add a new name for the clinic
+![Load](./screenshots/load.png?raw=true "Load")
+![Load Success](./screenshots/loadSuccess.png?raw=true "Load Success")
+
+<br>
 
 ### Rename the clinic
 - The user can choose to rename the clinic
+![Rename](./screenshots/rename.png?raw=true "Rename")
+![Rename Success](./screenshots/renameSuccess.png?raw=true "Rename Success")
+![Rename Result](./screenshots/renameResult.png?raw=true "Rename Result")
+
+<br>
 
 ### View all patient records
 - All patient records are displayed in a list view sorted alphabetically by last name then first name
 - The user can double click a patient from the list to view their full profile
+![View All Patients](./screenshots/viewAllPatients.png?raw=true "View All Patients")
 
-### Add a new patient record:
-- The user can add a new patient record with the following details:
-    - First name
-    - Last name
-    - Date of birth (DOB)
-    - Age
-    - Personal Health Number (PHN)
-    - Allergies (can add and remove multiple)
-    - Medications (can add and remove multiple)
-    - Medical conditions (can add and remove multiple)
-      
+<br>
+
 ### View a specific patient profile
 - The user can view and edit patient details including:
     - First name
@@ -85,7 +92,42 @@ This project interests me because I have a background in the healthcare industry
     - Medications (can add and remove)
     - Medical conditions (can add and remove)
 - The user can also remove a patient record entirely from the clinic
-  
+
+![Profile 1](./screenshots/profile1.png?raw=true "Profile 1")
+![Profile 2](./screenshots/profile2.png?raw=true "Profile 2")
+![Profile Edit Name Empty](./screenshots/editNameEmpty.png?raw=true "Profile Edit Name Empty")
+![Profile Edit Name](./screenshots/editName.png?raw=true "Profile Edit Name")
+![Profile Add Allergy](./screenshots/profileAddAllergy.png?raw=true "Profile Add Allergy")
+![Profile Add Allergy Success](./screenshots/profileAddAllergySuccess.png?raw=true "Profile Add Allergy Success")
+![Profile Remove Allergy](./screenshots/profileRemoveAllergy.png?raw=true "Profile Remove Allergy")
+![Profile Remove Allergy Success](./screenshots/profileRemoveAllergySuccess.png?raw=true "Profile Remove Allergy Success")
+
+<br>
+
+### Add a new patient record:
+- The user can add a new patient record with the following details:
+    - First name
+    - Last name
+    - Date of birth (DOB)
+    - Age
+    - Personal Health Number (PHN)
+    - Allergies (can add and remove multiple)
+    - Medications (can add and remove multiple)
+    - Medical conditions (can add and remove multiple)
+
+![New Patient Empty 1](./screenshots/newPatientEmpty1.png?raw=true "New Patient Empty 1")
+![New Patient Empty 2](./screenshots/newPatientEmpty2.png?raw=true "New Patient Empty 2")
+![New Patient 1](./screenshots/newPatient1.png?raw=true "New Patient 1")
+![New Patient 2](./screenshots/newPatient2.png?raw=true "New Patient 2")
+![New Patient Add Allergy](./screenshots/newPatientAddAllergy.png?raw=true "New Patient Add Allergy")
+![New Patient Success](./screenshots/newPatientSuccess.png?raw=true "New Patient Success")
+![New Patient Success Result](./screenshots/newPatientSuccessResult.png?raw=true "New Patient Success Result")
+![New Profile 1](./screenshots/newProfile1.png?raw=true "New Profile 1")
+![New Profile 2](./screenshots/newProfile2.png?raw=true "New Profile 2")
+
+<br>
+
+
 ### View and manage clinical notes 
 - All past clinical notes for the patient are displayed in reverse chronological order (most recent first)
 - The user can add a new clinical note with the following information:
@@ -98,11 +140,24 @@ This project interests me because I have a background in the healthcare industry
     - Visit body
     - Healthcare provider
 - The user can remove a clinical note from a patient’s record
-      
+
+![Add Note Empty](./screenshots/addNoteEmpty.png?raw=true "Add Note Empty")
+![Add Note](./screenshots/addNote.png?raw=true "Add Note")
+![Add Note Success](./screenshots/addNoteSuccess.png?raw=true "Add Note Success")
+![Add Note Success Result](./screenshots/addNoteSuccessResult.png?raw=true "Add Note Success Result")
+![Edit Title](./screenshots/editTitle.png?raw=true "Edit Title")
+![Edit Title Success](./screenshots/editTitleSuccess.png?raw=true "Edit Title Success")
+![Remove Note](./screenshots/removeNote.png?raw=true "Remove Note")
+![Remove Note Success](./screenshots/removeNoteSuccess.png?raw=true "Remove Note Success")
+
+<br>
+ 
 ### Save and quit the clinic application
 - Upon quitting the application, yhe user is given the option to either:
     - Save the clinic data before quitting
     - Quit without saving
+
+![Save](./screenshots/save.png?raw=true "Save")
 
 <br>
 
