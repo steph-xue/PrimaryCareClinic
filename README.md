@@ -25,28 +25,30 @@ This project interests me because I have a background in the healthcare industry
 <br>
 
 ## Overview of Features
-- Loading and quitting the application:
-    - Upon starting the application, users can choose to load clinic data from file or start a new clinic file (and add a name for the clinic)
+- Loading and quitting the application
+    - Upon starting the application, users can choose to load clinic data from file or start a new file and create a new clinic (new name)
     - Upon quitting the application, users can choose to save their clinic data to file or quit without saving
 - Clinic management
     - Users can choose to rename the clinic at anytime
 - Patient record management
-    - Users can view the list of all patient records in the clinic
-        - Sorted alphabetically by last name then first name
+    - Users can view a list of all patient records at the clinic
+        - Sorted alphabetically by last name and then first name
     - Users can add new patient records to the clinic
-        - Specify each patient's first and last name, DOB, age, PHN, allergies, current medications, and medication conditions
+        - Need to specify each patient's first and last name, DOB, age, PHN, allergies, current medications, and medication conditions
     - Users can remove an existing patient record from the system
-    - Users can view a specific patient profile by double clicking their information in the view all patients scrreen
+    - Users can view a specific patient's profile by double clicking their information (in list view)
     - Users can update information in a patient's record
         - Can edit the patient's first and last name, DOB, age, PHN, add/remove allergies, add/remove medications, and add/remove medication conditions
 - Clinical note management
     - Users can view the history of all clinical notes for a specific patient (ordered in reverse chronological order)
     - Users can add new clinical notes to a patient's record
-        - Can include details such as the reason for visit (title), visit details (body), name of the healthcare provider seen, and the visit date (current date)
+        - Can include details such as the reason for visit (title), visit details (body), name of the healthcare provider seen
+        - The visit date is automatically calculated based on the current date
     - Users can update a clinical note from a patient's record
         - Can edit the title, body, and healthcare provider seen
     - Users can remove a clinical note from a patient's record
 
+<br>
 
 ## Features
 ### Start and load the clinic application
@@ -101,15 +103,13 @@ This project interests me because I have a background in the healthcare industry
 - Upon quitting the application, yhe user is given the option to either:
     - Save the clinic data before quitting
     - Quit without saving
-  
-  
-
-
 
 <br>
 
 ## Event Log
-Sample event log records:
+The application automatically generates a detailed event log that tracks all significant actions taken during a session. This includes changes to clinic information, additions and updates to patient records, and any modifications to clinical notes. Each log entry includes a precise timestamp and a clear description of the action performed, providing a transparent and traceable history of user interactions within the system. This feature supports auditing, debugging, and better accountability for patient data management.
+
+Sample event log record:
 - Fri Mar 28 01:54:35 PDT 2025 - Clinic name set to Medicare Plus
 - Fri Mar 28 01:55:26 PDT 2025 - Patient Mya Cornell added to the clinic
 - Fri Mar 28 01:56:04 PDT 2025 - Patient Ashley Davis added to the clinic
@@ -127,6 +127,7 @@ Sample event log records:
 - Fri Mar 28 01:58:40 PDT 2025 - Patient Freya Kwon removed from the clinic
 - Fri Mar 28 01:59:14 PDT 2025 - Clinic name set to Careplus
 
+<br>
 
 ## Potential Design Improvements
 There are some things I would refactor to improve the design of my project if I had more time:
