@@ -95,7 +95,6 @@ This project interests me because I have a background in the healthcare industry
 
 ![Profile 1](./screenshots/profile1.png?raw=true "Profile 1")
 ![Profile 2](./screenshots/profile2.png?raw=true "Profile 2")
-![Profile Edit Name Empty](./screenshots/editNameEmpty.png?raw=true "Profile Edit Name Empty")
 ![Profile Edit Name](./screenshots/editName.png?raw=true "Profile Edit Name")
 ![Profile Add Allergy](./screenshots/profileAddAllergy.png?raw=true "Profile Add Allergy")
 ![Profile Add Allergy Success](./screenshots/profileAddAllergySuccess.png?raw=true "Profile Add Allergy Success")
