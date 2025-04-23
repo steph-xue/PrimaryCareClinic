@@ -50,14 +50,14 @@ This project interests me because I have a background in the healthcare industry
 
 <br>
 
-## Features
+## Specific Features
 ### Loading screen
 - A visually engaging loading screen that dynamically appears during application startup
 ![Landing](./screenshots/landing.png?raw=true "Landing")
 
 <br>
 
-### Load the clinic application
+### Load the clinic from file or create a new clinic
 - The user is given the option to either:
     - Load existing clinic data from a saved file 
     - Start a new file and add a new name for the clinic
@@ -83,7 +83,7 @@ Renaming the clinic from "MedCare Clinic" to "CarePlus Clinic"
 
 <br>
 
-### View a specific patient profile
+### View a specific patient record
 - The user can view and edit patient details including:
     - First name
     - Last name
@@ -99,7 +99,7 @@ User profile for Mya Cornell
 ![Profile 1](./screenshots/profile1.png?raw=true "Profile 1")
 ![Profile 2](./screenshots/profile2.png?raw=true "Profile 2")
 
-Changing the first name to Mia
+Changing the first name from "Mya" to "Mira"
 ![Profile Edit Name](./screenshots/editName.png?raw=true "Profile Edit Name")
 
 Adding a clindamycin allergy
@@ -123,18 +123,18 @@ Removing a codeine allergy
     - Medications (can add and remove multiple)
     - Medical conditions (can add and remove multiple)
 
-Create new patient record
+Creating a new patient record
 ![New Patient Empty 1](./screenshots/newPatientEmpty1.png?raw=true "New Patient Empty 1")
 ![New Patient Empty 2](./screenshots/newPatientEmpty2.png?raw=true "New Patient Empty 2")
 
-Create new patient record with sample patient data
+Creating a new patient record with sample patient data
 ![New Patient 1](./screenshots/newPatient1.png?raw=true "New Patient 1")
 ![New Patient 2](./screenshots/newPatient2.png?raw=true "New Patient 2")
 
-Add allergy
+Adding an allergy
 ![New Patient Add Allergy](./screenshots/newPatientAddAllergy.png?raw=true "New Patient Add Allergy")
 
-Adding new patient
+Adding the patient to the clinic
 ![New Patient Success](./screenshots/newPatientSuccess.png?raw=true "New Patient Success")
 ![New Patient Success View All](./screenshots/newPatientSuccessViewAll.png?raw=true "New Patient Success View All")
 
@@ -158,10 +158,10 @@ New patient profile
     - Healthcare provider
 - The user can remove a clinical note from a patient’s record
 
-Create new clinical note
+Creating a new clinical note
 ![Add Note Empty](./screenshots/addNoteEmpty.png?raw=true "Add Note Empty")
 
-Create new clinical note with sample clinical information
+Creating a new clinical note with sample clinical information
 ![Add Note](./screenshots/addNote.png?raw=true "Add Note")
 ![Add Note Success](./screenshots/addNoteSuccess.png?raw=true "Add Note Success")
 ![Add Note Success Result](./screenshots/addNoteSuccessResult.png?raw=true "Add Note Success Result")
