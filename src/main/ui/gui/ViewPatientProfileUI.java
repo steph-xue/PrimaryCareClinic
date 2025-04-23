@@ -75,6 +75,16 @@ public class ViewPatientProfileUI extends JPanel {
     }
 
     // MODIFIES: this
+    // EFFECTS: Creates and styles a scrolling pane for the user profile
+    public void addScrollBar() {
+        scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+    }
+
+    // MODIFIES: this
     // EFFECTS: Create and add image for patient profile
     public void addPatientImage() {
         ImageIcon patientImage = new ImageIcon("images/patient.jpg");
@@ -177,8 +187,6 @@ public class ViewPatientProfileUI extends JPanel {
             ((JTextArea) dataComponent).setText(value);
         }
     }
-    
-    
 
     // MODIFIES: this
     // EFFECTS: Parses date of birth in (MM-DD-YYYY) string format to date object to set for the selected patient;
@@ -195,9 +203,32 @@ public class ViewPatientProfileUI extends JPanel {
             int month = Integer.parseInt(parts[0]);
             int day = Integer.parseInt(parts[1]);
             int year = Integer.parseInt(parts[2]);
-            Date date = new Date(month, day, year);
+            if (month < 1 || month > 12) {
+                JOptionPane.showMessageDialog(this, "Month must be between 1 and 12!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+    
+            if (day < 1 || day > 31) {
+                JOptionPane.showMessageDialog(this, "Day must be between 1 and 31!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+    
+            if (year < 1900 || year > java.time.LocalDate.now().getYear()) {
+                JOptionPane.showMessageDialog(this, "Year must be reasonable and not in the future!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+    
+            java.time.LocalDate dob = java.time.LocalDate.of(year, month, day);
+            if (dob.isAfter(java.time.LocalDate.now())) {
+                JOptionPane.showMessageDialog(this, "Date of birth cannot be in the future!", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            patient.setDateOfBirth(date);
+            patient.setDateOfBirth(new Date(month, day, year));
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Invalid date format!", "Error", 
@@ -289,7 +320,6 @@ public class ViewPatientProfileUI extends JPanel {
         outerPanel.setBackground(Color.WHITE);
         outerPanel.setBorder(BorderFactory.createEmptyBorder(5, 250, 5, 0)); 
     
-        // Row: header + data
         JPanel dataRow = new JPanel(new FlowLayout(FlowLayout.LEFT));
         dataRow.setBackground(Color.WHITE);
     
@@ -308,6 +338,7 @@ public class ViewPatientProfileUI extends JPanel {
         dataArea.setSize(new Dimension(500, Short.MAX_VALUE));
         Dimension preferredSize = dataArea.getPreferredSize();
         dataArea.setPreferredSize(new Dimension(500, preferredSize.height));
+
         dataRow.add(headerLabel);
         dataRow.add(dataArea);
     
@@ -339,7 +370,6 @@ public class ViewPatientProfileUI extends JPanel {
         buttonRow.add(addButton);
         buttonRow.add(removeButton);
     
-        // Add both rows to outer panel
         outerPanel.add(dataRow);
         outerPanel.add(buttonRow);
     
@@ -351,43 +381,58 @@ public class ViewPatientProfileUI extends JPanel {
     // if trying to remove a non-existent item
     public void updateListField(String fieldName, String value, boolean add) {
         boolean success = false;
-
+        String formattedValue = capitalize(value);
+    
         switch (fieldName) {
             case "allergies":
                 if (add) {
-                    patient.addAllergy(value);
+                    patient.addAllergy(formattedValue);
                     success = true;
-                } else if (patient.getAllergies().contains(value)) {
-                    patient.removeAllergy(value);
-                    success = true;
+                } else {
+                    success = removeCaseInsensitive(patient.getAllergies(), value, () -> patient.removeAllergy(formattedValue));
                 }
                 break;
             case "medications":
                 if (add) {
-                    patient.addMedication(value);
+                    patient.addMedication(formattedValue);
                     success = true;
-                } else if (patient.getMedications().contains(value)) {
-                    patient.removeMedication(value);
-                    success = true;
+                } else {
+                    success = removeCaseInsensitive(patient.getMedications(), value, () -> patient.removeMedication(formattedValue));
                 }
                 break;
             case "medicalConditions":
                 if (add) {
-                    patient.addMedicalCondition(value);
+                    patient.addMedicalCondition(formattedValue);
                     success = true;
-                } else if (patient.getMedicalConditions().contains(value)) {
-                    patient.removeMedicalCondition(value);
-                    success = true;
+                } else {
+                    success = removeCaseInsensitive(patient.getMedicalConditions(), value, () -> patient.removeMedicalCondition(formattedValue));
                 }
                 break;
         }
-
+    
         if (!success && !add) {
             JOptionPane.showMessageDialog(this,
                     "Item not found in " + fieldName + ", unable to remove.",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    // EFFECTS: Removes the first occurrence of a target string from a list, ignoring case;
+    private boolean removeCaseInsensitive(List<String> list, String target, Runnable removeAction) {
+        for (String item : list) {
+            if (item.equalsIgnoreCase(target)) {
+                removeAction.run(); 
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // EFFECTS: Capitalizes the first letter of the input string and lowercases the rest
+    private String capitalize(String input) {
+        if (input.length() == 0) return input;
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
 
     // MODIFIES: button
@@ -756,15 +801,5 @@ public class ViewPatientProfileUI extends JPanel {
                 button.setBackground(new Color(170, 50, 60));
             }
         });
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Creates and styles a scrolling pane for the user profile
-    public void addScrollBar() {
-        scrollPane = new JScrollPane(mainContainerPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(null);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 }

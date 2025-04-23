@@ -78,6 +78,16 @@ public class AddClinicalNoteUI extends JPanel {
     }
 
     // MODIFIES: this
+    // EFFECTS: Creates and styles a scrolling pane for the create new clinical note screen
+    public void addScrollBar() {
+        scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+    }
+
+    // MODIFIES: this
     // EFFECTS: Make and add form fields for user input (title, provider, body)
     public void addFormFields() {
         titleField = createStyledTextFieldTitle();
@@ -91,7 +101,7 @@ public class AddClinicalNoteUI extends JPanel {
     // EFFECTS: Create styled text input field for title, returned as a JTextField
     public JTextField createStyledTextFieldTitle() {
         JTextField textfield = new JTextField(33);
-        textfield.setFont(new Font("Arial", Font.BOLD, 18));
+        textfield.setFont(new Font("Arial", Font.PLAIN, 18));
         Border outer = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
         Border inner = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         textfield.setBorder(BorderFactory.createCompoundBorder(outer, inner));
@@ -233,15 +243,5 @@ public class AddClinicalNoteUI extends JPanel {
                 button.setBackground(new Color(70, 10, 70));
             }
         });
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Creates and styles a scrolling pane for the create new clinical note screen
-    public void addScrollBar() {
-        scrollPane = new JScrollPane(mainContainerPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(null);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 }

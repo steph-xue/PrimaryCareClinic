@@ -83,10 +83,20 @@ public class AddPatientUI extends JPanel {
         JLabel titleLabel = new JLabel("Create A New Patient Profile");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 30, 0)); // vertical spacing
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 30, 0)); 
+
         contentPanel.add(titleLabel);
-    
         mainContainerPanel.add(contentPanel);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Creates and styles a scrolling pane for the create new user screen
+    public void addScrollBar() {
+        scrollPane = new JScrollPane(mainContainerPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 
     // MODIFIES: this
@@ -144,7 +154,7 @@ public class AddPatientUI extends JPanel {
     }
 
     // EFFECTS: Create styled list for displaying list items (for allergies, medications, medical conditions);
-    // returns it as a JList
+    // returns it as a JList<String>
     public JList<String> createStyledList() {
         JList<String> list = new JList<>(new DefaultListModel<>());
         list.setVisibleRowCount(3);
@@ -153,14 +163,13 @@ public class AddPatientUI extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectionBackground(new Color(230, 230, 230));
         list.setSelectionForeground(Color.BLACK);
-
         return list;
     }
 
     // MODIFIES: this
-    // EFFECTS: Add the title, current list text, and button to add/remove to the list for each list field
+    // EFFECTS: Add the title, current list, and button to add/remove to the list for each list field
     // (allergies, medications, medical conditions)
-    public void addListField(String title, JList<String> listUI, List<String> backingList) {
+    public void addListField(String title, JList<String> listUI, List<String> list) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
@@ -182,7 +191,7 @@ public class AddPatientUI extends JPanel {
             String input = JOptionPane.showInputDialog(this, "Enter new item:");
             if (input != null && !input.trim().isEmpty()) {
                 String formatted = Character.toUpperCase(input.charAt(0)) + input.substring(1).toLowerCase();
-                backingList.add(formatted);
+                list.add(formatted);
                 ((DefaultListModel<String>) listUI.getModel()).addElement(formatted);
             }
         });
@@ -191,7 +200,7 @@ public class AddPatientUI extends JPanel {
         removeButton.addActionListener(e -> {
             int selected = listUI.getSelectedIndex();
             if (selected != -1) {
-                backingList.remove(selected);
+                list.remove(selected);
                 ((DefaultListModel<String>) listUI.getModel()).remove(selected);
             }
         });
@@ -206,22 +215,12 @@ public class AddPatientUI extends JPanel {
         contentPanel.add(panel);
     }
 
-    // MODIFIES: this, currentTextLabel
-    // EFFECTS: Gets user input to add to the current list and updates the text label list
-    // for the type of list selected (allergies, medications, medical conditions)
-    public void addToList(List<String> currentList, JLabel currentTextLabel) {
-        String input = (String) JOptionPane.showInputDialog(
-                this, 
-                "Add new: ",
-                "Add",
-                JOptionPane.DEFAULT_OPTION, 
-                new ImageIcon("images/health.jpg"), null, null);
-        
-        if (input != null && !input.trim().isEmpty()) {
-            String formattedInput = Character.toUpperCase(input.charAt(0)) + input.substring(1).toLowerCase();
-            currentList.add(formattedInput);
-            currentTextLabel.setText(String.join(", ", currentList));
-        }
+    // MODIFIES: this
+    // EFFECTS: Create add button to add a new patient to the clinic
+    public void createAddButton() {
+        addButton = new JButton("Add New Patient");
+        styleButton(addButton);
+        addButton.addActionListener(e -> createNewPatient());
     }
 
     // MODIFIES: newPatient
@@ -238,14 +237,6 @@ public class AddPatientUI extends JPanel {
         for (String medicalCondition: currentMedicalConditionsList) {
             newPatient.addMedicalCondition(medicalCondition);
         }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Create add button to add a new patient to the clinic
-    public void createAddButton() {
-        addButton = new JButton("Add New Patient");
-        styleButton(addButton);
-        addButton.addActionListener(e -> createNewPatient());
     }
 
     // EFFECTS: Parse user inputed information to create a new patient to add to the clinic
@@ -423,15 +414,5 @@ public class AddPatientUI extends JPanel {
                 button.setBackground(new Color(70, 10, 70));
             }
         });
-    }
-
-    // MODIFIES: this
-    // EFFECTS: Creates and styles a scrolling pane for the create new user screen
-    public void addScrollBar() {
-        scrollPane = new JScrollPane(mainContainerPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(null);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
     }
 }
