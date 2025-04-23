@@ -1,6 +1,10 @@
-# Primary Care Clinic Application 
+<h1 align="center">
+  Primary Care Clinic Application 
+</h1>
 
-## An Electronic Health Record (EHR) designed to optimize patient management for clinicians working in primary care clinics
+<h2 align="center">
+  An Electronic Health Record (EHR) designed to optimize patient management for clinicians working in primary care clinics
+</h2>
 
 ### What will the application do and who will use it? ###
 The application serves as an EHR system designed for primary care clinics, enabling efficient management of patients who are currently registered within the clinic. The application will allow for the tracking of patient information, including first and last name, date of birth (DOB), age, personal health number (PHN), allergies, current medications, and medical conditions. Patient data will be presented in a list view, sorted alphabetically by last name then first name. The application will also support the addition of new patients, removal of existing patients, and updates to patient details as required. Additionally, the application will enable users to record and review detailed clinical notes for patient visits, capturing information including the reason for the visit (title), visit details (body), healthcare provider seen, and date of the visit. Users can then view a complete history of all clinical notes for the patient.  
