@@ -227,6 +227,6 @@ There are some things I would refactor to improve the design of my project if I 
     - ```cd PrimaryCareClinic```
 - Run the application
     - To run the CLI version of the application:
-        - Run Main.java in the cli folder (in main/ui)
+        - Run Main.java in the cli folder (main/ui/cli/Main.java)
     - To run the GUI version of the application:
-        - Run MainUI.java in the gui folder (in main/ui)
+        - Run MainUI.java in the gui folder (main/ui/gui/MainUI.java)
