@@ -25,90 +25,50 @@ This project interests me because I have a background in the healthcare industry
 <br>
 
 ## Features
-- Starting and loading the application
-    - Load existing clinic data from file upon launching the application
-    - Start a new clinic file if no data is loaded
-    - Quit confirmation prompt reminds users to save clinic data before exiting
-- Rename the clinic
-    - Rename the clinic to customize the header/title of the application
-- Patient Record Management
-    - Add new patient records with the following details:
-        - First name
-        - Last name
-        - Date of birth (DOB)
-        - Age
-        - Personal Health Number (PHN)
-        - Allergies (can add and remove)
-        - Medications (can add and remove)
-        - Medical conditions (can add and remove)
+- Users can:
+    - Start and load the application
+        - Load existing clinic data from a saved file 
+        - Start a new clinic file 
+    - Rename the clinic
+    - Manage patient records
+        - View all patient records
+            - Displayed in a list view sorted alphabetically by last name then first name
+            - Double click a patient from the list to view their full profile
+        - Add a new patient record with the following details:
+            - First name
+            - Last name
+            - Date of birth (DOB)
+            - Age
+            - Personal Health Number (PHN)
+            - Allergies (can add and remove multiple)
+            - Medications (can add and remove multiple)
+            - Medical conditions (can add and remove multiple)
+        - View a specific patient profile
+            - Can view and edit details including:
+                - First name
+                - Last name
+                - Date of birth (DOB)
+                - Age
+                - Personal Health Number (PHN)
+                - Allergies (can add and remove)
+                - Medications (can add and remove)
+                - Medical conditions (can add and remove)
+            - Can view and manage clinical notes
+                - All past clinical notes for the patient are displayed in reverse chronological order (most recent first)
+                - Can add a new clinical note:
+                    - Visit title (reason for visit)
+                    - Healthcare provider name
+                    - Visit details (note body)
+                    - Date of visit (automatically assigned as the current date)
+                - Can edit existing clinical notes:
+                    - Update visit title
+                    - Edit visit details
+                    - Change healthcare provider name
+                    - Remove a clinical note from a patient’s record
+            - Can remove a patient record entirely from the clinic
+  
+  
 
-➕ Patient Record Management
-Add new patient records with the following details:
-
-First name
-
-Last name
-
-Date of birth (DOB) — age is automatically calculated
-
-Personal Health Number (PHN)
-
-Allergies (can add multiple)
-
-Medications (can add multiple)
-
-Medical conditions (can add multiple)
-
-📃 Viewing Patient Records
-Display all patients in the clinic in a list view
-
-Sorted alphabetically by last name, then first name
-
-Select a patient from the list to view their full profile
-
-📝 Patient Profile Management
-Edit patient information:
-
-Update name
-
-Update DOB (age is recalculated)
-
-Update PHN
-
-Add or remove allergies
-
-Add or remove medications
-
-Add or remove medical conditions
-
-Remove a patient record entirely from the clinic
-
-📄 Clinical Notes Management
-Add new clinical notes for a selected patient:
-
-Visit title (reason for visit)
-
-Visit details (note body)
-
-Healthcare provider name
-
-Date of visit (automatically assigned as the current date)
-
-View clinical history:
-
-Displays all past notes for the patient
-
-Ordered in reverse chronological order (most recent first)
-
-Edit existing clinical notes:
-
-Update visit title
-
-Edit visit details
-
-Change healthcare provider name
-
-Remove a clinical note from a patient’s record
 
 ## User Stories
 - As a user, I want to be able to create and add a name for the clinic
